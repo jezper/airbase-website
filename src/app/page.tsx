@@ -39,14 +39,22 @@ export default async function Home() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 flex flex-col-reverse md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
-          {/* Text — left side on desktop, below artwork on mobile */}
-          <div className="flex-1 min-w-0">
+        <div
+          className="relative z-10"
+          style={{
+            display: "grid",
+            gridTemplateColumns: latest?.artwork ? "1fr 240px" : "1fr",
+            alignItems: "end",
+            gap: "3rem",
+          }}
+        >
+          {/* Text — always takes priority */}
+          <div>
             <p className="font-mono text-[13px] font-medium uppercase tracking-[0.2em] text-accent mb-4 md:mb-5">
               New Release / {latest?.year ?? 2026}
             </p>
 
-            <h1 className="font-display font-black leading-hero tracking-hero mb-5 md:mb-6 text-[clamp(2.5rem,8vw,6rem)]">
+            <h1 className="font-display text-hero font-black leading-hero tracking-hero mb-5 md:mb-6">
               Everything<br />
               Else Could<br />
               Wait
@@ -84,15 +92,14 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Artwork — right side on desktop, top on mobile */}
+          {/* Artwork — fixed 240px column, can't grow */}
           {latest?.artwork && (
-            <div className="shrink-0 w-48 sm:w-56 md:w-64 lg:w-80">
-              <img
-                src={latest.artwork}
-                alt={`${latest.title} by ${latest.artist}`}
-                className="w-full aspect-square rounded-lg shadow-2xl"
-              />
-            </div>
+            <img
+              src={latest.artwork}
+              alt={`${latest.title} by ${latest.artist}`}
+              style={{ width: "240px", height: "240px", objectFit: "cover" }}
+              className="rounded-lg shadow-2xl hidden md:block"
+            />
           )}
         </div>
       </section>
