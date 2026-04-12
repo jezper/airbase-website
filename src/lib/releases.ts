@@ -54,3 +54,15 @@ export async function getUniqueArtists(): Promise<string[]> {
   }
   return Array.from(artists).sort();
 }
+
+export async function getOwnAliases(): Promise<string[]> {
+  const releases = await getAllReleases();
+  const aliases = new Set<string>();
+  for (const release of releases) {
+    if (release.type !== "Remix") {
+      const primary = release.artist.split(/\s+feat\.?\s+|\s+&\s+|\s+pres\.\s+/i)[0].trim();
+      aliases.add(primary);
+    }
+  }
+  return Array.from(aliases).sort();
+}
