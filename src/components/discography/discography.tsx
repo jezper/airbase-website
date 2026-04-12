@@ -89,15 +89,23 @@ export default function Discography({ releases, aliases }: DiscographyProps) {
   const [activeAlias, setActiveAlias] = useState<string | null>(null);
   const [activeType, setActiveType] = useState<ReleaseType | null>(null);
 
-  // Count aliases across all releases (non-remix primary artists)
+  // Check if a release belongs to a given alias
+  // Matches: primary artist name OR remixer credit in title (e.g. "Ozone Remix")
+  function releaseMatchesAlias(r: Release, alias: string): boolean {
+    const lower = alias.toLowerCase();
+    const primary = r.artist.split(/\s+feat\.?\s+|\s+&\s+|\s+pres\.\s+/i)[0].trim().toLowerCase();
+    if (primary === lower || primary.includes(lower)) return true;
+    // Check if alias appears as remixer in the title
+    if (r.type === "Remix" && r.title.toLowerCase().includes(lower)) return true;
+    return false;
+  }
+
+  // Count aliases across all releases
   const aliasCounts = useMemo(() => {
     const counts = new Map<string, number>();
-    for (const r of releases) {
-      const primary = r.artist.split(/\s+feat\.?\s+|\s+&\s+|\s+pres\.\s+/i)[0].trim();
-      // Only count aliases that appear in the aliases list
-      if (aliases.includes(primary)) {
-        counts.set(primary, (counts.get(primary) ?? 0) + 1);
-      }
+    for (const alias of aliases) {
+      const count = releases.filter((r) => releaseMatchesAlias(r, alias)).length;
+      if (count > 0) counts.set(alias, count);
     }
     return counts;
   }, [releases, aliases]);
@@ -105,10 +113,7 @@ export default function Discography({ releases, aliases }: DiscographyProps) {
   // Count type occurrences for type pills (across currently alias-filtered set)
   const typeCounts = useMemo(() => {
     const aliasFiltered = activeAlias
-      ? releases.filter((r) => {
-          const primary = r.artist.split(/\s+feat\.?\s+|\s+&\s+|\s+pres\.\s+/i)[0].trim();
-          return primary === activeAlias;
-        })
+      ? releases.filter((r) => releaseMatchesAlias(r, activeAlias))
       : releases;
 
     const counts = new Map<ReleaseType, number>();
@@ -121,10 +126,7 @@ export default function Discography({ releases, aliases }: DiscographyProps) {
   // Apply both filters
   const filtered = useMemo(() => {
     return releases.filter((r) => {
-      if (activeAlias) {
-        const primary = r.artist.split(/\s+feat\.?\s+|\s+&\s+|\s+pres\.\s+/i)[0].trim();
-        if (primary !== activeAlias) return false;
-      }
+      if (activeAlias && !releaseMatchesAlias(r, activeAlias)) return false;
       if (activeType && r.type !== activeType) return false;
       return true;
     });
