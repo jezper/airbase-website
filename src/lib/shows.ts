@@ -30,15 +30,21 @@ export async function getUpcomingShows(): Promise<Show[]> {
   return shows.filter((s) => s.status === "upcoming");
 }
 
+function showSortKey(s: Show): string {
+  // Returns a sortable string: exact date or year_approx padded for consistency
+  if (s.date) return s.date;
+  if (s.year_approx) {
+    // Pad "2008-08" to "2008-08-15" (mid-month), "2010" to "2010-06-15" (mid-year)
+    const parts = s.year_approx.split("-");
+    if (parts.length === 2) return `${parts[0]}-${parts[1]}-15`;
+    if (parts.length === 1) return `${parts[0]}-06-15`;
+  }
+  return "1900-01-01";
+}
+
 export async function getPastShows(): Promise<Show[]> {
   const shows = await getAllShows();
   return shows
     .filter((s) => s.status === "past")
-    .sort((a, b) => {
-      if (a.date && b.date)
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
-      if (a.date && !b.date) return -1;
-      if (!a.date && b.date) return 1;
-      return (b.year_approx ?? "").localeCompare(a.year_approx ?? "");
-    });
+    .sort((a, b) => showSortKey(b).localeCompare(showSortKey(a)));
 }
