@@ -36,6 +36,7 @@ export interface Show {
   year_approx: string | null;
   event: string | null;
   notes: string | null;
+  image?: string | null;
   status: ShowStatus;
 }
 
