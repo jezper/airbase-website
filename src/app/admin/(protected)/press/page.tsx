@@ -6,7 +6,13 @@ import { DeletePressButton } from "@/components/admin/delete-press-button";
 export const dynamic = "force-dynamic";
 
 export default async function PressPage() {
-  const items = await readPress();
+  const rawItems = await readPress();
+
+  // Sort newest first, preserving original indexes for edit/delete actions
+  const items = rawItems
+    .map((item, originalIndex) => ({ item, originalIndex }))
+    .sort((a, b) => (b.item.date ?? "").localeCompare(a.item.date ?? ""))
+    .map(({ item, originalIndex }) => ({ ...item, _originalIndex: originalIndex }));
 
   return (
     <div className="p-8 max-w-4xl">
@@ -30,7 +36,9 @@ export default async function PressPage() {
         </div>
       ) : (
         <div className="space-y-3">
-          {items.map((item, i) => (
+          {items.map((item) => {
+            const i = item._originalIndex;
+            return (
             <div key={i} className="bg-bg-card border border-border rounded-lg p-4">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
@@ -68,7 +76,8 @@ export default async function PressPage() {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </div>

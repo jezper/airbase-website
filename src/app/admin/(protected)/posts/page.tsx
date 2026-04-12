@@ -22,7 +22,14 @@ function truncate(str: string, max: number) {
 }
 
 export default async function PostsPage() {
-  const [posts, siteConfig] = await Promise.all([readPosts(), readSiteConfig()]);
+  const [rawPosts, siteConfig] = await Promise.all([readPosts(), readSiteConfig()]);
+
+  // Sort newest first, preserving original indexes for edit/delete actions
+  const posts = rawPosts
+    .map((post, originalIndex) => ({ post, originalIndex }))
+    .sort((a, b) => (b.post.date ?? "").localeCompare(a.post.date ?? ""))
+    .map(({ post, originalIndex }) => ({ ...post, _originalIndex: originalIndex }));
+
   const heroPostIndex = siteConfig.hero.type === "post" ? (siteConfig.hero.postIndex ?? -1) : -1;
 
   return (
@@ -58,64 +65,67 @@ export default async function PostsPage() {
               </tr>
             </thead>
             <tbody>
-              {posts.map((post, i) => (
-                <tr
-                  key={i}
-                  className="border-b border-border last:border-0 hover:bg-bg-card/50 transition-colors"
-                >
-                  <td className="px-4 py-3">
-                    <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded font-mono text-[10px] font-medium ${TYPE_COLORS[post.type] ?? "bg-bg-card text-text-muted"}`}>
-                      {post.type === "note" ? <AlignLeft size={10} /> : <FileText size={10} />}
-                      {TYPE_LABELS[post.type] ?? post.type}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3">
-                    {post.title ? (
-                      <div>
-                        <p className="font-body text-sm font-medium text-text">{truncate(post.title, 60)}</p>
-                        {post.excerpt && <p className="font-body text-xs text-text-muted mt-0.5">{truncate(post.excerpt, 60)}</p>}
+              {posts.map((post) => {
+                const i = post._originalIndex;
+                return (
+                  <tr
+                    key={i}
+                    className="border-b border-border last:border-0 hover:bg-bg-card/50 transition-colors"
+                  >
+                    <td className="px-4 py-3">
+                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded font-mono text-[10px] font-medium ${TYPE_COLORS[post.type] ?? "bg-bg-card text-text-muted"}`}>
+                        {post.type === "note" ? <AlignLeft size={10} /> : <FileText size={10} />}
+                        {TYPE_LABELS[post.type] ?? post.type}
+                      </span>
+                    </td>
+                    <td className="px-4 py-3">
+                      {post.title ? (
+                        <div>
+                          <p className="font-body text-sm font-medium text-text">{truncate(post.title, 60)}</p>
+                          {post.excerpt && <p className="font-body text-xs text-text-muted mt-0.5">{truncate(post.excerpt, 60)}</p>}
+                        </div>
+                      ) : (
+                        <p className="font-body text-sm text-text">{truncate(post.body, 80)}</p>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 hidden sm:table-cell">
+                      <span className="font-mono text-xs text-text-muted">{post.date}</span>
+                    </td>
+                    <td className="px-4 py-3 hidden md:table-cell">
+                      <div className="flex flex-col gap-0.5">
+                        {post.releaseRef && (
+                          <span className="font-mono text-[10px] text-accent-hover" title="Release ref">
+                            R: {post.releaseRef}
+                          </span>
+                        )}
+                        {post.showRef && (
+                          <span className="font-mono text-[10px] text-gold" title="Show ref">
+                            S: {post.showRef}
+                          </span>
+                        )}
+                        {post.featured && (
+                          <span className="font-mono text-[10px] text-text-faint">featured</span>
+                        )}
                       </div>
-                    ) : (
-                      <p className="font-body text-sm text-text">{truncate(post.body, 80)}</p>
-                    )}
-                  </td>
-                  <td className="px-4 py-3 hidden sm:table-cell">
-                    <span className="font-mono text-xs text-text-muted">{post.date}</span>
-                  </td>
-                  <td className="px-4 py-3 hidden md:table-cell">
-                    <div className="flex flex-col gap-0.5">
-                      {post.releaseRef && (
-                        <span className="font-mono text-[10px] text-accent-hover" title="Release ref">
-                          R: {post.releaseRef}
-                        </span>
-                      )}
-                      {post.showRef && (
-                        <span className="font-mono text-[10px] text-gold" title="Show ref">
-                          S: {post.showRef}
-                        </span>
-                      )}
-                      {post.featured && (
-                        <span className="font-mono text-[10px] text-text-faint">featured</span>
-                      )}
-                    </div>
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    <div className="flex items-center justify-end gap-3">
-                      <SetHeroButton type="post" index={i} isCurrentHero={heroPostIndex === i} />
-                      <Link
-                        href={`/admin/posts/new?id=${i}`}
-                        className="font-body text-xs text-text-muted hover:text-accent transition-colors"
-                      >
-                        Edit
-                      </Link>
-                      <DeletePostButton
-                        index={i}
-                        label={post.title ?? post.body.slice(0, 40)}
-                      />
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      <div className="flex items-center justify-end gap-3">
+                        <SetHeroButton type="post" index={i} isCurrentHero={heroPostIndex === i} />
+                        <Link
+                          href={`/admin/posts/new?id=${i}`}
+                          className="font-body text-xs text-text-muted hover:text-accent transition-colors"
+                        >
+                          Edit
+                        </Link>
+                        <DeletePostButton
+                          index={i}
+                          label={post.title ?? post.body.slice(0, 40)}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

@@ -13,7 +13,18 @@ const STATUS_COLORS: Record<string, string> = {
 };
 
 export default async function ShowsPage() {
-  const [shows, siteConfig] = await Promise.all([readShows(), readSiteConfig()]);
+  const [rawShows, siteConfig] = await Promise.all([readShows(), readSiteConfig()]);
+
+  // Sort newest first, preserving original indexes for edit/delete actions
+  const shows = rawShows
+    .map((show, originalIndex) => ({ show, originalIndex }))
+    .sort((a, b) => {
+      const dateA = a.show.date ?? a.show.year_approx ?? "";
+      const dateB = b.show.date ?? b.show.year_approx ?? "";
+      return dateB.localeCompare(dateA);
+    })
+    .map(({ show, originalIndex }) => ({ ...show, _originalIndex: originalIndex }));
+
   const heroShowIndex = siteConfig.hero.type === "show" ? (siteConfig.hero.showIndex ?? -1) : -1;
 
   return (
@@ -44,7 +55,9 @@ export default async function ShowsPage() {
             </tr>
           </thead>
           <tbody>
-            {shows.map((s, i) => (
+            {shows.map((s) => {
+              const i = s._originalIndex;
+              return (
               <tr key={i} className="border-b border-border last:border-0 hover:bg-bg-card/50 transition-colors">
                 <td className="px-4 py-2.5">
                   <span className="font-mono text-xs text-text-muted">{s.date ?? s.year_approx ?? "TBC"}</span>
@@ -79,7 +92,8 @@ export default async function ShowsPage() {
                   </div>
                 </td>
               </tr>
-            ))}
+              );
+            })}
           </tbody>
         </table>
       </div>
