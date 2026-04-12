@@ -9,7 +9,7 @@ export default function ReleaseTag({ release }: { release: Release }) {
         {release.artwork ? (
           <img
             src={release.artwork}
-            alt=""
+            alt={`${release.title} by ${release.artist}`}
             className="w-full h-full object-cover"
             loading="lazy"
           />

@@ -34,6 +34,7 @@ export function MobileMenu({ open, onClose, links, pathname }: MobileMenuProps) 
     >
       <div className="flex justify-end px-6 py-5">
         <button
+          type="button"
           onClick={onClose}
           className="w-10 h-10 flex items-center justify-center text-text-faint hover:text-text transition-colors"
           aria-label="Close menu"

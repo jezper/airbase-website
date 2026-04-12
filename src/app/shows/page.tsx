@@ -196,7 +196,7 @@ export default async function ShowsPage() {
                           </div>
                         )}
                       </div>
-                      <span className="font-mono text-[11px] text-text-faint shrink-0 pt-1">
+                      <span className="font-mono text-[11px] text-text-muted shrink-0 pt-1">
                         {date ? `${date.day} ${date.month} ${date.year}` : show.year_approx}
                       </span>
                     </div>

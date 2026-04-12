@@ -11,13 +11,14 @@ export function ThemeToggle() {
   useEffect(() => setMounted(true), []);
 
   if (!mounted) {
-    return <button className="w-10 h-10" aria-label="Toggle theme" />;
+    return <button type="button" className="w-10 h-10" aria-label="Toggle theme" />;
   }
 
   const isDark = resolvedTheme === "dark";
 
   return (
     <button
+      type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="w-10 h-10 flex items-center justify-center rounded-lg text-text-faint hover:text-text transition-colors duration-150"
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}

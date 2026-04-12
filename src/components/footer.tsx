@@ -62,7 +62,7 @@ export function Footer() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-body text-xs font-semibold uppercase tracking-[0.08em] text-text-faint hover:text-accent transition-colors duration-150"
+                  className="font-body text-xs font-semibold uppercase tracking-[0.08em] text-text-faint hover:text-accent transition-colors duration-150 py-2 inline-block"
                 >
                   {link.label}
                 </a>

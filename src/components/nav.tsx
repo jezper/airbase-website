@@ -35,7 +35,7 @@ export function Nav() {
             <Link
               key={link.href}
               href={link.href}
-              className={`font-body text-[13px] font-bold uppercase tracking-[0.12em] transition-colors duration-150 ${
+              className={`font-body text-[13px] font-bold uppercase tracking-[0.12em] transition-colors duration-150 py-2 ${
                 pathname === link.href
                   ? "text-text"
                   : "text-text-faint hover:text-text"
@@ -51,6 +51,7 @@ export function Nav() {
         <div className="flex items-center gap-2 md:hidden">
           <ThemeToggle />
           <button
+            type="button"
             onClick={() => setMenuOpen(true)}
             className="w-10 h-10 flex items-center justify-center text-text-faint hover:text-text transition-colors"
             aria-label="Open menu"
