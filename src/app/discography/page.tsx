@@ -15,7 +15,7 @@ export default async function DiscographyPage() {
   const aliases = getOwnAliases();
 
   return (
-    <div className="px-6 md:px-12 py-12">
+    <div className="px-6 md:px-12 py-12 max-w-content mx-auto">
       <h1 className="font-display text-5xl md:text-6xl font-black leading-tight mb-2">
         Discography
       </h1>
