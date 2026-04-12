@@ -39,7 +39,7 @@ export default async function Home() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-[2fr_3fr] items-center gap-8 md:gap-12">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-[2fr_3fr] items-center gap-8 md:gap-12 max-w-content mx-auto">
           {/* Artwork — left on desktop, top on mobile */}
           {latest?.artwork && (
             <div className="order-1 flex justify-center">
