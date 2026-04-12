@@ -90,13 +90,63 @@
     "status": "past"
   },
   {
+    "venue": "Jetlag White",
+    "city": "Hedemora",
+    "country": "Sweden",
+    "date": null,
+    "year_approx": "2010",
+    "event": "Jetlag White",
+    "notes": "Source: YouTube 'Airbase goes to Jetlag White in Hedemora'",
+    "status": "past"
+  },
+  {
+    "venue": "SolarDance",
+    "city": "Moscow",
+    "country": "Russia",
+    "date": null,
+    "year_approx": "2010",
+    "event": "SolarDance",
+    "notes": "Source: YouTube 'Airbase goes to SolarDance in Moscow'",
+    "status": "past"
+  },
+  {
+    "venue": "Luminosity",
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "date": null,
+    "year_approx": "2010",
+    "event": "Luminosity 2 Year Anniversary",
+    "notes": "Source: YouTube. Played with Estiva, Alex M.O.R.P.H., Ronski Speed, Cor Fijneman, Stoneface & Terminal.",
+    "status": "past"
+  },
+  {
+    "venue": "Total Eclipse 2",
+    "city": "Los Angeles",
+    "country": "United States",
+    "date": null,
+    "year_approx": "2010",
+    "event": "Total Eclipse 2",
+    "notes": "Source: YouTube 'Airbase goes to Total Eclipse 2 in Los Angeles'",
+    "status": "past"
+  },
+  {
     "venue": "Unknown Venue",
+    "city": "Melbourne",
+    "country": "Australia",
+    "date": null,
+    "year_approx": "2010",
+    "event": null,
+    "notes": "Source: YouTube 'Airbase goes to Melbourne, Australia'",
+    "status": "past"
+  },
+  {
+    "venue": "House Parade",
     "city": "Timisoara",
     "country": "Romania",
     "date": "2008-06-14",
     "year_approx": null,
-    "event": null,
-    "notes": "Source: setlist.fm",
+    "event": "House Parade",
+    "notes": "Source: setlist.fm + YouTube",
     "status": "past"
   },
   {
