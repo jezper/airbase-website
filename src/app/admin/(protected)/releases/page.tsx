@@ -40,10 +40,17 @@ export default async function ReleasesPage() {
             </tr>
           </thead>
           <tbody>
-            {releases.slice(0, 50).map((r, i) => (
+            {releases.map((r, i) => {
+              const isUpcoming = r.date > new Date().toISOString().slice(0, 10);
+              return (
               <tr key={i} className="border-b border-border last:border-0 hover:bg-bg-card/50 transition-colors">
                 <td className="px-4 py-2.5">
                   <span className="font-mono text-xs text-text-muted">{r.year}</span>
+                  {isUpcoming && (
+                    <span className="ml-1.5 font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded" style={{ backgroundColor: "rgba(196,168,124,0.15)", color: "var(--gd)" }}>
+                      upcoming
+                    </span>
+                  )}
                 </td>
                 <td className="px-4 py-2.5">
                   <span className="font-body text-sm text-text">{r.artist}</span>
@@ -75,14 +82,10 @@ export default async function ReleasesPage() {
                   </div>
                 </td>
               </tr>
-            ))}
+              );
+            })}
           </tbody>
         </table>
-        {releases.length > 50 && (
-          <div className="px-4 py-3 bg-bg-card border-t border-border text-center text-text-faint font-body text-xs">
-            Showing 50 of {releases.length} releases
-          </div>
-        )}
       </div>
     </div>
   );

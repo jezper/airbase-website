@@ -103,7 +103,9 @@ export default async function Home() {
             {/* Text — right on desktop, below on mobile */}
             <div className="order-2">
               <p className="font-mono text-[13px] font-medium uppercase tracking-[0.2em] text-accent mb-4 md:mb-5">
-                New Release / {heroRelease?.year ?? 2026}
+                {heroRelease && heroRelease.date > new Date().toISOString().slice(0, 10)
+                  ? `Upcoming / ${heroRelease.date}`
+                  : `New Release / ${heroRelease?.year ?? 2026}`}
               </p>
 
               <h1 className="font-display text-hero font-black leading-hero tracking-hero mb-5 md:mb-6">
@@ -115,15 +117,17 @@ export default async function Home() {
               </p>
 
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-                <a
-                  href={heroRelease?.links.spotify ?? heroLinks[0]?.href ?? "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-16 h-16 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform duration-150 shrink-0"
-                  aria-label={`Play ${heroRelease?.title ?? ""} on Spotify`}
-                >
-                  <Play size={22} fill="#0C0B0A" stroke="#0C0B0A" className="ml-1" />
-                </a>
+                {heroLinks.length > 0 && (
+                  <a
+                    href={heroRelease?.links.spotify ?? heroLinks[0]?.href ?? "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-16 h-16 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform duration-150 shrink-0"
+                    aria-label={`Play ${heroRelease?.title ?? ""} on Spotify`}
+                  >
+                    <Play size={22} fill="#0C0B0A" stroke="#0C0B0A" className="ml-1" />
+                  </a>
+                )}
                 <div>
                   <div className="flex flex-wrap gap-x-5 gap-y-2">
                     {heroLinks.map((link) => (
