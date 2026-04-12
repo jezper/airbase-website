@@ -1,26 +1,147 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ── Design Tokens (Tailwind v4 @theme) ── */
+/*
+ * Tailwind v4 resolves @theme statically, so we define the dark-mode
+ * (default) values here as concrete values. Light-mode overrides are
+ * applied via .light class using CSS custom properties that map to the
+ * same Tailwind utility names through the @theme inline pattern below.
+ *
+ * The font variables use the CSS custom properties set by next/font on <html>.
+ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Fonts — next/font sets --font-fraunces, --font-syne, --font-jetbrains
+     on <html> as CSS vars. We map them to Tailwind utility names here so
+     font-display, font-body, font-mono work as utility classes. */
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-syne), "Helvetica Neue", sans-serif;
+  --font-mono: var(--font-jetbrains), Menlo, monospace;
+
+  /* Colors — dark theme as defaults */
+  --color-bg: #0C0B0A;
+  --color-bg-card: #141210;
+  --color-bg-elevated: #1A1816;
+  --color-text: #EDE7DF;
+  --color-text-muted: #9A928A;
+  --color-text-faint: #5A5550;
+  --color-accent: #E85D26;
+  --color-accent-hover: #F06D36;
+  --color-gold: #C4A87C;
+  --color-border: rgba(237, 231, 223, 0.04);
+  --color-border-hover: rgba(237, 231, 223, 0.10);
+  --color-border-section: rgba(237, 231, 223, 0.06);
+
+  /* Max widths */
+  --max-width-content: 1200px;
+  --max-width-prose: 780px;
+  --max-width-prose-narrow: 680px;
+
+  /* Hero type scale */
+  --font-size-hero: clamp(3.5rem, 10vw, 8.75rem);
+  --line-height-hero: 0.88;
+  --letter-spacing-hero: -0.02em;
+
+  /* Animations */
+  --animate-glow-breathe: glow-breathe 6s ease-in-out infinite alternate;
+  --animate-scroll-left: scroll-left 30s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── Light Theme Override ── */
+/*
+ * When .light is on <html>, we override the CSS custom properties that
+ * Tailwind v4 uses for utilities. Tailwind v4 uses the same --color-*
+ * names at runtime, so overriding them here changes what bg-bg, text-text
+ * etc. resolve to.
+ */
+.light {
+  --color-bg: #F4EEE8;
+  --color-bg-card: #EAE3D9;
+  --color-bg-elevated: #FDFBF8;
+  --color-text: #1A1816;
+  --color-text-muted: #78706A;
+  --color-text-faint: #A49B93;
+  --color-accent: #D4551E;
+  --color-accent-hover: #BF4A18;
+  --color-accent-glow: rgba(212, 85, 30, 0.08);
+  --color-gold: #B09468;
+  --color-border: rgba(26, 24, 22, 0.08);
+  --color-border-hover: rgba(26, 24, 22, 0.14);
+  --color-border-section: rgba(26, 24, 22, 0.06);
+}
+
+/* ── Non-theme CSS custom properties (not Tailwind utilities) ── */
+:root {
+  --color-accent-glow: rgba(232, 93, 38, 0.12);
+
+  --shadow-sm: 0 1px 2px rgba(44, 40, 38, 0.06);
+  --shadow-md: 0 4px 12px rgba(44, 40, 38, 0.08);
+  --shadow-lg: 0 8px 24px rgba(44, 40, 38, 0.12);
+  --shadow-xl: 0 16px 48px rgba(44, 40, 38, 0.16);
+}
+
+/* ── Keyframes ── */
+@keyframes glow-breathe {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
   }
 }
 
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Base Styles ── */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100dvh;
+  position: relative;
+}
+
+/* ── Grain Texture Overlay ── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  opacity: 0.045;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── Selection Color ── */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ── Gradient Accent Line ── */
+.accent-line {
+  height: 3px;
+  background: linear-gradient(to right, var(--color-accent), transparent 70%);
+  border-radius: 2px;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
