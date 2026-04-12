@@ -4,10 +4,7 @@ import type { PressFeature } from "@/types/content";
 
 const DATA_PATH = path.join(process.cwd(), "content/press/press.json");
 
-let cachedPress: PressFeature[] | null = null;
-
 export async function getAllPress(): Promise<PressFeature[]> {
-  if (cachedPress) return cachedPress;
   const raw = await fs.readFile(DATA_PATH, "utf-8");
   const data: PressFeature[] = JSON.parse(raw);
   data.sort((a, b) => {
@@ -17,6 +14,5 @@ export async function getAllPress(): Promise<PressFeature[]> {
     if (!a.date && b.date) return 1;
     return 0;
   });
-  cachedPress = data;
   return data;
 }

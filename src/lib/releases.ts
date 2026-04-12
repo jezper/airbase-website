@@ -8,14 +8,10 @@ export { releaseSlug, releaseMatchesAlias, KNOWN_ALIASES } from "./release-utils
 
 const DATA_PATH = path.join(process.cwd(), "content/releases/discography.json");
 
-let cachedReleases: Release[] | null = null;
-
 export async function getAllReleases(): Promise<Release[]> {
-  if (cachedReleases) return cachedReleases;
   const raw = await fs.readFile(DATA_PATH, "utf-8");
   const data: Release[] = JSON.parse(raw);
   data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  cachedReleases = data;
   return data;
 }
 

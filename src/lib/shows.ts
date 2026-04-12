@@ -13,13 +13,9 @@ export async function getShowBySlug(slug: string): Promise<Show | undefined> {
   return shows.find((s) => showSlug(s) === slug);
 }
 
-let cachedShows: Show[] | null = null;
-
 export async function getAllShows(): Promise<Show[]> {
-  if (cachedShows) return cachedShows;
   const raw = await fs.readFile(DATA_PATH, "utf-8");
   const data: Show[] = JSON.parse(raw);
-  cachedShows = data;
   return data;
 }
 
