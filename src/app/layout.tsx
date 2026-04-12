@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import { fraunces, syne, jetbrainsMono } from "@/lib/fonts";
 import "./globals.css";
 
@@ -19,7 +20,14 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-body bg-bg text-text antialiased">
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange={false}
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
