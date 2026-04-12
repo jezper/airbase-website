@@ -1,6 +1,12 @@
 [
   {
     "type": "note",
+    "date": "2026-04-12",
+    "body": "I was just thinking how the music industry is fighting AI because it's hostile to the music industry. Like it's this sacret institution, not the actual one, who's been hostile to artists and performers for a hundred years.",
+    "featured": true
+  },
+  {
+    "type": "note",
     "date": "2026-04-10",
     "body": "Just finished a new sketch in the studio. Something different this time. Pushing the tempo, pushing the melody. Emotion first, details later."
   },
@@ -10,13 +16,6 @@
     "body": "Listening back to old Ozone tracks. The naivety in those productions is what made them work. You can't fake that energy."
   },
   {
-    "type": "note",
-    "date": "2026-02-06",
-    "body": "It's out. Everything Else Could Wait, on Black Hole Recordings. A track about choosing presence over productivity. The title says it all.",
-    "releaseRef": "everything-else-could-wait",
-    "featured": true
-  },
-  {
     "type": "article",
     "date": "2026-02-10",
     "title": "People didn't fall in love with perfect production",
@@ -24,6 +23,13 @@
     "excerpt": "An in-depth conversation with Beatportal about the return, the hiatus, and why melody still wins.",
     "slug": "beatportal-interview-2026",
     "releaseRef": "everything-else-could-wait"
+  },
+  {
+    "type": "note",
+    "date": "2026-02-06",
+    "body": "It's out. Everything Else Could Wait, on Black Hole Recordings. A track about choosing presence over productivity. The title says it all.",
+    "releaseRef": "everything-else-could-wait",
+    "featured": true
   },
   {
     "type": "note",
