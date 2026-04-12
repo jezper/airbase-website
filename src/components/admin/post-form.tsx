@@ -199,8 +199,8 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
       <Field label="Release reference">
         <select value={releaseRef} onChange={(e) => setReleaseRef(e.target.value)} className={selectClass}>
           <option value="">None</option>
-          {releases.slice(0, 50).map((r) => (
-            <option key={releaseSlug(r)} value={releaseSlug(r)}>
+          {releases.map((r, i) => (
+            <option key={`${releaseSlug(r)}-${i}`} value={releaseSlug(r)}>
               {r.artist} — {r.title} ({r.year})
             </option>
           ))}
@@ -211,8 +211,8 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
       <Field label="Show reference">
         <select value={showRef} onChange={(e) => setShowRef(e.target.value)} className={selectClass}>
           <option value="">None</option>
-          {shows.map((s) => (
-            <option key={showSlug(s)} value={showSlug(s)}>
+          {shows.map((s, i) => (
+            <option key={`${showSlug(s)}-${i}`} value={showSlug(s)}>
               {s.venue}, {s.city} ({s.date ?? s.year_approx ?? "date unknown"})
             </option>
           ))}
