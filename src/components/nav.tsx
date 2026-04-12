@@ -12,7 +12,6 @@ const NAV_LINKS = [
   { href: "/", label: "Feed" },
   { href: "/discography", label: "Discography" },
   { href: "/shows", label: "Shows" },
-  { href: "/mixes", label: "Mixes" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
