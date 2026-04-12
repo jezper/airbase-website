@@ -1,13 +1,15 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
-import { readReleases } from "@/lib/content-writer";
+import { readReleases, readSiteConfig } from "@/lib/content-writer";
 import { releaseSlug } from "@/lib/release-utils";
 import { DeleteReleaseButton } from "@/components/admin/delete-release-button";
+import { SetHeroButton } from "@/components/admin/set-hero-button";
 
 export const dynamic = "force-dynamic";
 
 export default async function ReleasesPage() {
-  const releases = await readReleases();
+  const [releases, siteConfig] = await Promise.all([readReleases(), readSiteConfig()]);
+  const heroReleaseIndex = siteConfig.hero.type === "release" ? (siteConfig.hero.releaseIndex ?? 0) : -1;
 
   return (
     <div className="p-8 max-w-4xl">
@@ -69,6 +71,7 @@ export default async function ReleasesPage() {
                 </td>
                 <td className="px-4 py-2.5 text-right">
                   <div className="flex items-center justify-end gap-3">
+                    <SetHeroButton type="release" index={i} isCurrentHero={heroReleaseIndex === i} />
                     <Link
                       href={`/admin/releases/new?id=${i}`}
                       className="font-body text-xs text-text-muted hover:text-accent transition-colors"
