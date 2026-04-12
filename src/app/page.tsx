@@ -39,47 +39,61 @@ export default async function Home() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10">
-          <p className="font-mono text-[13px] font-medium uppercase tracking-[0.2em] text-accent mb-4 md:mb-5">
-            New Release / {latest?.year ?? 2026}
-          </p>
+        <div className="relative z-10 flex flex-col-reverse md:flex-row md:items-end md:justify-between gap-8 md:gap-12">
+          {/* Text — left side on desktop, below artwork on mobile */}
+          <div className="flex-1 min-w-0">
+            <p className="font-mono text-[13px] font-medium uppercase tracking-[0.2em] text-accent mb-4 md:mb-5">
+              New Release / {latest?.year ?? 2026}
+            </p>
 
-          <h1 className="font-display text-hero font-black leading-hero tracking-hero mb-5 md:mb-6">
-            Everything<br />
-            Else Could<br />
-            Wait
-          </h1>
+            <h1 className="font-display font-black leading-hero tracking-hero mb-5 md:mb-6 text-[clamp(2.5rem,8vw,6rem)]">
+              Everything<br />
+              Else Could<br />
+              Wait
+            </h1>
 
-          <p className="font-body text-[15px] font-extrabold uppercase tracking-[0.15em] text-accent mb-8">
-            {latest?.artist ?? "Airbase"} &mdash; {latest?.label ?? "Black Hole Recordings"}
-          </p>
+            <p className="font-body text-[15px] font-extrabold uppercase tracking-[0.15em] text-accent mb-8">
+              {latest?.artist ?? "Airbase"} &mdash; {latest?.label ?? "Black Hole Recordings"}
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-            <button
-              className="w-16 h-16 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform duration-150 shrink-0"
-              aria-label={`Play ${latest?.title ?? ""}`}
-            >
-              <Play size={22} fill="#0C0B0A" stroke="#0C0B0A" className="ml-1" />
-            </button>
-            <div>
-              <div className="flex flex-wrap gap-x-5 gap-y-2">
-                {heroLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-body text-[13px] font-bold uppercase tracking-[0.08em] text-accent hover:border-b-2 hover:border-accent pb-0.5 transition-all duration-150"
-                  >
-                    {link.label}
-                  </a>
-                ))}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+              <button
+                className="w-16 h-16 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform duration-150 shrink-0"
+                aria-label={`Play ${latest?.title ?? ""}`}
+              >
+                <Play size={22} fill="#0C0B0A" stroke="#0C0B0A" className="ml-1" />
+              </button>
+              <div>
+                <div className="flex flex-wrap gap-x-5 gap-y-2">
+                  {heroLinks.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body text-[13px] font-bold uppercase tracking-[0.08em] text-accent hover:border-b-2 hover:border-accent pb-0.5 transition-all duration-150"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+                <p className="font-mono text-xs text-text-faint mt-2">
+                  {latest?.type ?? "Single"} &mdash; {latest?.tracks.length ?? 0} tracks
+                </p>
               </div>
-              <p className="font-mono text-xs text-text-faint mt-2">
-                {latest?.type ?? "Single"} &mdash; {latest?.tracks.length ?? 0} tracks
-              </p>
             </div>
           </div>
+
+          {/* Artwork — right side on desktop, top on mobile */}
+          {latest?.artwork && (
+            <div className="shrink-0 w-48 sm:w-56 md:w-64 lg:w-80">
+              <img
+                src={latest.artwork}
+                alt={`${latest.title} by ${latest.artist}`}
+                className="w-full aspect-square rounded-lg shadow-2xl"
+              />
+            </div>
+          )}
         </div>
       </section>
 
