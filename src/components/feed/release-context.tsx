@@ -11,23 +11,16 @@ function ArtworkPlaceholder({ title }: { title: string }) {
       aria-hidden="true"
     >
       <span
-        className="font-display font-black text-[100px] sm:text-[140px] leading-none select-none opacity-[0.06]"
+        className="font-display font-black text-[80px] leading-none select-none opacity-[0.06]"
         style={{ color: "var(--ac)" }}
       >
         {initial}
       </span>
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "repeating-linear-gradient(0deg, var(--tx) 0px, var(--tx) 1px, transparent 1px, transparent 20px), repeating-linear-gradient(90deg, var(--tx) 0px, var(--tx) 1px, transparent 1px, transparent 20px)",
-        }}
-      />
     </div>
   );
 }
 
-/** Displayed above a post that references a release */
+/** Displayed above a post that references a release (featured) */
 export default function ReleaseContext({ release }: { release: Release }) {
   const { artist, title, type, label, year, artwork, links } = release;
 
@@ -42,29 +35,34 @@ export default function ReleaseContext({ release }: { release: Release }) {
 
   return (
     <div className="bg-bg-card rounded-t-lg border border-b-0 border-border overflow-hidden">
-      <div className="w-full aspect-[2.2/1] relative overflow-hidden">
+      {/* Square artwork — no text overlay, respects the artwork as its own design */}
+      <div className="w-full aspect-square overflow-hidden">
         {artwork ? (
           <img src={artwork} alt={`${title} by ${artist}`} className="w-full h-full object-cover" loading="lazy" />
         ) : (
           <ArtworkPlaceholder title={title} />
         )}
-        <span
-          className="absolute top-3 left-3 font-mono text-[10px] font-bold uppercase tracking-[0.1em] px-2.5 py-1 rounded-sm"
-          style={{ backgroundColor: "rgba(232,93,38,0.2)", color: "var(--ac)", backdropFilter: "blur(6px)" }}
-        >
-          {type}
-        </span>
       </div>
+
+      {/* Metadata below artwork — badge here, not on the image */}
       <div className="px-5 pt-4 pb-3">
+        <div className="flex items-center gap-2 mb-2">
+          <span
+            className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-sm"
+            style={{ backgroundColor: "rgba(232,93,38,0.15)", color: "var(--ac)" }}
+          >
+            {type}
+          </span>
+          <span className="font-mono text-[11px] text-text-faint">
+            {label} &mdash; {year}
+          </span>
+        </div>
         <p className="font-body text-[11px] font-bold uppercase tracking-[0.12em] text-text-faint mb-0.5">
           {artist}
         </p>
-        <h3 className="font-display text-2xl sm:text-3xl font-black leading-tight text-text mb-1">
+        <h3 className="font-display text-2xl sm:text-3xl font-black leading-tight text-text mb-2">
           {title}
         </h3>
-        <p className="font-mono text-[12px] text-text-faint mb-2">
-          {label} &mdash; {year}
-        </p>
         {streamLinks.length > 0 && (
           <div className="flex flex-wrap gap-x-4 gap-y-1">
             {streamLinks.map((sl) => (
