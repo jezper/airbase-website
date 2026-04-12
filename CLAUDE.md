@@ -4,11 +4,12 @@ Personal website for Airbase (Jezper Söderlund), Swedish trance producer and DJ
 
 ## Skills (.claude/skills/)
 
-Three project skills. The hierarchy matters:
+Four project skills. The hierarchy matters:
 
 1. **`/ux-ui-design`** — THE RULING SKILL. UX and UI principles override all other design decisions.
 2. **`/frontend-design`** — Aesthetics and implementation. Subordinate to /ux-ui-design.
-3. **`/visual-brainstorm`** — Phase 0 creative direction conversation. Run before any code.
+3. **`/accessibility`** — Non-negotiable quality gate. Contrast, legibility, keyboard, screen readers. Run after every component.
+4. **`/visual-brainstorm`** — Phase 0 creative direction conversation. Run before any code.
 
 ## Project Docs
 
