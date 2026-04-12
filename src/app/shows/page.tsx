@@ -53,16 +53,21 @@ export default async function ShowsPage() {
                       border: "1px solid rgba(196,168,124,0.25)",
                     }}
                   >
-                    {/* Flyer — handles any aspect ratio */}
+                    {/* Flyer — handles any aspect ratio, clickable to open full size */}
                     {show.image && (
-                      <div className="mb-5 -mx-6 -mt-6 overflow-hidden rounded-t-lg">
+                      <a
+                        href={show.image}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block mb-5 -mx-6 -mt-6 overflow-hidden rounded-t-lg hover:opacity-90 transition-opacity"
+                      >
                         <img
                           src={show.image}
                           alt={`${show.event ?? show.venue} flyer`}
-                          className="w-full max-h-64 object-contain bg-bg"
+                          className="w-full max-h-80 object-contain bg-bg"
                           loading="lazy"
                         />
-                      </div>
+                      </a>
                     )}
 
                     {/* Date row */}
@@ -122,12 +127,19 @@ export default async function ShowsPage() {
                   >
                     <div className="flex items-start justify-between gap-4">
                       {show.image && (
-                        <img
-                          src={show.image}
-                          alt=""
-                          className="w-12 h-12 rounded object-cover shrink-0"
-                          loading="lazy"
-                        />
+                        <a
+                          href={show.image}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="shrink-0 hover:opacity-80 transition-opacity"
+                        >
+                          <img
+                            src={show.image}
+                            alt={`${show.event ?? show.venue} flyer`}
+                            className="w-20 h-20 rounded object-cover"
+                            loading="lazy"
+                          />
+                        </a>
                       )}
                       <div className="flex-1 min-w-0">
                         <h3 className="font-display text-lg font-bold text-text leading-snug">
