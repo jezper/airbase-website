@@ -39,16 +39,8 @@ export default async function Home() {
           aria-hidden="true"
         />
 
-        <div
-          className="relative z-10"
-          style={{
-            display: "grid",
-            gridTemplateColumns: latest?.artwork ? "1fr 240px" : "1fr",
-            alignItems: "end",
-            gap: "3rem",
-          }}
-        >
-          {/* Text — always takes priority */}
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-[3fr_2fr] items-end gap-8 md:gap-12">
+          {/* Text */}
           <div>
             <p className="font-mono text-[13px] font-medium uppercase tracking-[0.2em] text-accent mb-4 md:mb-5">
               New Release / {latest?.year ?? 2026}
@@ -92,14 +84,15 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Artwork — fixed 240px column, can't grow */}
+          {/* Artwork — fills the right column, grid constrains the size */}
           {latest?.artwork && (
-            <img
-              src={latest.artwork}
-              alt={`${latest.title} by ${latest.artist}`}
-              style={{ width: "240px", height: "240px", objectFit: "cover" }}
-              className="rounded-lg shadow-2xl hidden md:block"
-            />
+            <div className="hidden md:block">
+              <img
+                src={latest.artwork}
+                alt={`${latest.title} by ${latest.artist}`}
+                className="w-full aspect-square rounded-lg shadow-2xl object-cover"
+              />
+            </div>
           )}
         </div>
       </section>
