@@ -1,4 +1,3 @@
-import Image from "next/image";
 import type { Release } from "@/types/content";
 
 interface ReleaseGridCardProps {
@@ -90,14 +89,13 @@ export default function ReleaseGridCard({ release }: ReleaseGridCardProps) {
   return (
     <article className="bg-bg-card rounded-lg border border-border hover:border-border-hover hover:-translate-y-1 transition-all duration-200 overflow-hidden group">
       {/* Artwork */}
-      <div className="relative w-full aspect-square overflow-hidden">
+      <div className="w-full aspect-square overflow-hidden">
         {artwork ? (
-          <Image
+          <img
             src={artwork}
             alt={`${title} by ${artist}`}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            className="object-cover"
+            className="w-full h-full object-cover"
+            loading="lazy"
           />
         ) : (
           <ArtworkPlaceholder artist={artist} title={title} />
