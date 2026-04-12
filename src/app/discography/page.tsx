@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getAllReleases, getOwnAliases } from "@/lib/releases";
+import { getAllReleases, getOwnAliases, getRemixedArtists } from "@/lib/releases";
 import Discography from "@/components/discography/discography";
 
 export const metadata: Metadata = {
@@ -8,10 +8,11 @@ export const metadata: Metadata = {
 };
 
 export default async function DiscographyPage() {
-  const [releases, aliases] = await Promise.all([
+  const [releases, remixedArtists] = await Promise.all([
     getAllReleases(),
-    getOwnAliases(),
+    getRemixedArtists(),
   ]);
+  const aliases = getOwnAliases();
 
   return (
     <div className="px-6 md:px-12 py-12">
@@ -21,7 +22,7 @@ export default async function DiscographyPage() {
       <p className="font-body text-[15px] text-text-muted mb-10 max-w-prose">
         {releases.length} releases across {new Set(releases.map(r => r.year)).size} years and {aliases.length} aliases.
       </p>
-      <Discography releases={releases} aliases={aliases} />
+      <Discography releases={releases} aliases={aliases} remixedArtists={remixedArtists} />
     </div>
   );
 }

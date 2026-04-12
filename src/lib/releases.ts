@@ -1,15 +1,12 @@
 import { promises as fs } from "fs";
 import path from "path";
 import type { Release } from "@/types/content";
+import { releaseSlug, KNOWN_ALIASES } from "./release-utils";
+
+// Re-export utilities that don't need fs
+export { releaseSlug, releaseMatchesAlias, KNOWN_ALIASES } from "./release-utils";
 
 const DATA_PATH = path.join(process.cwd(), "content/releases/discography.json");
-
-export function releaseSlug(release: Release): string {
-  return release.title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}
 
 let cachedReleases: Release[] | null = null;
 
@@ -55,14 +52,18 @@ export async function getUniqueArtists(): Promise<string[]> {
   return Array.from(artists).sort();
 }
 
-export async function getOwnAliases(): Promise<string[]> {
+export function getOwnAliases(): string[] {
+  return KNOWN_ALIASES;
+}
+
+export async function getRemixedArtists(): Promise<string[]> {
   const releases = await getAllReleases();
-  const aliases = new Set<string>();
-  for (const release of releases) {
-    if (release.type !== "Remix") {
-      const primary = release.artist.split(/\s+feat\.?\s+|\s+&\s+|\s+pres\.\s+/i)[0].trim();
-      aliases.add(primary);
+  const artists = new Set<string>();
+  for (const r of releases) {
+    if (r.type === "Remix") {
+      const primary = r.artist.split(/\s+feat\.?\s+/i)[0].trim();
+      artists.add(primary);
     }
   }
-  return Array.from(aliases).sort();
+  return Array.from(artists).sort();
 }
