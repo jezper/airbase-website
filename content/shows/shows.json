@@ -261,6 +261,16 @@
   },
   {
     "venue": "Luminosity Beach Festival",
+    "city": "Zandvoort",
+    "country": "Netherlands",
+    "date": "2008-07-05",
+    "year_approx": null,
+    "event": "Luminosity Beach Festival",
+    "notes": "First Luminosity appearance.",
+    "status": "past"
+  },
+  {
+    "venue": "Luminosity Beach Festival",
     "city": "Bloemendaal",
     "country": "Netherlands",
     "date": "2017-06-24",
