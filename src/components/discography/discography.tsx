@@ -37,7 +37,7 @@ function Pill({
       type="button"
       onClick={onClick}
       className={`font-mono uppercase tracking-[0.07em] rounded-full border transition-all duration-150 whitespace-nowrap cursor-pointer ${
-        size === "sm" ? "text-[10px] px-2.5 py-1" : "text-[11px] px-3 py-1.5"
+        size === "sm" ? "text-[12px] px-2.5 py-1" : "text-[13px] px-3 py-1.5"
       }`}
       style={
         active
@@ -138,11 +138,11 @@ export default function Discography({ releases, aliases, remixedArtists }: Disco
         <button
           type="button"
           onClick={() => setShowAliases((v) => !v)}
-          className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint mb-2 flex items-center gap-1.5 hover:text-text-muted transition-colors"
+          className="font-mono text-[12px] uppercase tracking-[0.1em] text-text-faint mb-2 flex items-center gap-1.5 hover:text-text-muted transition-colors"
         >
           My Aliases
           {activeAlias && <span className="text-accent">: {activeAlias}</span>}
-          <span className="text-[9px]">{showAliases ? "▲" : "▼"}</span>
+          <span className="text-[11px]">{showAliases ? "▲" : "▼"}</span>
         </button>
         {showAliases && (
           <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by alias">
@@ -174,11 +174,11 @@ export default function Discography({ releases, aliases, remixedArtists }: Disco
         <button
           type="button"
           onClick={() => setShowRemixed((v) => !v)}
-          className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint mb-2 flex items-center gap-1.5 hover:text-text-muted transition-colors"
+          className="font-mono text-[12px] uppercase tracking-[0.1em] text-text-faint mb-2 flex items-center gap-1.5 hover:text-text-muted transition-colors"
         >
           Remixed
           {activeRemixed && <span className="text-gold">: {activeRemixed}</span>}
-          <span className="text-[9px]">{showRemixed ? "▲" : "▼"}</span>
+          <span className="text-[11px]">{showRemixed ? "▲" : "▼"}</span>
         </button>
         {showRemixed && (
         <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by remixed artist">
@@ -203,7 +203,7 @@ export default function Discography({ releases, aliases, remixedArtists }: Disco
 
       {/* Type filter */}
       <div className="mb-10">
-        <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint mb-2">
+        <p className="font-mono text-[12px] uppercase tracking-[0.1em] text-text-faint mb-2">
           Type
         </p>
         <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by release type">
@@ -238,7 +238,7 @@ export default function Discography({ releases, aliases, remixedArtists }: Disco
         </p>
       )}
 
-      <p className="font-mono text-[11px] text-text-faint mt-12 text-center">
+      <p className="font-mono text-[13px] text-text-faint mt-12 text-center">
         {isFiltered
           ? `${filtered.length} release${filtered.length !== 1 ? "s" : ""} shown (from ${releases.length})`
           : `${releases.length} releases`}

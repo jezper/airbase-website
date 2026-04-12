@@ -80,7 +80,7 @@ export default async function ShowsPage() {
                   <span className="font-body text-xs text-text-muted">{s.city}, {s.country}</span>
                 </td>
                 <td className="px-4 py-2.5">
-                  <span className={`font-mono text-[10px] px-1.5 py-0.5 rounded capitalize ${STATUS_COLORS[s.status] ?? "bg-bg-card text-text-muted"}`}>
+                  <span className={`font-mono text-[12px] px-1.5 py-0.5 rounded capitalize ${STATUS_COLORS[s.status] ?? "bg-bg-card text-text-muted"}`}>
                     {s.status}
                   </span>
                 </td>

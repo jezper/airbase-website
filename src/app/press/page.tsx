@@ -36,7 +36,7 @@ export default async function PressPage() {
           const dateStr = formatDate(item.date);
           return (
             <article key={i} className="py-8 border-b border-border-section">
-              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint mb-2">
+              <p className="font-mono text-[13px] uppercase tracking-[0.1em] text-text-faint mb-2">
                 {item.publication}
                 {dateStr && ` — ${dateStr}`}
               </p>

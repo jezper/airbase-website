@@ -20,7 +20,7 @@ export default function ShowTag({ show }: { show: Show }) {
         </span>
       </div>
       <div className="min-w-0">
-        <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint">
+        <p className="font-mono text-[12px] uppercase tracking-[0.1em] text-text-faint">
           {isUpcoming ? "Upcoming" : "Show"}
         </p>
         <p className="font-display text-sm font-bold leading-tight text-text truncate">

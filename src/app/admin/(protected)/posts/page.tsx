@@ -73,7 +73,7 @@ export default async function PostsPage() {
                     className="border-b border-border last:border-0 hover:bg-bg-card/50 transition-colors"
                   >
                     <td className="px-4 py-3">
-                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded font-mono text-[10px] font-medium ${TYPE_COLORS[post.type] ?? "bg-bg-card text-text-muted"}`}>
+                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded font-mono text-[12px] font-medium ${TYPE_COLORS[post.type] ?? "bg-bg-card text-text-muted"}`}>
                         {post.type === "note" ? <AlignLeft size={10} /> : <FileText size={10} />}
                         {TYPE_LABELS[post.type] ?? post.type}
                       </span>
@@ -94,17 +94,17 @@ export default async function PostsPage() {
                     <td className="px-4 py-3 hidden md:table-cell">
                       <div className="flex flex-col gap-0.5">
                         {post.releaseRef && (
-                          <span className="font-mono text-[10px] text-accent-hover" title="Release ref">
+                          <span className="font-mono text-[12px] text-accent-hover" title="Release ref">
                             R: {post.releaseRef}
                           </span>
                         )}
                         {post.showRef && (
-                          <span className="font-mono text-[10px] text-gold" title="Show ref">
+                          <span className="font-mono text-[12px] text-gold" title="Show ref">
                             S: {post.showRef}
                           </span>
                         )}
                         {post.featured && (
-                          <span className="font-mono text-[10px] text-text-faint">featured</span>
+                          <span className="font-mono text-[12px] text-text-faint">featured</span>
                         )}
                       </div>
                     </td>

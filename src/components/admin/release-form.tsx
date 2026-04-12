@@ -324,7 +324,7 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
 
           {/* Current path (read-only info) */}
           {artwork && (
-            <p className="font-mono text-[11px] text-text-faint">{artwork}</p>
+            <p className="font-mono text-[13px] text-text-faint">{artwork}</p>
           )}
         </div>
       </div>

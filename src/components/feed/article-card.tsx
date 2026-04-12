@@ -25,7 +25,7 @@ export default function ArticleCard({
     >
       {children}
 
-      <time dateTime={post.date} className="font-mono text-[11px] uppercase tracking-[0.12em] text-text-muted block mb-3">
+      <time dateTime={post.date} className="font-mono text-[13px] uppercase tracking-[0.12em] text-text-muted block mb-3">
         {formatDate(post.date)}
       </time>
 

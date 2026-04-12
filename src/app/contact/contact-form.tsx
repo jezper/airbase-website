@@ -30,7 +30,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="name"
-            className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint block mb-2"
+            className="font-mono text-[13px] uppercase tracking-[0.1em] text-text-faint block mb-2"
           >
             Name
           </label>
@@ -46,7 +46,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint block mb-2"
+            className="font-mono text-[13px] uppercase tracking-[0.1em] text-text-faint block mb-2"
           >
             Email
           </label>
@@ -62,7 +62,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="subject"
-            className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint block mb-2"
+            className="font-mono text-[13px] uppercase tracking-[0.1em] text-text-faint block mb-2"
           >
             Subject
           </label>
@@ -77,7 +77,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="message"
-            className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint block mb-2"
+            className="font-mono text-[13px] uppercase tracking-[0.1em] text-text-faint block mb-2"
           >
             Message
           </label>
@@ -100,7 +100,7 @@ export function ContactForm() {
       {/* Contact info */}
       <div className="space-y-10">
         <div>
-          <h2 className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint mb-3">
+          <h2 className="font-mono text-[13px] uppercase tracking-[0.1em] text-text-faint mb-3">
             Booking
           </h2>
           <a
@@ -111,7 +111,7 @@ export function ContactForm() {
           </a>
         </div>
         <div>
-          <h2 className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint mb-3">
+          <h2 className="font-mono text-[13px] uppercase tracking-[0.1em] text-text-faint mb-3">
             General
           </h2>
           <a
@@ -122,7 +122,7 @@ export function ContactForm() {
           </a>
         </div>
         <div>
-          <h2 className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint mb-3">
+          <h2 className="font-mono text-[13px] uppercase tracking-[0.1em] text-text-faint mb-3">
             Social
           </h2>
           <div className="flex flex-wrap gap-3">
@@ -132,7 +132,7 @@ export function ContactForm() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-[12px] font-semibold uppercase tracking-[0.08em] text-text-faint hover:text-accent transition-colors px-3 py-1.5 border border-border rounded-full hover:border-border-hover"
+                className="font-body text-sm font-semibold uppercase tracking-[0.08em] text-text-faint hover:text-accent transition-colors px-3 py-1.5 border border-border rounded-full hover:border-border-hover"
               >
                 {link.label}
               </a>

@@ -48,16 +48,16 @@ export default function ReleaseContext({ release }: { release: Release }) {
       <div className="px-5 pt-4 pb-3">
         <div className="flex items-center gap-2 mb-2">
           <span
-            className="font-mono text-[10px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-sm"
+            className="font-mono text-[12px] font-bold uppercase tracking-[0.1em] px-2 py-0.5 rounded-sm"
             style={{ backgroundColor: "rgba(232,93,38,0.15)", color: "var(--ac)" }}
           >
             {type}
           </span>
-          <span className="font-mono text-[11px] text-text-muted">
+          <span className="font-mono text-[13px] text-text-muted">
             {label} &mdash; {year}
           </span>
         </div>
-        <p className="font-body text-[11px] font-bold uppercase tracking-[0.12em] text-text-muted mb-0.5">
+        <p className="font-body text-[13px] font-bold uppercase tracking-[0.12em] text-text-muted mb-0.5">
           {artist}
         </p>
         <h3 className="font-display text-2xl sm:text-3xl font-black leading-tight text-text mb-2">
@@ -71,7 +71,7 @@ export default function ReleaseContext({ release }: { release: Release }) {
                 href={sl.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-[12px] font-bold uppercase tracking-[0.06em] text-accent hover:text-accent-hover transition-colors py-1 inline-block"
+                className="font-body text-sm font-bold uppercase tracking-[0.06em] text-accent hover:text-accent-hover transition-colors py-1 inline-block"
               >
                 {sl.label}
               </a>

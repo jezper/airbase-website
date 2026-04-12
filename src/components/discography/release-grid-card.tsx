@@ -39,7 +39,7 @@ function TypeBadge({ type }: { type: Release["type"] }) {
 
   return (
     <span
-      className="font-mono text-[9px] font-medium tracking-[0.1em] uppercase px-1.5 py-0.5 rounded-sm inline-block"
+      className="font-mono text-[11px] font-medium tracking-[0.1em] uppercase px-1.5 py-0.5 rounded-sm inline-block"
       style={{ backgroundColor: bg, border: `1px solid ${border}`, color }}
     >
       {type}
@@ -53,7 +53,7 @@ function StreamingLink({ href, label }: { href: string; label: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="font-mono text-[9px] uppercase tracking-[0.08em] text-text-muted hover:text-accent transition-colors duration-150"
+      className="font-mono text-[11px] uppercase tracking-[0.08em] text-text-muted hover:text-accent transition-colors duration-150"
       aria-label={label}
     >
       {label}
@@ -107,7 +107,7 @@ export default function ReleaseGridCard({ release }: ReleaseGridCardProps) {
         <TypeBadge type={type} />
 
         {/* Artist */}
-        <p className="font-body text-[10px] font-bold uppercase tracking-[0.08em] text-text-muted leading-tight mt-0.5">
+        <p className="font-body text-[12px] font-bold uppercase tracking-[0.08em] text-text-muted leading-tight mt-0.5">
           {displayArtist}
         </p>
 
@@ -128,7 +128,7 @@ export default function ReleaseGridCard({ release }: ReleaseGridCardProps) {
         )}
 
         {/* Label */}
-        <p className="font-mono text-[10px] text-text-muted leading-tight truncate">
+        <p className="font-mono text-[12px] text-text-muted leading-tight truncate">
           {label}
         </p>
 

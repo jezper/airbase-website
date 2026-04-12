@@ -106,7 +106,7 @@ export default async function Home() {
                   {heroPost.linkLabel ?? "Read more"} &rarr;
                 </a>
               )}
-              <p className="font-mono text-[11px] text-text-faint mt-4">
+              <p className="font-mono text-[13px] text-text-faint mt-4">
                 {new Date(heroPost.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}
               </p>
             </div>
@@ -214,7 +214,7 @@ export default async function Home() {
             >
               {stat.number}
             </div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-text-faint mt-1">
+            <div className="font-mono text-[12px] uppercase tracking-[0.15em] text-text-faint mt-1">
               {stat.label}
             </div>
           </div>

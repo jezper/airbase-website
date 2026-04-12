@@ -57,7 +57,7 @@ export default async function ReleasesPage() {
                 <td className="px-4 py-2.5">
                   <span className="font-mono text-xs text-text-muted">{r.year}</span>
                   {isUpcoming && (
-                    <span className="ml-1.5 font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded" style={{ backgroundColor: "rgba(196,168,124,0.15)", color: "var(--gd)" }}>
+                    <span className="ml-1.5 font-mono text-[11px] uppercase tracking-wider px-1.5 py-0.5 rounded" style={{ backgroundColor: "rgba(196,168,124,0.15)", color: "var(--gd)" }}>
                       upcoming
                     </span>
                   )}
@@ -68,14 +68,14 @@ export default async function ReleasesPage() {
                 <td className="px-4 py-2.5">
                   <div>
                     <span className="font-body text-sm text-text">{r.title}</span>
-                    <p className="font-mono text-[10px] text-text-faint mt-0.5">{releaseSlug(r)}</p>
+                    <p className="font-mono text-[12px] text-text-faint mt-0.5">{releaseSlug(r)}</p>
                   </div>
                 </td>
                 <td className="px-4 py-2.5 hidden md:table-cell">
                   <span className="font-body text-xs text-text-muted">{r.label}</span>
                 </td>
                 <td className="px-4 py-2.5 hidden sm:table-cell">
-                  <span className="font-mono text-[10px] text-gold bg-gold/10 px-1.5 py-0.5 rounded">{r.type}</span>
+                  <span className="font-mono text-[12px] text-gold bg-gold/10 px-1.5 py-0.5 rounded">{r.type}</span>
                 </td>
                 <td className="px-4 py-2.5 text-right">
                   <div className="flex items-center justify-end gap-3">

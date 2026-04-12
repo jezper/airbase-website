@@ -33,7 +33,7 @@ export default function ShowContext({ show }: { show: Show }) {
         <div>
           {isUpcoming && (
             <span
-              className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] inline-block mb-2 px-2 py-0.5 rounded-sm"
+              className="font-mono text-[12px] font-bold uppercase tracking-[0.15em] inline-block mb-2 px-2 py-0.5 rounded-sm"
               style={{ backgroundColor: "rgba(196,168,124,0.15)", color: "var(--gd)" }}
             >
               Upcoming
@@ -48,7 +48,7 @@ export default function ShowContext({ show }: { show: Show }) {
           {isUpcoming && (
             <a
               href="#"
-              className="inline-block mt-3 font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2 rounded-sm transition-colors"
+              className="inline-block mt-3 font-body text-sm font-bold uppercase tracking-[0.1em] px-5 py-2 rounded-sm transition-colors"
               style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}
             >
               Tickets
@@ -64,7 +64,7 @@ export default function ShowContext({ show }: { show: Show }) {
               {dateParts.day}
             </span>
             <span
-              className="font-mono text-[11px] uppercase tracking-[0.08em] block"
+              className="font-mono text-[13px] uppercase tracking-[0.08em] block"
               style={{ color: isUpcoming ? "var(--gd)" : "var(--tx-faint)" }}
             >
               {dateParts.month} {dateParts.year}

@@ -275,7 +275,7 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
 
           {/* Current path (read-only info) */}
           {image && (
-            <p className="font-mono text-[11px] text-text-faint">{image}</p>
+            <p className="font-mono text-[13px] text-text-faint">{image}</p>
           )}
         </div>
       </div>

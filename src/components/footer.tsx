@@ -40,7 +40,7 @@ export function Footer() {
         aria-hidden="true"
       >
         <div
-          className="whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint animate-scroll-left"
+          className="whitespace-nowrap font-mono text-[13px] uppercase tracking-[0.1em] text-text-faint animate-scroll-left"
         >
           {labelText}
         </div>
@@ -49,7 +49,7 @@ export function Footer() {
       <div className="px-6 md:px-12 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
         <div>
           <Logo className="h-4 text-text-faint mb-3" aria-label="Airbase" />
-          <p className="font-mono text-[11px] text-text-faint">
+          <p className="font-mono text-[13px] text-text-faint">
             &copy; {new Date().getFullYear()} Jezper S&ouml;derlund. All rights reserved.
           </p>
         </div>

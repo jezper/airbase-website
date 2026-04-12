@@ -45,7 +45,7 @@ export default function NoteCard({
         </a>
       )}
 
-      <time dateTime={post.date} className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-muted block mt-3">
+      <time dateTime={post.date} className="font-mono text-[12px] uppercase tracking-[0.1em] text-text-muted block mt-3">
         {formatDate(post.date)}
       </time>
     </div>

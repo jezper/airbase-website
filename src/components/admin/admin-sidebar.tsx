@@ -29,7 +29,7 @@ export function AdminSidebar() {
         <Link href="/" aria-label="View public site" title="View public site">
           <Logo className="h-4 text-text-muted hover:text-text transition-colors" />
         </Link>
-        <p className="font-mono text-[10px] text-text-faint mt-1.5 tracking-widest uppercase">Admin</p>
+        <p className="font-mono text-[12px] text-text-faint mt-1.5 tracking-widest uppercase">Admin</p>
       </div>
 
       {/* Navigation */}
