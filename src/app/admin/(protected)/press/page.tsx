@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Plus } from "lucide-react";
 import { readPress } from "@/lib/content-writer";
 
 export const dynamic = "force-dynamic";
@@ -7,9 +9,18 @@ export default async function PressPage() {
 
   return (
     <div className="p-8 max-w-4xl">
-      <div className="mb-8">
-        <h1 className="font-display text-2xl font-semibold text-text">Press</h1>
-        <p className="text-text-muted font-body text-sm mt-0.5">{items.length} entries in press.json</p>
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="font-display text-2xl font-semibold text-text">Press</h1>
+          <p className="text-text-muted font-body text-sm mt-0.5">{items.length} entries in press.json</p>
+        </div>
+        <Link
+          href="/admin/press/new"
+          className="flex items-center gap-2 bg-accent hover:bg-accent-hover text-bg font-body text-sm font-bold px-4 py-2 rounded transition-colors"
+        >
+          <Plus size={15} />
+          New Entry
+        </Link>
       </div>
 
       {items.length === 0 ? (
@@ -45,6 +56,12 @@ export default async function PressPage() {
                     </p>
                   )}
                 </div>
+                <Link
+                  href={`/admin/press/new?id=${i}`}
+                  className="font-body text-xs text-text-muted hover:text-accent transition-colors flex-shrink-0"
+                >
+                  Edit
+                </Link>
               </div>
             </div>
           ))}
