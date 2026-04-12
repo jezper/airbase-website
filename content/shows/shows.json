@@ -50,11 +50,11 @@
     "status": "past"
   },
   {
-    "venue": "Tomorrowland",
+    "venue": "De Schorre",
     "city": "Boom",
     "country": "Belgium",
-    "date": null,
-    "year_approx": "2000s-2010s",
+    "date": "2010-07-24",
+    "year_approx": null,
     "event": "Tomorrowland",
     "notes": null,
     "status": "past"
@@ -77,6 +77,26 @@
     "year_approx": "2005",
     "event": "Sensation Belgium",
     "notes": "First & Andre composed the official anthem 'Widescreen' for this event.",
+    "status": "past"
+  },
+  {
+    "venue": "Unknown Venue",
+    "city": "Timisoara",
+    "country": "Romania",
+    "date": "2008-06-14",
+    "year_approx": null,
+    "event": null,
+    "notes": "Source: setlist.fm",
+    "status": "past"
+  },
+  {
+    "venue": "Pi",
+    "city": "Oslo",
+    "country": "Norway",
+    "date": "2006-12-16",
+    "year_approx": null,
+    "event": null,
+    "notes": "Source: setlist.fm",
     "status": "past"
   },
   {
