@@ -6,17 +6,26 @@ function formatDate(dateStr: string): string {
   return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }
 
-/** Note card. When hasContext is true, it attaches to the context card above (no top rounding). */
-export default function NoteCard({ post, hasContext }: { post: Post; hasContext?: boolean }) {
+export default function NoteCard({
+  post,
+  hasContext,
+  children,
+}: {
+  post: Post;
+  hasContext?: boolean;
+  children?: React.ReactNode;
+}) {
   return (
     <div
-      className={`border px-5 py-4 ${
+      className={`px-5 py-4 ${
         hasContext
-          ? "bg-bg-card border-border rounded-b-lg"
+          ? "bg-bg-card border border-border rounded-b-lg"
           : "border-l-2 border-t-0 border-r-0 border-b-0 pl-5 py-2"
       }`}
       style={!hasContext ? { borderLeftColor: "var(--ac)" } : undefined}
     >
+      {children}
+
       <p className="font-body text-[16px] leading-relaxed text-text">
         {post.body}
       </p>

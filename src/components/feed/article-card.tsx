@@ -6,8 +6,15 @@ function formatDate(dateStr: string): string {
   return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }
 
-/** Article card. When hasContext is true, it attaches to the context card above. */
-export default function ArticleCard({ post, hasContext }: { post: Post; hasContext?: boolean }) {
+export default function ArticleCard({
+  post,
+  hasContext,
+  children,
+}: {
+  post: Post;
+  hasContext?: boolean;
+  children?: React.ReactNode;
+}) {
   return (
     <div
       className={hasContext
@@ -16,6 +23,8 @@ export default function ArticleCard({ post, hasContext }: { post: Post; hasConte
       }
       style={!hasContext ? { borderColor: "var(--bd-section)" } : undefined}
     >
+      {children}
+
       <time dateTime={post.date} className="font-mono text-[11px] uppercase tracking-[0.12em] text-text-faint block mb-3">
         {formatDate(post.date)}
       </time>

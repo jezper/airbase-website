@@ -19,6 +19,7 @@ const SAMPLE_POSTS: Post[] = [
     date: "2026-02-06",
     body: "It's out. Everything Else Could Wait, on Black Hole Recordings. A track about choosing presence over productivity. The title says it all.",
     releaseRef: "everything-else-could-wait",
+    featured: true,
   },
   {
     type: "article",

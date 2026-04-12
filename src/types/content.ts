@@ -74,6 +74,7 @@ export interface Post {
   linkLabel?: string;    // label for the link
   releaseRef?: string;   // slug of a referenced release (enriches the card)
   showRef?: string;      // slug of a referenced show (enriches the card)
+  featured?: boolean;    // true = big artwork/context card. default = subtle inline tag.
 }
 
 /* ── Feed Item (post + resolved references) ── */
