@@ -44,7 +44,7 @@ export async function deletePost(index: number): Promise<void> {
   await writePosts(posts);
 }
 
-/* ── Releases (read-only via content-writer — edits to discography.json) ── */
+/* ── Releases ── */
 
 export async function readReleases(): Promise<Release[]> {
   const filePath = path.join(CONTENT_DIR, "releases/discography.json");
@@ -57,7 +57,13 @@ export async function readReleases(): Promise<Release[]> {
   }
 }
 
-/* ── Shows (read-only via content-writer) ── */
+export async function writeReleases(releases: Release[]): Promise<void> {
+  const filePath = path.join(CONTENT_DIR, "releases/discography.json");
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  await fs.writeFile(filePath, JSON.stringify(releases, null, 2) + "\n");
+}
+
+/* ── Shows ── */
 
 export async function readShows(): Promise<Show[]> {
   const filePath = path.join(CONTENT_DIR, "shows/shows.json");
@@ -69,7 +75,13 @@ export async function readShows(): Promise<Show[]> {
   }
 }
 
-/* ── Press (read via content-writer, write for admin) ── */
+export async function writeShows(shows: Show[]): Promise<void> {
+  const filePath = path.join(CONTENT_DIR, "shows/shows.json");
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  await fs.writeFile(filePath, JSON.stringify(shows, null, 2) + "\n");
+}
+
+/* ── Press ── */
 
 export async function readPress(): Promise<PressFeature[]> {
   const filePath = path.join(CONTENT_DIR, "press/press.json");
