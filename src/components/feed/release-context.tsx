@@ -27,10 +27,10 @@ export default function ReleaseContext({ release }: { release: Release }) {
   const streamLinks: { label: string; href: string }[] = [
     links.spotify && { label: "Spotify", href: links.spotify },
     links.beatport && { label: "Beatport", href: links.beatport },
+    links.apple && { label: "Apple Music", href: links.apple },
     links.youtube && { label: "YouTube", href: links.youtube },
-    links.apple && { label: "Apple", href: links.apple },
-    links.soundcloud && { label: "SoundCloud", href: links.soundcloud },
-    links.smartlink && { label: "Listen", href: links.smartlink },
+    links.tidal && { label: "Tidal", href: links.tidal },
+    links.deezer && { label: "Deezer", href: links.deezer },
   ].filter(Boolean) as { label: string; href: string }[];
 
   return (

@@ -64,23 +64,22 @@ function StreamingLink({ href, label }: { href: string; label: string }) {
 export default function ReleaseGridCard({ release }: ReleaseGridCardProps) {
   const { artist, title, label, type, artwork, links } = release;
 
-  // Pick first available streaming link for the title href
   const primaryLink =
     links.spotify ||
     links.beatport ||
-    links.smartlink ||
     links.apple ||
-    links.soundcloud ||
     links.youtube ||
+    links.tidal ||
+    links.deezer ||
     null;
 
   const streamingEntries: Array<{ href: string; label: string }> = [
     links.spotify && { href: links.spotify, label: "Spotify" },
     links.beatport && { href: links.beatport, label: "Beatport" },
     links.apple && { href: links.apple, label: "Apple" },
-    links.soundcloud && { href: links.soundcloud, label: "SoundCloud" },
     links.youtube && { href: links.youtube, label: "YouTube" },
-    links.smartlink && { href: links.smartlink, label: "Listen" },
+    links.tidal && { href: links.tidal, label: "Tidal" },
+    links.deezer && { href: links.deezer, label: "Deezer" },
   ].filter(Boolean) as Array<{ href: string; label: string }>;
 
   // Shorten artist for display (strip "feat." collaborators)

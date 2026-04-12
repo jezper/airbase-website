@@ -7,7 +7,7 @@ const STATS = [
   { number: "25+", label: "Years Active" },
   { number: "100+", label: "Releases" },
   { number: "14", label: "Aliases" },
-  { number: "138", label: "BPM" },
+  { number: "14", label: "Countries" },
 ];
 
 export default async function Home() {
@@ -21,8 +21,10 @@ export default async function Home() {
     ? [
         latest.links.spotify && { label: "Spotify", href: latest.links.spotify },
         latest.links.beatport && { label: "Beatport", href: latest.links.beatport },
-        latest.links.soundcloud && { label: "SoundCloud", href: latest.links.soundcloud },
-        latest.links.smartlink && { label: "Listen", href: latest.links.smartlink },
+        latest.links.apple && { label: "Apple Music", href: latest.links.apple },
+        latest.links.youtube && { label: "YouTube", href: latest.links.youtube },
+        latest.links.tidal && { label: "Tidal", href: latest.links.tidal },
+        latest.links.deezer && { label: "Deezer", href: latest.links.deezer },
       ].filter(Boolean) as { label: string; href: string }[]
     : [];
 
@@ -68,12 +70,15 @@ export default async function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-              <button
+              <a
+                href={latest?.links.spotify ?? heroLinks[0]?.href ?? "#"}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-16 h-16 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform duration-150 shrink-0"
-                aria-label={`Play ${latest?.title ?? ""}`}
+                aria-label={`Play ${latest?.title ?? ""} on Spotify`}
               >
                 <Play size={22} fill="#0C0B0A" stroke="#0C0B0A" className="ml-1" />
-              </button>
+              </a>
               <div>
                 <div className="flex flex-wrap gap-x-5 gap-y-2">
                   {heroLinks.map((link) => (
