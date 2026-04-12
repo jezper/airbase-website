@@ -345,8 +345,9 @@
     "date": "2024-09-21",
     "year_approx": null,
     "event": "Mondaybar Cruise",
-    "notes": null,
+    "notes": "A short note about this show.",
     "image": "/artwork/mondaybar-cruise-mondaybar-cruise-2024-09-21.jpg",
+    "ticketLink": "https://www.mondaybar.com",
     "status": "past"
   },
   {

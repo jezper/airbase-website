@@ -37,6 +37,7 @@ export interface Show {
   event: string | null;
   notes: string | null;
   image?: string | null;
+  ticketLink?: string | null;
   status: ShowStatus;
 }
 

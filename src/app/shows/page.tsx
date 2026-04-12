@@ -97,13 +97,17 @@ export default async function ShowsPage() {
                         {show.notes}
                       </p>
                     )}
-                    <a
-                      href="#"
-                      className="inline-block mt-5 font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 rounded-sm transition-colors"
-                      style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}
-                    >
-                      Tickets
-                    </a>
+                    {show.ticketLink && (
+                      <a
+                        href={show.ticketLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block mt-5 font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 rounded-sm transition-colors"
+                        style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}
+                      >
+                        Tickets
+                      </a>
+                    )}
                   </article>
                 );
               })}
@@ -131,12 +135,12 @@ export default async function ShowsPage() {
                           href={show.image}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="shrink-0 hover:opacity-80 transition-opacity"
+                          className="block shrink-0 w-20 h-20 rounded overflow-hidden hover:opacity-80 transition-opacity"
                         >
                           <img
                             src={show.image}
                             alt={`${show.event ?? show.venue} flyer`}
-                            className="w-20 h-20 rounded object-cover"
+                            className="w-full h-full object-cover"
                             loading="lazy"
                           />
                         </a>

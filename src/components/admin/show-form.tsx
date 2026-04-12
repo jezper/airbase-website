@@ -49,7 +49,7 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
   const [status, setStatus] = useState<ShowStatus>(initialShow?.status ?? "past");
   const [notes, setNotes] = useState(initialShow?.notes ?? "");
   const [image, setImage] = useState(initialShow?.image ?? "");
-  const [ticketLink, setTicketLink] = useState("");
+  const [ticketLink, setTicketLink] = useState(initialShow?.ticketLink ?? "");
 
   // Image upload
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -117,6 +117,7 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
       event: event.trim() || null,
       notes: notes.trim() || null,
       image: image.trim() || null,
+      ticketLink: ticketLink.trim() || null,
       status,
     };
 
