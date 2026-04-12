@@ -1,6 +1,13 @@
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Logo } from "@/components/logo";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-bg text-text p-12">
+      <div className="flex justify-end mb-8">
+        <ThemeToggle />
+      </div>
+      <Logo className="w-64 text-text mb-12" />
       <h1 className="font-display text-hero font-black leading-hero tracking-hero">
         Everything<br />Else Could<br />Wait
       </h1>
