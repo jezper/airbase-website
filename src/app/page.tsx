@@ -30,7 +30,7 @@ export default async function Home() {
     <>
       {/* Hero */}
       <section className={`relative flex flex-col justify-end px-6 md:px-12 pb-16 md:pb-20 overflow-hidden ${
-        heroRelease ? "min-h-[85vh]" : "pt-32 md:pt-48 pb-16 md:pb-20"
+        heroRelease ? "min-h-[85vh] pt-16 md:pt-20" : "pt-32 md:pt-48 pb-16 md:pb-20"
       }`}>
         {/* Ambient glow */}
         <div
