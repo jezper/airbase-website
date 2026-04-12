@@ -98,3 +98,41 @@ export async function writePress(items: PressFeature[]): Promise<void> {
   await fs.mkdir(path.dirname(filePath), { recursive: true });
   await fs.writeFile(filePath, JSON.stringify(items, null, 2) + "\n");
 }
+
+/* ── Site Config ── */
+
+export interface HeroConfig {
+  type: "release" | "post" | "custom";
+  releaseIndex?: number;
+  postIndex?: number;
+  title?: string;
+  subtitle?: string;
+  image?: string;
+}
+
+export interface SiteConfig {
+  hero: HeroConfig;
+}
+
+const DEFAULT_SITE_CONFIG: SiteConfig = {
+  hero: {
+    type: "release",
+    releaseIndex: 0,
+  },
+};
+
+export async function readSiteConfig(): Promise<SiteConfig> {
+  const filePath = path.join(CONTENT_DIR, "site-config.json");
+  try {
+    const raw = await fs.readFile(filePath, "utf-8");
+    return JSON.parse(raw) as SiteConfig;
+  } catch {
+    return DEFAULT_SITE_CONFIG;
+  }
+}
+
+export async function writeSiteConfig(config: SiteConfig): Promise<void> {
+  const filePath = path.join(CONTENT_DIR, "site-config.json");
+  await fs.mkdir(path.dirname(filePath), { recursive: true });
+  await fs.writeFile(filePath, JSON.stringify(config, null, 2) + "\n");
+}
