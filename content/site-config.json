@@ -1,6 +1,6 @@
 {
   "hero": {
-    "type": "post",
-    "postIndex": 0
+    "type": "release",
+    "releaseIndex": 0
   }
 }

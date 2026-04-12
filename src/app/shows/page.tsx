@@ -53,6 +53,18 @@ export default async function ShowsPage() {
                       border: "1px solid rgba(196,168,124,0.25)",
                     }}
                   >
+                    {/* Flyer — handles any aspect ratio */}
+                    {show.image && (
+                      <div className="mb-5 -mx-6 -mt-6 overflow-hidden rounded-t-lg">
+                        <img
+                          src={show.image}
+                          alt={`${show.event ?? show.venue} flyer`}
+                          className="w-full max-h-64 object-contain bg-bg"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+
                     {/* Date row */}
                     {date && (
                       <div className="flex items-baseline gap-2 mb-4">
@@ -109,7 +121,15 @@ export default async function ShowsPage() {
                     className="py-5 border-b border-border-section"
                   >
                     <div className="flex items-start justify-between gap-4">
-                      <div className="min-w-0">
+                      {show.image && (
+                        <img
+                          src={show.image}
+                          alt=""
+                          className="w-12 h-12 rounded object-cover shrink-0"
+                          loading="lazy"
+                        />
+                      )}
+                      <div className="flex-1 min-w-0">
                         <h3 className="font-display text-lg font-bold text-text leading-snug">
                           {show.event ?? show.venue}
                         </h3>
