@@ -131,6 +131,16 @@ body::after {
   border-radius: 2px;
 }
 
+/* ── Focus Indicators — accent ring, keyboard only ── */
+:focus-visible {
+  outline: 2px solid var(--ac);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
 /* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
