@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { Plus } from "lucide-react";
 import { readReleases } from "@/lib/content-writer";
 import { releaseSlug } from "@/lib/release-utils";
 
@@ -8,11 +10,20 @@ export default async function ReleasesPage() {
 
   return (
     <div className="p-8 max-w-4xl">
-      <div className="mb-8">
-        <h1 className="font-display text-2xl font-semibold text-text">Releases</h1>
-        <p className="text-text-muted font-body text-sm mt-0.5">
-          {releases.length} entries in discography.json
-        </p>
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="font-display text-2xl font-semibold text-text">Releases</h1>
+          <p className="text-text-muted font-body text-sm mt-0.5">
+            {releases.length} entries in discography.json
+          </p>
+        </div>
+        <Link
+          href="/admin/releases/new"
+          className="flex items-center gap-2 bg-accent hover:bg-accent-hover text-bg font-body text-sm font-bold px-4 py-2 rounded transition-colors"
+        >
+          <Plus size={15} />
+          New Release
+        </Link>
       </div>
 
       <div className="border border-border rounded-lg overflow-hidden">
@@ -24,6 +35,7 @@ export default async function ReleasesPage() {
               <th className="text-left font-body text-xs font-semibold text-text-faint uppercase tracking-wider px-4 py-3">Title</th>
               <th className="text-left font-body text-xs font-semibold text-text-faint uppercase tracking-wider px-4 py-3 hidden md:table-cell">Label</th>
               <th className="text-left font-body text-xs font-semibold text-text-faint uppercase tracking-wider px-4 py-3 hidden sm:table-cell">Type</th>
+              <th className="px-4 py-3"></th>
             </tr>
           </thead>
           <tbody>
@@ -46,6 +58,14 @@ export default async function ReleasesPage() {
                 </td>
                 <td className="px-4 py-2.5 hidden sm:table-cell">
                   <span className="font-mono text-[10px] text-gold bg-gold/10 px-1.5 py-0.5 rounded">{r.type}</span>
+                </td>
+                <td className="px-4 py-2.5 text-right">
+                  <Link
+                    href={`/admin/releases/new?id=${i}`}
+                    className="font-body text-xs text-text-muted hover:text-accent transition-colors"
+                  >
+                    Edit
+                  </Link>
                 </td>
               </tr>
             ))}
