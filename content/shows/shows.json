@@ -1,0 +1,82 @@
+[
+  {
+    "venue": "Privilege",
+    "city": "Ibiza",
+    "country": "Spain",
+    "date": null,
+    "year_approx": "2000s",
+    "event": null,
+    "notes": "One of the world's largest nightclubs.",
+    "status": "past"
+  },
+  {
+    "venue": "O2 Arena",
+    "city": "London",
+    "country": "United Kingdom",
+    "date": null,
+    "year_approx": "2000s",
+    "event": null,
+    "notes": null,
+    "status": "past"
+  },
+  {
+    "venue": "Trance Energy",
+    "city": "Utrecht",
+    "country": "Netherlands",
+    "date": null,
+    "year_approx": "2000s",
+    "event": "Trance Energy",
+    "notes": "Jaarbeurs convention center. One of the iconic trance events by ID&T.",
+    "status": "past"
+  },
+  {
+    "venue": "Mysteryland",
+    "city": "Haarlemmermeer",
+    "country": "Netherlands",
+    "date": null,
+    "year_approx": "2000s",
+    "event": "Mysteryland",
+    "notes": "The world's longest-running electronic music festival.",
+    "status": "past"
+  },
+  {
+    "venue": "Luminosity Beach Festival",
+    "city": "Zandvoort",
+    "country": "Netherlands",
+    "date": null,
+    "year_approx": "2000s-2010s",
+    "event": "Luminosity Beach Festival",
+    "notes": "Beachclub Bernie's. Iconic annual trance gathering.",
+    "status": "past"
+  },
+  {
+    "venue": "Tomorrowland",
+    "city": "Boom",
+    "country": "Belgium",
+    "date": null,
+    "year_approx": "2000s-2010s",
+    "event": "Tomorrowland",
+    "notes": null,
+    "status": "past"
+  },
+  {
+    "venue": "Asta",
+    "city": "The Hague",
+    "country": "Netherlands",
+    "date": null,
+    "year_approx": "2000s",
+    "event": null,
+    "notes": null,
+    "status": "past"
+  },
+  {
+    "venue": "Sensation Belgium",
+    "city": "Belgium",
+    "country": "Belgium",
+    "date": null,
+    "year_approx": "2005",
+    "event": "Sensation Belgium",
+    "notes": "First & Andre composed the official anthem 'Widescreen' for this event.",
+    "status": "past"
+  }
+]

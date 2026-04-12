@@ -1,0 +1,11 @@
+{"type":"server-started","port":55601,"host":"127.0.0.1","url_host":"localhost","url":"http://localhost:55601","screen_dir":"/Users/jezper.lorne/Projects/Code/airbase-website/.superpowers/brainstorm/33032-1775985188/content","state_dir":"/Users/jezper.lorne/Projects/Code/airbase-website/.superpowers/brainstorm/33032-1775985188/state"}
+{"type":"screen-added","file":"/Users/jezper.lorne/Projects/Code/airbase-website/.superpowers/brainstorm/33032-1775985188/content/typography-pairing.html"}
+{"type":"screen-added","file":"/Users/jezper.lorne/Projects/Code/airbase-website/.superpowers/brainstorm/33032-1775985188/content/body-font-comparison.html"}
+{"type":"screen-added","file":"/Users/jezper.lorne/Projects/Code/airbase-website/.superpowers/brainstorm/33032-1775985188/content/body-font-bold.html"}
+{"type":"screen-added","file":"/Users/jezper.lorne/Projects/Code/airbase-website/.superpowers/brainstorm/33032-1775985188/content/energy-direction.html"}
+{"type":"screen-added","file":"/Users/jezper.lorne/Projects/Code/airbase-website/.superpowers/brainstorm/33032-1775985188/content/high-energy-v2.html"}
+{"source":"user-event","type":"click","text":"Crimson","choice":"crimson","id":null,"timestamp":1775986235321}
+{"source":"user-event","type":"click","text":"Amber","choice":"amber","id":null,"timestamp":1775986235953}
+{"source":"user-event","type":"click","text":"Terra","choice":"terracotta","id":null,"timestamp":1775986236894}
+{"source":"user-event","type":"click","text":"Fire","choice":"fire-orange","id":null,"timestamp":1775986237711}
+{"type":"screen-added","file":"/Users/jezper.lorne/Projects/Code/airbase-website/.superpowers/brainstorm/33032-1775985188/content/waiting.html"}

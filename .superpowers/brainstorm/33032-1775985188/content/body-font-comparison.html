@@ -1,0 +1,175 @@
+<h2>Body Font: Which Voice?</h2>
+<p class="subtitle">Fraunces stays as display. Pick the body sans that brings boldness and confidence. Dark theme only, since that's what resonated.</p>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+
+  .font-card {
+    background: #1C1A17;
+    color: #E4DED6;
+    border-radius: 12px;
+    padding: 32px 36px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .font-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px;
+    pointer-events: none;
+  }
+  .font-card:hover { border-color: #3A3632; }
+
+  .font-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #D4895A;
+    margin-bottom: 6px;
+  }
+  .font-personality {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: #9A928A;
+    margin-bottom: 20px;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid #3A3632;
+    margin: 20px 0;
+  }
+  .display-text {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    font-variation-settings: 'opsz' 100;
+  }
+  .muted { color: #9A928A; }
+  .accent { color: #D4895A; }
+  .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #9A928A;
+  }
+  .badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 99px;
+    background: rgba(196, 168, 124, 0.15);
+    color: #C4A87C;
+  }
+
+  .body-18 { font-size: 18px; line-height: 1.6; margin-bottom: 14px; }
+  .body-16 { font-size: 16px; line-height: 1.6; margin-bottom: 10px; }
+  .body-14 { font-size: 14px; line-height: 1.5; color: #9A928A; margin-bottom: 10px; }
+  .body-nav { font-size: 15px; font-weight: 600; letter-spacing: 0.01em; color: #E4DED6; }
+
+  .sample-nav {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #3A3632;
+  }
+  .sample-nav span { cursor: default; }
+  .sample-nav .active { color: #D4895A; }
+</style>
+
+<!-- OPTION A: Instrument Sans -->
+<div class="comparison">
+  <div class="font-card" data-choice="instrument-sans" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <div class="font-name">Instrument Sans</div>
+      <div class="font-personality">Precise. Contemporary. A designer's choice.</div>
+
+      <div class="sample-nav" style="font-family: 'Instrument Sans', sans-serif;">
+        <span class="body-nav active">Feed</span>
+        <span class="body-nav" style="color:#9A928A;">Discography</span>
+        <span class="body-nav" style="color:#9A928A;">Shows</span>
+        <span class="body-nav" style="color:#9A928A;">Mixes</span>
+        <span class="body-nav" style="color:#9A928A;">About</span>
+      </div>
+
+      <div class="display-text">Everything Else Could Wait</div>
+      <div style="margin-bottom:16px;"><span class="badge">Single</span></div>
+      <div class="body-18" style="font-family: 'Instrument Sans', sans-serif;">A deeply personal track about choosing presence over productivity. After years away from the studio, this is the sound of someone returning on their own terms. The title says it all.</div>
+      <div class="body-16" style="font-family: 'Instrument Sans', sans-serif;">His approach hasn't changed much over the decades. Emotion first, melody second, details that reveal themselves over time. He draws inspiration more from classical music, folk, and jazz than from the dance floor.</div>
+      <div class="body-14" style="font-family: 'Instrument Sans', sans-serif;">Slightly condensed letterforms. Tight and intentional. Newer typeface, uncommon on the web. Feels like it was chosen, not defaulted to.</div>
+      <hr class="divider">
+      <div class="mono">2026-02-06 &nbsp;&bull;&nbsp; Black Hole Recordings &nbsp;&bull;&nbsp; <span class="accent">Spotify</span> &nbsp; <span class="accent">Beatport</span></div>
+    </div>
+  </div>
+
+  <!-- OPTION B: Libre Franklin -->
+  <div class="font-card" data-choice="libre-franklin" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <div class="font-name">Libre Franklin</div>
+      <div class="font-personality">Editorial weight. Journalistic authority. Proven.</div>
+
+      <div class="sample-nav" style="font-family: 'Libre Franklin', sans-serif;">
+        <span class="body-nav active">Feed</span>
+        <span class="body-nav" style="color:#9A928A;">Discography</span>
+        <span class="body-nav" style="color:#9A928A;">Shows</span>
+        <span class="body-nav" style="color:#9A928A;">Mixes</span>
+        <span class="body-nav" style="color:#9A928A;">About</span>
+      </div>
+
+      <div class="display-text">Everything Else Could Wait</div>
+      <div style="margin-bottom:16px;"><span class="badge">Single</span></div>
+      <div class="body-18" style="font-family: 'Libre Franklin', sans-serif;">A deeply personal track about choosing presence over productivity. After years away from the studio, this is the sound of someone returning on their own terms. The title says it all.</div>
+      <div class="body-16" style="font-family: 'Libre Franklin', sans-serif;">His approach hasn't changed much over the decades. Emotion first, melody second, details that reveal themselves over time. He draws inspiration more from classical music, folk, and jazz than from the dance floor.</div>
+      <div class="body-14" style="font-family: 'Libre Franklin', sans-serif;">Based on Franklin Gothic, one of the great American grotesques. The kind of typeface newspapers and magazines trust. It has weight and authority without being heavy. Experienced.</div>
+      <hr class="divider">
+      <div class="mono">2026-02-06 &nbsp;&bull;&nbsp; Black Hole Recordings &nbsp;&bull;&nbsp; <span class="accent">Spotify</span> &nbsp; <span class="accent">Beatport</span></div>
+    </div>
+  </div>
+
+  <!-- OPTION C: Plus Jakarta Sans -->
+  <div class="font-card" data-choice="plus-jakarta" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <div class="font-name">Plus Jakarta Sans</div>
+      <div class="font-personality">Modern warmth. Geometric with soft edges. Distinctive.</div>
+
+      <div class="sample-nav" style="font-family: 'Plus Jakarta Sans', sans-serif;">
+        <span class="body-nav active">Feed</span>
+        <span class="body-nav" style="color:#9A928A;">Discography</span>
+        <span class="body-nav" style="color:#9A928A;">Shows</span>
+        <span class="body-nav" style="color:#9A928A;">Mixes</span>
+        <span class="body-nav" style="color:#9A928A;">About</span>
+      </div>
+
+      <div class="display-text">Everything Else Could Wait</div>
+      <div style="margin-bottom:16px;"><span class="badge">Single</span></div>
+      <div class="body-18" style="font-family: 'Plus Jakarta Sans', sans-serif;">A deeply personal track about choosing presence over productivity. After years away from the studio, this is the sound of someone returning on their own terms. The title says it all.</div>
+      <div class="body-16" style="font-family: 'Plus Jakarta Sans', sans-serif;">His approach hasn't changed much over the decades. Emotion first, melody second, details that reveal themselves over time. He draws inspiration more from classical music, folk, and jazz than from the dance floor.</div>
+      <div class="body-14" style="font-family: 'Plus Jakarta Sans', sans-serif;">Geometric foundation with rounded terminals that soften it. Bold weights carry well. More contemporary than Libre Franklin, less clinical than Instrument Sans. The warm middle ground.</div>
+      <hr class="divider">
+      <div class="mono">2026-02-06 &nbsp;&bull;&nbsp; Black Hole Recordings &nbsp;&bull;&nbsp; <span class="accent">Spotify</span> &nbsp; <span class="accent">Beatport</span></div>
+    </div>
+  </div>
+</div>
