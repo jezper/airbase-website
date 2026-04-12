@@ -1,35 +1,74 @@
 @import "tailwindcss";
 
-/* ── Design Tokens (Tailwind v4 @theme) ── */
-/*
- * Tailwind v4 resolves @theme statically, so we define the dark-mode
- * (default) values here as concrete values. Light-mode overrides are
- * applied via .light class using CSS custom properties that map to the
- * same Tailwind utility names through the @theme inline pattern below.
- *
- * The font variables use the CSS custom properties set by next/font on <html>.
+/* ── Theme Variables ──
+ * Define actual color values in :root (dark) and .light.
+ * The @theme inline block references these via var() so
+ * Tailwind utilities like bg-bg, text-text resolve at runtime
+ * and respond to theme changes.
+ */
+
+/* ── Dark Theme (Default) ── */
+:root {
+  --bg: #0C0B0A;
+  --bg-card: #141210;
+  --bg-elevated: #1A1816;
+  --tx: #EDE7DF;
+  --tx-muted: #9A928A;
+  --tx-faint: #5A5550;
+  --ac: #E85D26;
+  --ac-hover: #F06D36;
+  --ac-glow: rgba(232, 93, 38, 0.12);
+  --gd: #C4A87C;
+  --bd: rgba(237, 231, 223, 0.04);
+  --bd-hover: rgba(237, 231, 223, 0.10);
+  --bd-section: rgba(237, 231, 223, 0.06);
+
+  --shadow-sm: 0 1px 2px rgba(44, 40, 38, 0.06);
+  --shadow-md: 0 4px 12px rgba(44, 40, 38, 0.08);
+  --shadow-lg: 0 8px 24px rgba(44, 40, 38, 0.12);
+  --shadow-xl: 0 16px 48px rgba(44, 40, 38, 0.16);
+}
+
+/* ── Light Theme ── */
+.light {
+  --bg: #F4EEE8;
+  --bg-card: #EAE3D9;
+  --bg-elevated: #FDFBF8;
+  --tx: #1A1816;
+  --tx-muted: #78706A;
+  --tx-faint: #A49B93;
+  --ac: #D4551E;
+  --ac-hover: #BF4A18;
+  --ac-glow: rgba(212, 85, 30, 0.08);
+  --gd: #B09468;
+  --bd: rgba(26, 24, 22, 0.08);
+  --bd-hover: rgba(26, 24, 22, 0.14);
+  --bd-section: rgba(26, 24, 22, 0.06);
+}
+
+/* ── Tailwind Theme Registration ──
+ * @theme inline keeps var() references in the output so
+ * utility classes resolve at runtime, enabling theme switching.
  */
 @theme inline {
-  /* Fonts — next/font sets --font-fraunces, --font-syne, --font-jetbrains
-     on <html> as CSS vars. We map them to Tailwind utility names here so
-     font-display, font-body, font-mono work as utility classes. */
+  /* Fonts */
   --font-display: var(--font-fraunces), Georgia, serif;
   --font-body: var(--font-syne), "Helvetica Neue", sans-serif;
   --font-mono: var(--font-jetbrains), Menlo, monospace;
 
-  /* Colors — dark theme as defaults */
-  --color-bg: #0C0B0A;
-  --color-bg-card: #141210;
-  --color-bg-elevated: #1A1816;
-  --color-text: #EDE7DF;
-  --color-text-muted: #9A928A;
-  --color-text-faint: #5A5550;
-  --color-accent: #E85D26;
-  --color-accent-hover: #F06D36;
-  --color-gold: #C4A87C;
-  --color-border: rgba(237, 231, 223, 0.04);
-  --color-border-hover: rgba(237, 231, 223, 0.10);
-  --color-border-section: rgba(237, 231, 223, 0.06);
+  /* Colors — all reference runtime CSS vars */
+  --color-bg: var(--bg);
+  --color-bg-card: var(--bg-card);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-text: var(--tx);
+  --color-text-muted: var(--tx-muted);
+  --color-text-faint: var(--tx-faint);
+  --color-accent: var(--ac);
+  --color-accent-hover: var(--ac-hover);
+  --color-gold: var(--gd);
+  --color-border: var(--bd);
+  --color-border-hover: var(--bd-hover);
+  --color-border-section: var(--bd-section);
 
   /* Max widths */
   --max-width-content: 1200px;
@@ -46,58 +85,15 @@
   --animate-scroll-left: scroll-left 30s linear infinite;
 }
 
-/* ── Light Theme Override ── */
-/*
- * When .light is on <html>, we override the CSS custom properties that
- * Tailwind v4 uses for utilities. Tailwind v4 uses the same --color-*
- * names at runtime, so overriding them here changes what bg-bg, text-text
- * etc. resolve to.
- */
-.light {
-  --color-bg: #F4EEE8;
-  --color-bg-card: #EAE3D9;
-  --color-bg-elevated: #FDFBF8;
-  --color-text: #1A1816;
-  --color-text-muted: #78706A;
-  --color-text-faint: #A49B93;
-  --color-accent: #D4551E;
-  --color-accent-hover: #BF4A18;
-  --color-accent-glow: rgba(212, 85, 30, 0.08);
-  --color-gold: #B09468;
-  --color-border: rgba(26, 24, 22, 0.08);
-  --color-border-hover: rgba(26, 24, 22, 0.14);
-  --color-border-section: rgba(26, 24, 22, 0.06);
-}
-
-/* ── Non-theme CSS custom properties (not Tailwind utilities) ── */
-:root {
-  --color-accent-glow: rgba(232, 93, 38, 0.12);
-
-  --shadow-sm: 0 1px 2px rgba(44, 40, 38, 0.06);
-  --shadow-md: 0 4px 12px rgba(44, 40, 38, 0.08);
-  --shadow-lg: 0 8px 24px rgba(44, 40, 38, 0.12);
-  --shadow-xl: 0 16px 48px rgba(44, 40, 38, 0.16);
-}
-
 /* ── Keyframes ── */
 @keyframes glow-breathe {
-  0% {
-    opacity: 0.7;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
+  0% { opacity: 0.7; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.05); }
 }
 
 @keyframes scroll-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 /* ── Base Styles ── */
@@ -124,22 +120,20 @@ body::after {
 
 /* ── Selection Color ── */
 ::selection {
-  background: var(--color-accent);
-  color: var(--color-bg);
+  background: var(--ac);
+  color: var(--bg);
 }
 
 /* ── Gradient Accent Line ── */
 .accent-line {
   height: 3px;
-  background: linear-gradient(to right, var(--color-accent), transparent 70%);
+  background: linear-gradient(to right, var(--ac), transparent 70%);
   border-radius: 2px;
 }
 
 /* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
