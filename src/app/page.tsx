@@ -1,29 +1,130 @@
-import { ThemeToggle } from "@/components/theme-toggle";
-import { Logo } from "@/components/logo";
+import { Play } from "lucide-react";
+
+const STATS = [
+  { number: "25+", label: "Years Active" },
+  { number: "100+", label: "Releases" },
+  { number: "14", label: "Aliases" },
+  { number: "138", label: "BPM" },
+];
+
+const STREAM_LINKS = [
+  {
+    label: "Spotify",
+    href: "https://open.spotify.com/album/4ZfQAvaurXtnLDajcazRHE",
+  },
+  {
+    label: "Beatport",
+    href: "https://www.beatport.com/track/everything-else-could-wait/23324813",
+  },
+  { label: "YouTube", href: "#" },
+  { label: "Apple Music", href: "#" },
+];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-bg text-text p-12">
-      <div className="flex justify-end mb-8">
-        <ThemeToggle />
-      </div>
-      <Logo className="w-64 text-text mb-12" />
-      <h1 className="font-display text-hero font-black leading-hero tracking-hero">
-        Everything<br />Else Could<br />Wait
-      </h1>
-      <p className="font-body text-lg text-text-muted mt-6 max-w-prose">
-        Body text in Syne. Angular, assertive, art-world energy.
-      </p>
-      <p className="font-mono text-sm text-text-faint mt-2">
-        2026-02-06 · Single · Black Hole Recordings
-      </p>
-      <button className="mt-6 bg-accent text-bg font-body text-sm font-bold uppercase tracking-widest px-6 py-3 rounded">
-        Listen Now
-      </button>
-      <div className="accent-line mt-12" />
-      <div className="mt-8 bg-bg-card border border-border rounded-lg p-6">
-        <p className="text-gold font-mono text-xs uppercase tracking-wider">Card on bg-card</p>
-      </div>
-    </main>
+    <>
+      {/* Hero */}
+      <section className="relative min-h-[85vh] flex flex-col justify-end px-6 md:px-12 pb-16 md:pb-20 overflow-hidden">
+        {/* Ambient glow */}
+        <div
+          className="absolute -top-[30%] -right-[20%] w-[80%] h-[140%] rounded-full pointer-events-none blur-[60px] motion-safe:animate-glow-breathe"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, var(--color-accent-glow) 0%, transparent 65%)",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="relative z-10">
+          <p className="font-mono text-[13px] font-medium uppercase tracking-[0.2em] text-accent mb-4 md:mb-5">
+            New Release / 2026
+          </p>
+          <h1 className="font-display text-hero font-black leading-hero tracking-hero mb-5 md:mb-6">
+            Everything
+            <br />
+            Else Could
+            <br />
+            Wait
+          </h1>
+          <p className="font-body text-[15px] font-extrabold uppercase tracking-[0.15em] text-accent mb-8">
+            Airbase &mdash; Black Hole Recordings
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+            <button
+              className="w-16 h-16 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform duration-150 shrink-0"
+              aria-label="Play Everything Else Could Wait"
+            >
+              <Play size={22} fill="#0C0B0A" stroke="#0C0B0A" className="ml-1" />
+            </button>
+            <div>
+              <div className="flex flex-wrap gap-x-5 gap-y-2">
+                {STREAM_LINKS.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-body text-[13px] font-bold uppercase tracking-[0.08em] text-accent hover:border-b-2 hover:border-accent pb-0.5 transition-all duration-150"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+              <p className="font-mono text-xs text-text-faint mt-2">
+                Single &mdash; 07:23 &mdash; 138 BPM
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Accent line */}
+      <div className="accent-line mx-6 md:mx-12" />
+
+      {/* Stats bar */}
+      <section
+        className="flex flex-wrap justify-between px-6 md:px-12 py-8 border-b border-border-section"
+        aria-label="Career statistics"
+      >
+        {STATS.map((stat) => (
+          <div
+            key={stat.label}
+            className="text-center px-4 py-3 flex-1 min-w-[120px]"
+          >
+            <div
+              className="font-display text-5xl font-black text-accent"
+              style={{ fontVariationSettings: "'opsz' 144" }}
+            >
+              {stat.number}
+            </div>
+            <div className="font-mono text-[10px] uppercase tracking-[0.15em] text-text-faint mt-1">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* Feed placeholder */}
+      <section className="px-6 md:px-12 py-12" aria-label="Feed">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="font-body text-[13px] font-bold uppercase tracking-[0.12em] text-text-faint">
+            Feed
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[1, 2, 3, 4].map((i) => (
+            <div
+              key={i}
+              className="bg-bg-card rounded-lg border border-border p-8 hover:border-border-hover hover:-translate-y-1 transition-all duration-150"
+            >
+              <p className="font-mono text-xs text-text-faint uppercase tracking-wider">
+                Feed card placeholder {i}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
