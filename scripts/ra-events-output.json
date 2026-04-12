@@ -1,0 +1,67 @@
+{
+  "generated": "2026-04-12T19:27:32.202Z",
+  "summary": {
+    "total_events_found": 3,
+    "sources": [
+      {
+        "source": "Resident Advisor",
+        "status": "blocked",
+        "message": "HTML page blocked by Cloudflare (HTTP 403). GraphQL returns null for artist(slug: \"airbase\") — artist may not have an RA profile or queries require authentication.",
+        "count": 0
+      },
+      {
+        "source": "setlist.fm",
+        "status": "success",
+        "message": "3 events found",
+        "count": 3
+      },
+      {
+        "source": "Wayback Machine",
+        "status": "empty",
+        "message": "No archived snapshots of RA Airbase pages found",
+        "count": 0
+      },
+      {
+        "source": "Mixcloud",
+        "status": "empty",
+        "message": "108 cloudcasts found, all are 'Touchdown Airbase' podcast episodes or 'Airbase Deep' mix series — no live sets with venue data",
+        "count": 0
+      }
+    ]
+  },
+  "events": [
+    {
+      "venue": "De Schorre",
+      "city": "Boom",
+      "country": "Belgium",
+      "date": "2010-07-24",
+      "year_approx": null,
+      "event": "Tomorrowland 2010",
+      "notes": "Source: setlist.fm — https://www.setlist.fm/setlist/airbase/2010/de-schorre-boom-belgium-bf8359e.html",
+      "status": "past",
+      "source_url": "https://www.setlist.fm/setlist/airbase/2010/de-schorre-boom-belgium-bf8359e.html"
+    },
+    {
+      "venue": "Unknown Venue",
+      "city": "Timișoara",
+      "country": "Romania",
+      "date": "2008-06-14",
+      "year_approx": null,
+      "event": null,
+      "notes": "Source: setlist.fm — https://www.setlist.fm/setlist/airbase/2008/unknown-venue-timioara-romania-1bd575f8.html",
+      "status": "past",
+      "source_url": "https://www.setlist.fm/setlist/airbase/2008/unknown-venue-timioara-romania-1bd575f8.html"
+    },
+    {
+      "venue": "Pi",
+      "city": "Oslo",
+      "country": "Norway",
+      "date": "2006-12-16",
+      "year_approx": null,
+      "event": null,
+      "notes": "Source: setlist.fm — https://www.setlist.fm/setlist/airbase/2006/pi-oslo-norway-4bf527a6.html",
+      "status": "past",
+      "source_url": "https://www.setlist.fm/setlist/airbase/2006/pi-oslo-norway-4bf527a6.html"
+    }
+  ]
+}
