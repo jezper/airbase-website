@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { readPress } from "@/lib/content-writer";
+import { DeletePressButton } from "@/components/admin/delete-press-button";
 
 export const dynamic = "force-dynamic";
 
@@ -56,12 +57,15 @@ export default async function PressPage() {
                     </p>
                   )}
                 </div>
-                <Link
-                  href={`/admin/press/new?id=${i}`}
-                  className="font-body text-xs text-text-muted hover:text-accent transition-colors flex-shrink-0"
-                >
-                  Edit
-                </Link>
+                <div className="flex items-center gap-3 flex-shrink-0">
+                  <Link
+                    href={`/admin/press/new?id=${i}`}
+                    className="font-body text-xs text-text-muted hover:text-accent transition-colors"
+                  >
+                    Edit
+                  </Link>
+                  <DeletePressButton index={i} label={item.title} />
+                </div>
               </div>
             </div>
           ))}

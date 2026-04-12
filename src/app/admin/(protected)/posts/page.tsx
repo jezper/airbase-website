@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Plus, FileText, AlignLeft } from "lucide-react";
 import { readPosts } from "@/lib/content-writer";
+import { DeletePostButton } from "@/components/admin/delete-post-button";
 
 export const dynamic = "force-dynamic";
 
@@ -97,12 +98,18 @@ export default async function PostsPage() {
                     </div>
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <Link
-                      href={`/admin/posts/new?id=${i}`}
-                      className="font-body text-xs text-text-muted hover:text-accent transition-colors"
-                    >
-                      Edit
-                    </Link>
+                    <div className="flex items-center justify-end gap-3">
+                      <Link
+                        href={`/admin/posts/new?id=${i}`}
+                        className="font-body text-xs text-text-muted hover:text-accent transition-colors"
+                      >
+                        Edit
+                      </Link>
+                      <DeletePostButton
+                        index={i}
+                        label={post.title ?? post.body.slice(0, 40)}
+                      />
+                    </div>
                   </td>
                 </tr>
               ))}

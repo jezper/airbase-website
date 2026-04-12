@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Plus } from "lucide-react";
 import { readReleases } from "@/lib/content-writer";
 import { releaseSlug } from "@/lib/release-utils";
+import { DeleteReleaseButton } from "@/components/admin/delete-release-button";
 
 export const dynamic = "force-dynamic";
 
@@ -60,12 +61,18 @@ export default async function ReleasesPage() {
                   <span className="font-mono text-[10px] text-gold bg-gold/10 px-1.5 py-0.5 rounded">{r.type}</span>
                 </td>
                 <td className="px-4 py-2.5 text-right">
-                  <Link
-                    href={`/admin/releases/new?id=${i}`}
-                    className="font-body text-xs text-text-muted hover:text-accent transition-colors"
-                  >
-                    Edit
-                  </Link>
+                  <div className="flex items-center justify-end gap-3">
+                    <Link
+                      href={`/admin/releases/new?id=${i}`}
+                      className="font-body text-xs text-text-muted hover:text-accent transition-colors"
+                    >
+                      Edit
+                    </Link>
+                    <DeleteReleaseButton
+                      index={i}
+                      label={`${r.artist} — ${r.title}`}
+                    />
+                  </div>
                 </td>
               </tr>
             ))}

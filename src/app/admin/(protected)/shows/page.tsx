@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { readShows } from "@/lib/content-writer";
+import { DeleteShowButton } from "@/components/admin/delete-show-button";
 
 export const dynamic = "force-dynamic";
 
@@ -61,12 +62,18 @@ export default async function ShowsPage() {
                   </span>
                 </td>
                 <td className="px-4 py-2.5 text-right">
-                  <Link
-                    href={`/admin/shows/new?id=${i}`}
-                    className="font-body text-xs text-text-muted hover:text-accent transition-colors"
-                  >
-                    Edit
-                  </Link>
+                  <div className="flex items-center justify-end gap-3">
+                    <Link
+                      href={`/admin/shows/new?id=${i}`}
+                      className="font-body text-xs text-text-muted hover:text-accent transition-colors"
+                    >
+                      Edit
+                    </Link>
+                    <DeleteShowButton
+                      index={i}
+                      label={`${s.venue}, ${s.city}`}
+                    />
+                  </div>
                 </td>
               </tr>
             ))}
