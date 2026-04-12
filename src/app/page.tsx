@@ -1,4 +1,6 @@
 import { Play } from "lucide-react";
+import { getFeedItems } from "@/lib/feed";
+import Feed from "@/components/feed/feed";
 
 const STATS = [
   { number: "25+", label: "Years Active" },
@@ -20,7 +22,9 @@ const STREAM_LINKS = [
   { label: "Apple Music", href: "#" },
 ];
 
-export default function Home() {
+export default async function Home() {
+  const feedItems = await getFeedItems(20);
+
   return (
     <>
       {/* Hero */}
@@ -105,25 +109,14 @@ export default function Home() {
         ))}
       </section>
 
-      {/* Feed placeholder */}
+      {/* Feed */}
       <section className="px-6 md:px-12 py-12" aria-label="Feed">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6">
           <h2 className="font-body text-[13px] font-bold uppercase tracking-[0.12em] text-text-faint">
             Feed
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="bg-bg-card rounded-lg border border-border p-8 hover:border-border-hover hover:-translate-y-1 transition-all duration-150"
-            >
-              <p className="font-mono text-xs text-text-faint uppercase tracking-wider">
-                Feed card placeholder {i}
-              </p>
-            </div>
-          ))}
-        </div>
+        <Feed items={feedItems} />
       </section>
     </>
   );
