@@ -39,9 +39,20 @@ export default async function Home() {
           aria-hidden="true"
         />
 
-        <div className="relative z-10 grid grid-cols-1 md:grid-cols-[3fr_2fr] items-end gap-8 md:gap-12">
-          {/* Text — second on mobile (artwork first), first on desktop */}
-          <div className="order-2 md:order-1">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-[2fr_3fr] items-center gap-8 md:gap-12">
+          {/* Artwork — left on desktop, top on mobile */}
+          {latest?.artwork && (
+            <div className="order-1 flex justify-center">
+              <img
+                src={latest.artwork}
+                alt={`${latest.title} by ${latest.artist}`}
+                className="w-full md:w-full aspect-square rounded-lg shadow-2xl object-cover"
+              />
+            </div>
+          )}
+
+          {/* Text — right on desktop, below on mobile */}
+          <div className="order-2">
             <p className="font-mono text-[13px] font-medium uppercase tracking-[0.2em] text-accent mb-4 md:mb-5">
               New Release / {latest?.year ?? 2026}
             </p>
@@ -84,16 +95,6 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Artwork — centered in column, visible on all screens */}
-          {latest?.artwork && (
-            <div className="order-1 md:order-2 flex justify-center md:justify-center">
-              <img
-                src={latest.artwork}
-                alt={`${latest.title} by ${latest.artist}`}
-                className="w-full md:w-full aspect-square rounded-lg shadow-2xl object-cover"
-              />
-            </div>
-          )}
         </div>
       </section>
 
