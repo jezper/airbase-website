@@ -31,8 +31,8 @@ export default async function ShowsPage() {
         </h1>
         <p className="font-body text-[15px] text-text-muted mb-16 max-w-prose">
           {upcoming.length > 0
-            ? `${upcoming.length} upcoming. ${past.length} in the archive.`
-            : `${past.length} shows in the archive.`}
+            ? `${upcoming.length} upcoming. Plus highlights from two decades of shows.`
+            : "Highlights from two decades of shows."}
         </p>
 
         {/* Upcoming */}
