@@ -162,7 +162,7 @@ export default async function Home() {
                 {heroShow.city}, {heroShow.country}
               </p>
               {isUpcoming && (
-                <a href="#" className="inline-block font-body text-[13px] font-bold uppercase tracking-[0.1em] px-6 py-3 rounded-sm transition-colors"
+                <a href="#" className="inline-block font-body text-[13px] font-bold uppercase tracking-[0.1em] px-6 py-3 rounded-sm transition-opacity hover:opacity-85"
                   style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}>
                   Tickets
                 </a>

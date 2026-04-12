@@ -103,7 +103,7 @@ export default async function ShowsPage() {
                           href={show.ticketLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 rounded-sm transition-colors"
+                          className="inline-block font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 rounded-sm transition-opacity hover:opacity-85"
                           style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}
                         >
                           Tickets
@@ -114,7 +114,7 @@ export default async function ShowsPage() {
                           href={show.eventLink}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-block font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 rounded-sm border transition-colors"
+                          className="inline-block font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 rounded-sm border transition-colors hover:bg-[rgba(196,168,124,0.1)]"
                           style={{ borderColor: "var(--gd)", color: "var(--gd)" }}
                         >
                           Event Page
@@ -181,14 +181,14 @@ export default async function ShowsPage() {
                           <div className="flex gap-2 mt-2">
                             {show.ticketLink && show.status === "upcoming" && (
                               <a href={show.ticketLink} target="_blank" rel="noopener noreferrer"
-                                className="font-body text-[11px] font-bold uppercase tracking-[0.08em] px-3 py-1 rounded-sm transition-colors"
+                                className="font-body text-[11px] font-bold uppercase tracking-[0.08em] px-3 py-1 rounded-sm transition-opacity hover:opacity-85"
                                 style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}>
                                 Tickets
                               </a>
                             )}
                             {show.eventLink && (
                               <a href={show.eventLink} target="_blank" rel="noopener noreferrer"
-                                className="font-body text-[11px] font-bold uppercase tracking-[0.08em] px-3 py-1 rounded-sm border transition-colors"
+                                className="font-body text-[11px] font-bold uppercase tracking-[0.08em] px-3 py-1 rounded-sm border transition-colors hover:bg-[rgba(196,168,124,0.1)]"
                                 style={{ borderColor: "var(--gd)", color: "var(--gd)" }}>
                                 Event
                               </a>
