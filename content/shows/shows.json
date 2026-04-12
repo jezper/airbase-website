@@ -257,7 +257,26 @@
     "year_approx": null,
     "event": "Luminosity Beach Festival",
     "notes": null,
-    "notes": "Played with Estiva, Alex M.O.R.P.H., Ronski Speed, Cor Fijneman, Stoneface & Terminal.",
+    "status": "past"
+  },
+  {
+    "venue": "Luminosity Beach Festival",
+    "city": "Bloemendaal",
+    "country": "Netherlands",
+    "date": "2017-06-24",
+    "year_approx": null,
+    "event": "Luminosity Beach Festival",
+    "notes": null,
+    "status": "past"
+  },
+  {
+    "venue": "Luminosity Beach Festival",
+    "city": "Bloemendaal",
+    "country": "Netherlands",
+    "date": "2023-06-25",
+    "year_approx": null,
+    "event": "Luminosity Beach Festival",
+    "notes": null,
     "status": "past"
   },
   {
