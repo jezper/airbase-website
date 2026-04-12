@@ -47,6 +47,7 @@ export default async function ShowsPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-border bg-bg-card">
+              <th className="px-4 py-3 w-12"></th>
               <th className="text-left font-body text-xs font-semibold text-text-faint uppercase tracking-wider px-4 py-3">Date</th>
               <th className="text-left font-body text-xs font-semibold text-text-faint uppercase tracking-wider px-4 py-3">Venue</th>
               <th className="text-left font-body text-xs font-semibold text-text-faint uppercase tracking-wider px-4 py-3 hidden sm:table-cell">Location</th>
@@ -59,6 +60,13 @@ export default async function ShowsPage() {
               const i = s._originalIndex;
               return (
               <tr key={i} className="border-b border-border last:border-0 hover:bg-bg-card/50 transition-colors">
+                <td className="px-4 py-2.5 w-12">
+                  {s.image ? (
+                    <img src={s.image} alt="" className="w-10 h-10 rounded object-cover" />
+                  ) : (
+                    <div className="w-10 h-10 rounded bg-bg-elevated" />
+                  )}
+                </td>
                 <td className="px-4 py-2.5">
                   <span className="font-mono text-xs text-text-muted">{s.date ?? s.year_approx ?? "TBC"}</span>
                 </td>
