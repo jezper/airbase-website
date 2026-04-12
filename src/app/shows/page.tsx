@@ -100,7 +100,7 @@ export default async function ShowsPage() {
             <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-text-faint mb-8">
               Archive
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
+            <div className="flex flex-col max-w-prose">
               {past.map((show, i) => {
                 const date = formatDate(show.date);
                 return (
