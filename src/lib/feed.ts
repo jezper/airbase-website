@@ -41,6 +41,7 @@ const SAMPLE_POSTS: Post[] = [
     date: "2026-01-15",
     body: "Heading back to the beach. Luminosity in June. Full live set. Can't wait.",
     showRef: "luminosity-beach-festival-2026",
+    featured: true,
   },
 ];
 
