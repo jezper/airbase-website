@@ -20,8 +20,9 @@ export default async function AboutPage() {
           className={[
             "font-body text-[17px] leading-relaxed text-text space-y-6",
             "[&>h1]:font-display [&>h1]:text-3xl [&>h1]:font-black [&>h1]:mt-12 [&>h1]:mb-4",
+            "[&>h1]:hidden",
             "[&>p]:text-text-muted",
-            "[&>p:first-child]:text-text [&>p:first-child]:text-[19px] [&>p:first-child]:leading-relaxed",
+            "[&>p:first-of-type]:text-text [&>p:first-of-type]:text-[19px] [&>p:first-of-type]:leading-relaxed",
             "[&>em]:text-text [&>p>em]:text-text",
             "[&>p>a]:text-accent [&>p>a]:underline [&>p>a]:underline-offset-2 [&>p>a]:hover:text-accent-hover",
           ].join(" ")}
