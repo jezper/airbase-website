@@ -90,7 +90,7 @@ export default async function Home() {
               <img
                 src={latest.artwork}
                 alt={`${latest.title} by ${latest.artist}`}
-                className="w-48 sm:w-56 md:w-full aspect-square rounded-lg shadow-2xl object-cover"
+                className="w-full md:w-full aspect-square rounded-lg shadow-2xl object-cover"
               />
             </div>
           )}
