@@ -322,19 +322,10 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
             )}
           </div>
 
-          {/* URL fallback */}
-          <div>
-            <label className="block font-body text-xs font-medium text-text-muted mb-1">
-              Or enter URL manually
-            </label>
-            <input
-              type="url"
-              value={artwork}
-              onChange={(e) => setArtwork(e.target.value)}
-              placeholder="https://..."
-              className={inputClass}
-            />
-          </div>
+          {/* Current path (read-only info) */}
+          {artwork && (
+            <p className="font-mono text-[11px] text-text-faint">{artwork}</p>
+          )}
         </div>
       </div>
 
