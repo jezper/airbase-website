@@ -1,0 +1,41 @@
+[
+  {
+    "type": "note",
+    "date": "2026-04-10",
+    "body": "Just finished a new sketch in the studio. Something different this time. Pushing the tempo, pushing the melody. Emotion first, details later."
+  },
+  {
+    "type": "note",
+    "date": "2026-03-15",
+    "body": "Listening back to old Ozone tracks. The naivety in those productions is what made them work. You can't fake that energy."
+  },
+  {
+    "type": "note",
+    "date": "2026-02-06",
+    "body": "It's out. Everything Else Could Wait, on Black Hole Recordings. A track about choosing presence over productivity. The title says it all.",
+    "releaseRef": "everything-else-could-wait",
+    "featured": true
+  },
+  {
+    "type": "article",
+    "date": "2026-02-10",
+    "title": "People didn't fall in love with perfect production",
+    "body": "An in-depth conversation with Beatportal about the return, the hiatus, and why melody still wins.",
+    "excerpt": "An in-depth conversation with Beatportal about the return, the hiatus, and why melody still wins.",
+    "slug": "beatportal-interview-2026",
+    "releaseRef": "everything-else-could-wait"
+  },
+  {
+    "type": "note",
+    "date": "2026-01-20",
+    "body": "Tomorrowland confirmed for August. See you there.",
+    "showRef": "tomorrowland-2026"
+  },
+  {
+    "type": "note",
+    "date": "2026-01-15",
+    "body": "Heading back to the beach. Luminosity in June. Full live set. Can't wait.",
+    "showRef": "luminosity-beach-festival-2026",
+    "featured": true
+  }
+]

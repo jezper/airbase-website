@@ -1,14 +1,12 @@
 import { promises as fs } from "fs";
 import path from "path";
 import type { Show } from "@/types/content";
+import { showSlug } from "./show-utils";
+
+// Re-export pure utility (no fs dependency) so consumers can import from shows.ts
+export { showSlug } from "./show-utils";
 
 const DATA_PATH = path.join(process.cwd(), "content/shows/shows.json");
-
-export function showSlug(show: Show): string {
-  const name = (show.event ?? show.venue).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-  const year = show.date ? new Date(show.date).getFullYear() : show.year_approx ?? "unknown";
-  return `${name}-${year}`;
-}
 
 export async function getShowBySlug(slug: string): Promise<Show | undefined> {
   const shows = await getAllShows();
