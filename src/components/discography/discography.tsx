@@ -128,42 +128,59 @@ export default function Discography({ releases, aliases, remixedArtists }: Disco
   }
 
   const isFiltered = activeAlias !== null || activeRemixed !== null || activeType !== null;
+  const [showAliases, setShowAliases] = useState(false);
+  const [showRemixed, setShowRemixed] = useState(false);
 
   return (
     <div>
       {/* Alias filter */}
       <div className="mb-4">
-        <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint mb-2">
+        <button
+          type="button"
+          onClick={() => setShowAliases((v) => !v)}
+          className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint mb-2 flex items-center gap-1.5 hover:text-text-muted transition-colors"
+        >
           My Aliases
-        </p>
-        <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by alias">
-          <Pill
-            label="All"
-            count={releases.length}
-            active={activeAlias === null && activeRemixed === null}
-            onClick={() => { setActiveAlias(null); setActiveRemixed(null); setActiveType(null); }}
-          />
-          {aliases.map((alias) => {
-            const count = aliasCounts.get(alias) ?? 0;
-            if (count === 0) return null;
-            return (
-              <Pill
-                key={alias}
-                label={alias}
-                count={count}
-                active={activeAlias === alias}
-                onClick={() => handleAliasClick(alias)}
-              />
-            );
-          })}
-        </div>
+          {activeAlias && <span className="text-accent">: {activeAlias}</span>}
+          <span className="text-[9px]">{showAliases ? "▲" : "▼"}</span>
+        </button>
+        {showAliases && (
+          <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by alias">
+            <Pill
+              label="All"
+              count={releases.length}
+              active={activeAlias === null && activeRemixed === null}
+              onClick={() => { setActiveAlias(null); setActiveRemixed(null); setActiveType(null); }}
+            />
+            {aliases.map((alias) => {
+              const count = aliasCounts.get(alias) ?? 0;
+              if (count === 0) return null;
+              return (
+                <Pill
+                  key={alias}
+                  label={alias}
+                  count={count}
+                  active={activeAlias === alias}
+                  onClick={() => handleAliasClick(alias)}
+                />
+              );
+            })}
+          </div>
+        )}
       </div>
 
       {/* Remixed artists filter */}
       <div className="mb-4">
-        <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint mb-2">
+        <button
+          type="button"
+          onClick={() => setShowRemixed((v) => !v)}
+          className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint mb-2 flex items-center gap-1.5 hover:text-text-muted transition-colors"
+        >
           Remixed
-        </p>
+          {activeRemixed && <span className="text-gold">: {activeRemixed}</span>}
+          <span className="text-[9px]">{showRemixed ? "▲" : "▼"}</span>
+        </button>
+        {showRemixed && (
         <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter by remixed artist">
           {remixedArtists.map((artist) => {
             const count = remixedCounts.get(artist) ?? 0;
@@ -181,6 +198,7 @@ export default function Discography({ releases, aliases, remixedArtists }: Disco
             );
           })}
         </div>
+        )}
       </div>
 
       {/* Type filter */}
