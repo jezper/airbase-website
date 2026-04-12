@@ -25,7 +25,7 @@ export default async function ShowsPage() {
 
   return (
     <div className="px-6 md:px-12 py-12 max-w-content mx-auto">
-      <div className="max-w-prose mx-auto md:mx-0 md:max-w-none">
+      <div>
         <h1 className="font-display text-5xl md:text-6xl font-black leading-tight mb-2">
           Shows
         </h1>
@@ -134,7 +134,7 @@ export default async function ShowsPage() {
             <h2 className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-text-faint mb-8">
               Archive
             </h2>
-            <div className="flex flex-col max-w-prose">
+            <div className="flex flex-col">
               {past.map((show, i) => {
                 const date = formatDate(show.date);
                 return (
@@ -176,6 +176,24 @@ export default async function ShowsPage() {
                           <p className="font-body text-[12px] text-text-faint mt-1">
                             {show.notes}
                           </p>
+                        )}
+                        {(show.eventLink || (show.ticketLink && show.status === "upcoming")) && (
+                          <div className="flex gap-2 mt-2">
+                            {show.ticketLink && show.status === "upcoming" && (
+                              <a href={show.ticketLink} target="_blank" rel="noopener noreferrer"
+                                className="font-body text-[11px] font-bold uppercase tracking-[0.08em] px-3 py-1 rounded-sm transition-colors"
+                                style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}>
+                                Tickets
+                              </a>
+                            )}
+                            {show.eventLink && (
+                              <a href={show.eventLink} target="_blank" rel="noopener noreferrer"
+                                className="font-body text-[11px] font-bold uppercase tracking-[0.08em] px-3 py-1 rounded-sm border transition-colors"
+                                style={{ borderColor: "var(--gd)", color: "var(--gd)" }}>
+                                Event
+                              </a>
+                            )}
+                          </div>
                         )}
                       </div>
                       <span className="font-mono text-[11px] text-text-faint shrink-0 pt-1">
