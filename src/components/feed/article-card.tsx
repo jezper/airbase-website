@@ -26,47 +26,32 @@ export default function ArticleCard({ date, data }: ArticleCardProps) {
 
   return (
     <article
-      className="bg-bg-card rounded-lg border border-border hover:border-border-hover hover:-translate-y-1 transition-all duration-150 overflow-hidden group"
+      className="py-6 border-t group"
+      style={{ borderColor: "var(--bd-section)" }}
       aria-label={`Article: ${title}`}
     >
-      {/* Optional cover image */}
-      {coverImage && (
-        <img
-          src={coverImage}
-          alt=""
-          className="w-full h-40 object-cover"
-          loading="lazy"
-        />
-      )}
+      <time
+        dateTime={date}
+        className="font-mono text-[11px] uppercase tracking-[0.12em] text-text-faint block mb-3"
+      >
+        {formatDisplayDate(date)}
+      </time>
 
-      <div className="p-5 space-y-3">
-        {/* Date */}
-        <time
-          dateTime={date}
-          className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint block"
-        >
-          {formatDisplayDate(date)}
-        </time>
+      <h3 className="font-display text-2xl sm:text-3xl font-black leading-tight text-text group-hover:text-accent transition-colors duration-150 mb-3">
+        {title}
+      </h3>
 
-        {/* Title */}
-        <h3 className="font-display text-xl font-bold leading-tight text-text group-hover:text-accent transition-colors duration-150">
-          {title}
-        </h3>
+      <p className="font-body text-[16px] text-text-muted leading-relaxed mb-4 max-w-[600px]">
+        {excerpt}
+      </p>
 
-        {/* Excerpt */}
-        <p className="font-body text-[15px] text-text-muted leading-relaxed line-clamp-3">
-          {excerpt}
-        </p>
-
-        {/* Read link */}
-        <a
-          href={`/feed/${slug}`}
-          className="inline-block font-body text-[13px] font-bold uppercase tracking-[0.08em] text-accent hover:text-accent-hover transition-colors duration-150"
-          aria-label={`Read full article: ${title}`}
-        >
-          Read more &rarr;
-        </a>
-      </div>
+      <a
+        href={`/feed/${slug}`}
+        className="font-body text-[13px] font-bold uppercase tracking-[0.08em] text-accent hover:text-accent-hover transition-colors duration-150"
+        aria-label={`Read full article: ${title}`}
+      >
+        Read &rarr;
+      </a>
     </article>
   );
 }
