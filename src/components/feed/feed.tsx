@@ -53,7 +53,7 @@ export default function Feed({ items }: FeedProps) {
           No posts to show right now.
         </p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-col gap-4 max-w-prose mx-auto">
           {filtered.map((item, index) => {
             if (item.type === "release") {
               return (
