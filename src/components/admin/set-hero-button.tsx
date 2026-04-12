@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Star } from "lucide-react";
 
 interface SetHeroButtonProps {
-  type: "release" | "post" | "custom";
+  type: "release" | "post" | "show" | "custom";
   index: number;
   isCurrentHero: boolean;
 }
@@ -23,6 +23,7 @@ export function SetHeroButton({ type, index, isCurrentHero }: SetHeroButtonProps
           type,
           ...(type === "release" ? { releaseIndex: index } : {}),
           ...(type === "post" ? { postIndex: index } : {}),
+          ...(type === "show" ? { showIndex: index } : {}),
         },
       };
       // Write directly via the settings action

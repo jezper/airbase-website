@@ -1,6 +1,7 @@
 import { Play } from "lucide-react";
 import { getFeedItems } from "@/lib/feed";
 import { getAllReleases } from "@/lib/releases";
+import { getAllShows } from "@/lib/shows";
 import { readSiteConfig, readPosts } from "@/lib/content-writer";
 import Feed from "@/components/feed/feed";
 
@@ -12,9 +13,10 @@ const STATS = [
 ];
 
 export default async function Home() {
-  const [feedItems, releases, posts, siteConfig] = await Promise.all([
+  const [feedItems, releases, shows, posts, siteConfig] = await Promise.all([
     getFeedItems(20),
     getAllReleases(),
+    getAllShows(),
     readPosts(),
     readSiteConfig(),
   ]);
@@ -22,11 +24,14 @@ export default async function Home() {
   const hero = siteConfig.hero;
   const heroRelease = hero.type === "release" ? (releases[hero.releaseIndex ?? 0] ?? releases[0]) : null;
   const heroPost = hero.type === "post" ? posts[hero.postIndex ?? 0] : null;
+  const heroShow = hero.type === "show" ? shows[hero.showIndex ?? 0] : null;
 
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[85vh] flex flex-col justify-end px-6 md:px-12 pb-16 md:pb-20 overflow-hidden">
+      <section className={`relative flex flex-col justify-end px-6 md:px-12 pb-16 md:pb-20 overflow-hidden ${
+        heroRelease ? "min-h-[85vh]" : "pt-32 md:pt-48 pb-16 md:pb-20"
+      }`}>
         {/* Ambient glow */}
         <div
           className="absolute -top-[30%] -right-[20%] w-[80%] h-[140%] rounded-full pointer-events-none blur-[60px] motion-safe:animate-glow-breathe"
@@ -131,6 +136,41 @@ export default async function Home() {
           </div>
         )}
 
+        {/* Show hero — gold accent, date, venue, tickets */}
+        {heroShow && (() => {
+          const isUpcoming = heroShow.status === "upcoming";
+          const d = heroShow.date ? new Date(heroShow.date) : null;
+          return (
+            <div className="relative z-10 max-w-content mx-auto">
+              {heroShow.image && (
+                <div className="mb-8">
+                  <img src={heroShow.image} alt={`${heroShow.event ?? heroShow.venue} flyer`}
+                    className="w-full max-w-md rounded-lg shadow-2xl object-cover" />
+                </div>
+              )}
+              {isUpcoming && (
+                <p className="font-mono text-[13px] font-medium uppercase tracking-[0.2em] mb-4 md:mb-5"
+                  style={{ color: "var(--gd)" }}>
+                  Upcoming{d ? ` / ${d.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}` : ""}
+                </p>
+              )}
+              <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black leading-tight mb-3">
+                {heroShow.event ?? heroShow.venue}
+              </h1>
+              <p className="font-body text-lg text-text-muted mb-6">
+                {heroShow.event && heroShow.event !== heroShow.venue ? `${heroShow.venue} — ` : ""}
+                {heroShow.city}, {heroShow.country}
+              </p>
+              {isUpcoming && (
+                <a href="#" className="inline-block font-body text-[13px] font-bold uppercase tracking-[0.1em] px-6 py-3 rounded-sm transition-colors"
+                  style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}>
+                  Tickets
+                </a>
+              )}
+            </div>
+          );
+        })()}
+
         {/* Custom hero */}
         {hero.type === "custom" && (
           <div className="relative z-10 max-w-content mx-auto">
@@ -148,8 +188,8 @@ export default async function Home() {
           </div>
         )}
 
-        {/* Fallback — no hero configured */}
-        {!heroRelease && !heroPost && hero.type !== "custom" && (
+        {/* Fallback */}
+        {!heroRelease && !heroPost && !heroShow && hero.type !== "custom" && (
           <div className="relative z-10 max-w-content mx-auto">
             <h1 className="font-display text-hero font-black leading-hero tracking-hero">
               Airbase

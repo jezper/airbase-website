@@ -33,6 +33,7 @@ export default async function ReleasesPage() {
         <table className="w-full">
           <thead>
             <tr className="border-b border-border bg-bg-card">
+              <th className="px-4 py-3 w-12"></th>
               <th className="text-left font-body text-xs font-semibold text-text-faint uppercase tracking-wider px-4 py-3">Year</th>
               <th className="text-left font-body text-xs font-semibold text-text-faint uppercase tracking-wider px-4 py-3">Artist</th>
               <th className="text-left font-body text-xs font-semibold text-text-faint uppercase tracking-wider px-4 py-3">Title</th>
@@ -46,6 +47,13 @@ export default async function ReleasesPage() {
               const isUpcoming = r.date > new Date().toISOString().slice(0, 10);
               return (
               <tr key={i} className="border-b border-border last:border-0 hover:bg-bg-card/50 transition-colors">
+                <td className="px-4 py-2.5 w-12">
+                  {r.artwork ? (
+                    <img src={r.artwork} alt="" className="w-10 h-10 rounded object-cover" />
+                  ) : (
+                    <div className="w-10 h-10 rounded bg-bg-elevated" />
+                  )}
+                </td>
                 <td className="px-4 py-2.5">
                   <span className="font-mono text-xs text-text-muted">{r.year}</span>
                   {isUpcoming && (

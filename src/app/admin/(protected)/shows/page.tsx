@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
-import { readShows } from "@/lib/content-writer";
+import { readShows, readSiteConfig } from "@/lib/content-writer";
 import { DeleteShowButton } from "@/components/admin/delete-show-button";
+import { SetHeroButton } from "@/components/admin/set-hero-button";
 
 export const dynamic = "force-dynamic";
 
@@ -12,7 +13,8 @@ const STATUS_COLORS: Record<string, string> = {
 };
 
 export default async function ShowsPage() {
-  const shows = await readShows();
+  const [shows, siteConfig] = await Promise.all([readShows(), readSiteConfig()]);
+  const heroShowIndex = siteConfig.hero.type === "show" ? (siteConfig.hero.showIndex ?? -1) : -1;
 
   return (
     <div className="p-8 max-w-4xl">
@@ -63,6 +65,7 @@ export default async function ShowsPage() {
                 </td>
                 <td className="px-4 py-2.5 text-right">
                   <div className="flex items-center justify-end gap-3">
+                    <SetHeroButton type="show" index={i} isCurrentHero={heroShowIndex === i} />
                     <Link
                       href={`/admin/shows/new?id=${i}`}
                       className="font-body text-xs text-text-muted hover:text-accent transition-colors"

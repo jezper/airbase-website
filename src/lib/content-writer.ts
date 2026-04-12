@@ -102,9 +102,10 @@ export async function writePress(items: PressFeature[]): Promise<void> {
 /* ── Site Config ── */
 
 export interface HeroConfig {
-  type: "release" | "post" | "custom";
+  type: "release" | "post" | "show" | "custom";
   releaseIndex?: number;
   postIndex?: number;
+  showIndex?: number;
   title?: string;
   subtitle?: string;
   image?: string;

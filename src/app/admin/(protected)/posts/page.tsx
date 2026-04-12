@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Plus, FileText, AlignLeft } from "lucide-react";
-import { readPosts } from "@/lib/content-writer";
+import { readPosts, readSiteConfig } from "@/lib/content-writer";
 import { DeletePostButton } from "@/components/admin/delete-post-button";
+import { SetHeroButton } from "@/components/admin/set-hero-button";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +22,8 @@ function truncate(str: string, max: number) {
 }
 
 export default async function PostsPage() {
-  const posts = await readPosts();
+  const [posts, siteConfig] = await Promise.all([readPosts(), readSiteConfig()]);
+  const heroPostIndex = siteConfig.hero.type === "post" ? (siteConfig.hero.postIndex ?? -1) : -1;
 
   return (
     <div className="p-8 max-w-4xl">
@@ -99,6 +101,7 @@ export default async function PostsPage() {
                   </td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex items-center justify-end gap-3">
+                      <SetHeroButton type="post" index={i} isCurrentHero={heroPostIndex === i} />
                       <Link
                         href={`/admin/posts/new?id=${i}`}
                         className="font-body text-xs text-text-muted hover:text-accent transition-colors"
