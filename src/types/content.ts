@@ -58,50 +58,28 @@ export interface MDXPage {
   frontmatter: Record<string, unknown>;
 }
 
-/* ── Feed Post Types (for Phase 3) ── */
+/* ── Post (authored feed content) ── */
 
-export type PostType = "note" | "article" | "release" | "show" | "mix";
+export type PostType = "note" | "article";
 
-export interface FeedPost {
+export interface Post {
   type: PostType;
   date: string;
-  slug: string;
+  body: string;
+  title?: string;        // articles have titles
+  excerpt?: string;      // articles have excerpts
+  slug?: string;         // articles have slugs for URLs
+  image?: string;        // optional image
+  link?: string;         // optional external link
+  linkLabel?: string;    // label for the link
+  releaseRef?: string;   // slug of a referenced release (enriches the card)
+  showRef?: string;      // slug of a referenced show (enriches the card)
 }
 
-/* ── Feed Items (unified feed stream) ── */
+/* ── Feed Item (post + resolved references) ── */
 
-export interface FeedRelease {
-  type: "release";
-  date: string;
-  data: Release;
+export interface FeedItem {
+  post: Post;
+  release?: Release;     // resolved from releaseRef
+  show?: Show;           // resolved from showRef
 }
-
-export interface FeedShow {
-  type: "show";
-  date: string;
-  data: Show;
-}
-
-export interface FeedNote {
-  type: "note";
-  date: string;
-  data: {
-    body: string;
-    image?: string;
-    link?: string;
-    linkLabel?: string;
-  };
-}
-
-export interface FeedArticle {
-  type: "article";
-  date: string;
-  data: {
-    title: string;
-    excerpt: string;
-    slug: string;
-    coverImage?: string;
-  };
-}
-
-export type FeedItem = FeedRelease | FeedShow | FeedNote | FeedArticle;

@@ -18,10 +18,19 @@ Four project skills. The hierarchy matters:
 @./docs/ADMIN-SPEC.md
 @./docs/BUILD-GUIDE.md
 
+## Content Model
+
+Releases and shows are **standalone entities** managed separately from the feed. Posts (notes, articles) are authored content that can optionally **reference** a release or show, which enriches the post card with artwork, links, dates, etc.
+
+- A release exists in the discography whether or not anyone posts about it
+- Multiple posts can reference the same release (teaser, announcement, reactions)
+- The discography page reads from release entities, not from posts
+- Same pattern for shows
+
 ## Content Data (content/, mirrors production)
 
-- `content/releases/discography.json` — Complete discography, 100+ entries (2001-2026)
-- `content/shows/shows.json` — Seed data for historical performances
+- `content/releases/discography.json` — Complete discography, 100+ entries (2001-2026). Standalone entities.
+- `content/shows/shows.json` — Seed data for historical performances. Standalone entities.
 - `content/press/press.json` — Initial press features
 - `content/pages/about.mdx` — Rewritten bio
 

@@ -9,3 +9,4 @@
 {"source":"user-event","type":"click","text":"Terra","choice":"terracotta","id":null,"timestamp":1775986236894}
 {"source":"user-event","type":"click","text":"Fire","choice":"fire-orange","id":null,"timestamp":1775986237711}
 {"type":"screen-added","file":"/Users/jezper.lorne/Projects/Code/airbase-website/.superpowers/brainstorm/33032-1775985188/content/waiting.html"}
+{"type":"server-stopped","reason":"idle timeout"}

@@ -1,96 +1,79 @@
 "use client";
 
 import { useState } from "react";
-import type { FeedItem } from "@/types/content";
-import FilterPills, { type FilterType } from "./filter-pills";
-import ReleaseCard from "./release-card";
-import ShowCard from "./show-card";
+import type { FeedItem, Post } from "@/types/content";
 import NoteCard from "./note-card";
 import ArticleCard from "./article-card";
+import ReleaseContext from "./release-context";
+import ShowContext from "./show-context";
 
-interface FeedProps {
-  items: FeedItem[];
-}
+type FilterValue = "all" | Post["type"];
 
-function countByType(items: FeedItem[]): Partial<Record<FilterType, number>> {
-  const counts: Partial<Record<FilterType, number>> = {
-    all: items.length,
-    release: 0,
-    show: 0,
-    note: 0,
-    article: 0,
-  };
-  for (const item of items) {
-    counts[item.type] = (counts[item.type] ?? 0) + 1;
-  }
-  return counts;
-}
+const FILTERS: { value: FilterValue; label: string }[] = [
+  { value: "all", label: "All" },
+  { value: "note", label: "Notes" },
+  { value: "article", label: "Articles" },
+];
 
-export default function Feed({ items }: FeedProps) {
-  const [activeFilter, setActiveFilter] = useState<FilterType>("all");
+export default function Feed({ items }: { items: FeedItem[] }) {
+  const [filter, setFilter] = useState<FilterValue>("all");
 
-  const counts = countByType(items);
-
-  const filtered =
-    activeFilter === "all"
-      ? items
-      : items.filter((item) => item.type === activeFilter);
+  const filtered = filter === "all"
+    ? items
+    : items.filter((item) => item.post.type === filter);
 
   return (
-    <div>
-      {/* Filter pills */}
-      <div className="mb-6">
-        <FilterPills
-          active={activeFilter}
-          onChange={setActiveFilter}
-          counts={counts}
-        />
+    <section className="px-6 md:px-12 py-12" aria-label="Feed">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
+        <h2 className="font-body text-[13px] font-bold uppercase tracking-[0.12em] text-text-faint">
+          Feed
+        </h2>
+        <div className="flex gap-1.5 overflow-x-auto">
+          {FILTERS.map((f) => (
+            <button
+              key={f.value}
+              onClick={() => setFilter(f.value)}
+              className={`font-mono text-[11px] uppercase tracking-[0.06em] px-4 py-1.5 rounded whitespace-nowrap transition-all duration-120 ${
+                filter === f.value
+                  ? "text-accent border border-transparent"
+                  : "text-text-faint border border-border hover:border-border-hover hover:text-text-muted"
+              }`}
+              style={filter === f.value ? {
+                backgroundColor: "rgba(232,93,38,0.12)",
+                borderColor: "rgba(232,93,38,0.3)",
+              } : undefined}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Feed grid */}
-      {filtered.length === 0 ? (
-        <p className="font-body text-[15px] text-text-faint py-12 text-center">
-          No posts to show right now.
-        </p>
-      ) : (
-        <div className="flex flex-col gap-4 max-w-prose mx-auto">
-          {filtered.map((item, index) => {
-            if (item.type === "release") {
-              return (
-                <div key={`release-${item.data.title}-${item.date}-${index}`}>
-                  <ReleaseCard release={item.data} />
-                </div>
-              );
-            }
+      <div className="flex flex-col gap-6 max-w-prose mx-auto">
+        {filtered.length === 0 ? (
+          <p className="text-center text-text-faint font-body py-16">
+            No posts to show right now.
+          </p>
+        ) : (
+          filtered.map((item, i) => (
+            <div key={`${item.post.type}-${item.post.date}-${i}`}>
+              {/* Referenced release context (artwork + links) */}
+              {item.release && <ReleaseContext release={item.release} />}
 
-            if (item.type === "show") {
-              return (
-                <div key={`show-${item.data.venue}-${item.date}-${index}`}>
-                  <ShowCard show={item.data} date={item.date} />
-                </div>
-              );
-            }
+              {/* Referenced show context */}
+              {item.show && <ShowContext show={item.show} />}
 
-            if (item.type === "note") {
-              return (
-                <div key={`note-${item.date}-${index}`}>
-                  <NoteCard date={item.date} data={item.data} />
-                </div>
-              );
-            }
-
-            if (item.type === "article") {
-              return (
-                <div key={`article-${item.data.slug}-${index}`}>
-                  <ArticleCard date={item.date} data={item.data} />
-                </div>
-              );
-            }
-
-            return null;
-          })}
-        </div>
-      )}
-    </div>
+              {/* The post itself */}
+              {item.post.type === "note" && (
+                <NoteCard post={item.post} hasContext={!!item.release || !!item.show} />
+              )}
+              {item.post.type === "article" && (
+                <ArticleCard post={item.post} hasContext={!!item.release || !!item.show} />
+              )}
+            </div>
+          ))
+        )}
+      </div>
+    </section>
   );
 }

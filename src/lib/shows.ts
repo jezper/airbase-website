@@ -4,6 +4,17 @@ import type { Show } from "@/types/content";
 
 const DATA_PATH = path.join(process.cwd(), "content/shows/shows.json");
 
+export function showSlug(show: Show): string {
+  const name = (show.event ?? show.venue).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const year = show.date ? new Date(show.date).getFullYear() : show.year_approx ?? "unknown";
+  return `${name}-${year}`;
+}
+
+export async function getShowBySlug(slug: string): Promise<Show | undefined> {
+  const shows = await getAllShows();
+  return shows.find((s) => showSlug(s) === slug);
+}
+
 let cachedShows: Show[] | null = null;
 
 export async function getAllShows(): Promise<Show[]> {

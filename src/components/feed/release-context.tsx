@@ -6,8 +6,7 @@ function ArtworkPlaceholder({ title }: { title: string }) {
     <div
       className="w-full h-full flex items-center justify-center relative overflow-hidden"
       style={{
-        background:
-          "linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 50%, var(--bg) 100%)",
+        background: "linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 50%, var(--bg) 100%)",
       }}
       aria-hidden="true"
     >
@@ -28,7 +27,8 @@ function ArtworkPlaceholder({ title }: { title: string }) {
   );
 }
 
-export default function ReleaseCard({ release }: { release: Release }) {
+/** Displayed above a post that references a release */
+export default function ReleaseContext({ release }: { release: Release }) {
   const { artist, title, type, label, year, artwork, links } = release;
 
   const streamLinks: { label: string; href: string }[] = [
@@ -41,46 +41,30 @@ export default function ReleaseCard({ release }: { release: Release }) {
   ].filter(Boolean) as { label: string; href: string }[];
 
   return (
-    <article
-      className="bg-bg-card rounded-lg border border-border hover:border-border-hover transition-all duration-150 overflow-hidden group"
-      aria-label={`${type}: ${title} by ${artist}`}
-    >
-      {/* Large artwork area */}
-      <div className="w-full aspect-[16/9] relative overflow-hidden">
+    <div className="bg-bg-card rounded-t-lg border border-b-0 border-border overflow-hidden">
+      <div className="w-full aspect-[2.2/1] relative overflow-hidden">
         {artwork ? (
-          <img
-            src={artwork}
-            alt={`${title} by ${artist}`}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
+          <img src={artwork} alt={`${title} by ${artist}`} className="w-full h-full object-cover" loading="lazy" />
         ) : (
           <ArtworkPlaceholder title={title} />
         )}
         <span
           className="absolute top-3 left-3 font-mono text-[10px] font-bold uppercase tracking-[0.1em] px-2.5 py-1 rounded-sm"
-          style={{
-            backgroundColor: "rgba(232,93,38,0.2)",
-            color: "var(--ac)",
-            backdropFilter: "blur(6px)",
-          }}
+          style={{ backgroundColor: "rgba(232,93,38,0.2)", color: "var(--ac)", backdropFilter: "blur(6px)" }}
         >
           {type}
         </span>
       </div>
-
-      {/* Info */}
-      <div className="p-5">
-        <p className="font-body text-[11px] font-bold uppercase tracking-[0.12em] text-text-faint mb-1">
+      <div className="px-5 pt-4 pb-3">
+        <p className="font-body text-[11px] font-bold uppercase tracking-[0.12em] text-text-faint mb-0.5">
           {artist}
         </p>
-        <h3 className="font-display text-2xl sm:text-3xl font-black leading-tight text-text group-hover:text-accent transition-colors duration-150 mb-1">
+        <h3 className="font-display text-2xl sm:text-3xl font-black leading-tight text-text mb-1">
           {title}
         </h3>
-        <p className="font-mono text-[12px] text-text-faint mb-3">
+        <p className="font-mono text-[12px] text-text-faint mb-2">
           {label} &mdash; {year}
         </p>
-
         {streamLinks.length > 0 && (
           <div className="flex flex-wrap gap-x-4 gap-y-1">
             {streamLinks.map((sl) => (
@@ -89,7 +73,7 @@ export default function ReleaseCard({ release }: { release: Release }) {
                 href={sl.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-[12px] font-bold uppercase tracking-[0.06em] text-accent hover:text-accent-hover transition-colors duration-150"
+                className="font-body text-[12px] font-bold uppercase tracking-[0.06em] text-accent hover:text-accent-hover transition-colors"
               >
                 {sl.label}
               </a>
@@ -97,6 +81,6 @@ export default function ReleaseCard({ release }: { release: Release }) {
           </div>
         )}
       </div>
-    </article>
+    </div>
   );
 }

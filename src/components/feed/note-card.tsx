@@ -1,65 +1,44 @@
-interface NoteData {
-  body: string;
-  image?: string;
-  link?: string;
-  linkLabel?: string;
-}
+import type { Post } from "@/types/content";
 
-interface NoteCardProps {
-  date: string;
-  data: NoteData;
-}
-
-function formatDisplayDate(dateStr: string): string {
+function formatDate(dateStr: string): string {
   const d = new Date(dateStr);
   if (isNaN(d.getTime())) return dateStr;
-  return d.toLocaleDateString("en-GB", {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-    timeZone: "UTC",
-  });
+  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }
 
-export default function NoteCard({ date, data }: NoteCardProps) {
-  const { body, image, link, linkLabel } = data;
-
+/** Note card. When hasContext is true, it attaches to the context card above (no top rounding). */
+export default function NoteCard({ post, hasContext }: { post: Post; hasContext?: boolean }) {
   return (
-    <article
-      className="border-l-2 pl-5 py-2"
-      style={{ borderColor: "var(--ac)" }}
-      aria-label="Note"
+    <div
+      className={`border px-5 py-4 ${
+        hasContext
+          ? "bg-bg-card border-border rounded-b-lg"
+          : "border-l-2 border-t-0 border-r-0 border-b-0 pl-5 py-2"
+      }`}
+      style={!hasContext ? { borderLeftColor: "var(--ac)" } : undefined}
     >
       <p className="font-body text-[16px] leading-relaxed text-text">
-        {body}
+        {post.body}
       </p>
 
-      {image && (
-        <img
-          src={image}
-          alt=""
-          className="mt-3 rounded-md w-full object-cover max-h-48"
-          loading="lazy"
-        />
+      {post.image && (
+        <img src={post.image} alt="" className="mt-3 rounded-md w-full object-cover max-h-48" loading="lazy" />
       )}
 
-      {link && (
+      {post.link && (
         <a
-          href={link}
+          href={post.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block mt-2 font-body text-[13px] font-bold uppercase tracking-[0.08em] text-accent hover:text-accent-hover transition-colors duration-150"
+          className="inline-block mt-2 font-body text-[13px] font-bold uppercase tracking-[0.08em] text-accent hover:text-accent-hover transition-colors"
         >
-          {linkLabel ?? "Read more"} &rarr;
+          {post.linkLabel ?? "Read more"} &rarr;
         </a>
       )}
 
-      <time
-        dateTime={date}
-        className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint block mt-3"
-      >
-        {formatDisplayDate(date)}
+      <time dateTime={post.date} className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint block mt-3">
+        {formatDate(post.date)}
       </time>
-    </article>
+    </div>
   );
 }

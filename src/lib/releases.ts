@@ -4,6 +4,13 @@ import type { Release } from "@/types/content";
 
 const DATA_PATH = path.join(process.cwd(), "content/releases/discography.json");
 
+export function releaseSlug(release: Release): string {
+  return release.title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 let cachedReleases: Release[] | null = null;
 
 export async function getAllReleases(): Promise<Release[]> {
@@ -31,6 +38,11 @@ export async function getReleasesByArtist(artist: string): Promise<Release[]> {
   return releases.filter(
     (r) => r.artist.toLowerCase().includes(artist.toLowerCase())
   );
+}
+
+export async function getReleaseBySlug(slug: string): Promise<Release | undefined> {
+  const releases = await getAllReleases();
+  return releases.find((r) => releaseSlug(r) === slug);
 }
 
 export async function getUniqueArtists(): Promise<string[]> {
