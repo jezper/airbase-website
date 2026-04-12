@@ -40,8 +40,8 @@ export default async function Home() {
         />
 
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-[3fr_2fr] items-end gap-8 md:gap-12">
-          {/* Text */}
-          <div>
+          {/* Text — second on mobile (artwork first), first on desktop */}
+          <div className="order-2 md:order-1">
             <p className="font-mono text-[13px] font-medium uppercase tracking-[0.2em] text-accent mb-4 md:mb-5">
               New Release / {latest?.year ?? 2026}
             </p>
@@ -84,13 +84,13 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Artwork — fills the right column, grid constrains the size */}
+          {/* Artwork — centered in column, visible on all screens */}
           {latest?.artwork && (
-            <div className="hidden md:block">
+            <div className="order-1 md:order-2 flex justify-center md:justify-center">
               <img
                 src={latest.artwork}
                 alt={`${latest.title} by ${latest.artist}`}
-                className="w-full aspect-square rounded-lg shadow-2xl object-cover"
+                className="w-48 sm:w-56 md:w-full aspect-square rounded-lg shadow-2xl object-cover"
               />
             </div>
           )}
