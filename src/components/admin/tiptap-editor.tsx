@@ -70,6 +70,7 @@ export function TiptapEditor({ content, onChange, placeholder = "Write something
       }),
     ],
     content,
+    immediatelyRender: false,
     onUpdate({ editor }) {
       onChange(editor.getHTML());
     },
