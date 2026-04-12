@@ -50,6 +50,7 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
   const [notes, setNotes] = useState(initialShow?.notes ?? "");
   const [image, setImage] = useState(initialShow?.image ?? "");
   const [ticketLink, setTicketLink] = useState(initialShow?.ticketLink ?? "");
+  const [eventLink, setEventLink] = useState(initialShow?.eventLink ?? "");
 
   // Image upload
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -118,6 +119,7 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
       notes: notes.trim() || null,
       image: image.trim() || null,
       ticketLink: ticketLink.trim() || null,
+      eventLink: eventLink.trim() || null,
       status,
     };
 
@@ -278,16 +280,27 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
         </div>
       </div>
 
-      {/* Ticket link */}
-      <Field label="Ticket link">
-        <input
-          type="url"
-          value={ticketLink}
-          onChange={(e) => setTicketLink(e.target.value)}
-          placeholder="https://..."
-          className={inputClass}
-        />
-      </Field>
+      {/* Links */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <Field label="Ticket link (upcoming only)">
+          <input
+            type="url"
+            value={ticketLink}
+            onChange={(e) => setTicketLink(e.target.value)}
+            placeholder="https://..."
+            className={inputClass}
+          />
+        </Field>
+        <Field label="Event page link">
+          <input
+            type="url"
+            value={eventLink}
+            onChange={(e) => setEventLink(e.target.value)}
+            placeholder="https://..."
+            className={inputClass}
+          />
+        </Field>
+      </div>
 
       {/* Error */}
       {error && (

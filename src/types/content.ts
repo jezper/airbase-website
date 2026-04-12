@@ -38,6 +38,7 @@ export interface Show {
   notes: string | null;
   image?: string | null;
   ticketLink?: string | null;
+  eventLink?: string | null;
   status: ShowStatus;
 }
 

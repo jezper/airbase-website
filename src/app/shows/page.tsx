@@ -97,17 +97,30 @@ export default async function ShowsPage() {
                         {show.notes}
                       </p>
                     )}
-                    {show.ticketLink && (
-                      <a
-                        href={show.ticketLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block mt-5 font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 rounded-sm transition-colors"
-                        style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}
-                      >
-                        Tickets
-                      </a>
-                    )}
+                    <div className="flex gap-3 mt-5">
+                      {show.ticketLink && show.status === "upcoming" && (
+                        <a
+                          href={show.ticketLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 rounded-sm transition-colors"
+                          style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}
+                        >
+                          Tickets
+                        </a>
+                      )}
+                      {show.eventLink && (
+                        <a
+                          href={show.eventLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 rounded-sm border transition-colors"
+                          style={{ borderColor: "var(--gd)", color: "var(--gd)" }}
+                        >
+                          Event Page
+                        </a>
+                      )}
+                    </div>
                   </article>
                 );
               })}
@@ -147,7 +160,13 @@ export default async function ShowsPage() {
                       )}
                       <div className="flex-1 min-w-0">
                         <h3 className="font-display text-lg font-bold text-text leading-snug">
-                          {show.event ?? show.venue}
+                          {show.eventLink ? (
+                            <a href={show.eventLink} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                              {show.event ?? show.venue}
+                            </a>
+                          ) : (
+                            show.event ?? show.venue
+                          )}
                         </h3>
                         <p className="font-body text-[13px] text-text-muted mt-1">
                           {show.event && show.event !== show.venue ? `${show.venue} — ` : ""}
