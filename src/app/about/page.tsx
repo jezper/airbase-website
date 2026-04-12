@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { renderMDXPage } from "@/lib/mdx";
 
 export const metadata: Metadata = {
-  title: "About — Airbase",
+  title: "About",
   description:
     "Jezper Söderlund, aka Airbase. Swedish trance producer and DJ from Gothenburg, active since the mid-1990s.",
 };

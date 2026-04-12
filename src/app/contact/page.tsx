@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
-  title: "Contact — Airbase",
+  title: "Contact",
   description: "Get in touch with Airbase. Booking inquiries and general contact.",
 };
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getUpcomingShows, getPastShows } from "@/lib/shows";
 
 export const metadata: Metadata = {
-  title: "Shows — Airbase",
+  title: "Shows",
   description: "Upcoming and past performances by Airbase.",
 };
 

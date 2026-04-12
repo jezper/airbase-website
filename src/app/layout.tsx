@@ -6,9 +6,21 @@ import { Footer } from "@/components/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Airbase",
+  title: {
+    default: "Airbase",
+    template: "%s — Airbase",
+  },
   description:
     "Airbase — Swedish trance producer and DJ. 25 years of melody and restraint.",
+  metadataBase: new URL("https://airbasemusic.com"),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Airbase",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

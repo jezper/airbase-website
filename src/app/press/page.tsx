@@ -3,7 +3,7 @@ import { getAllPress } from "@/lib/press";
 import { ArrowUpRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Press — Airbase",
+  title: "Press",
   description: "Press features, interviews, and notable mentions.",
 };
 

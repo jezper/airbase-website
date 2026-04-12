@@ -3,7 +3,7 @@ import { getAllReleases, getOwnAliases, getRemixedArtists } from "@/lib/releases
 import Discography from "@/components/discography/discography";
 
 export const metadata: Metadata = {
-  title: "Discography — Airbase",
+  title: "Discography",
   description: "Complete discography of Airbase (Jezper Söderlund) — 25 years of trance music across 14 aliases.",
 };
 
