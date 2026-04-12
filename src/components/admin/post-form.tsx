@@ -179,11 +179,38 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
             value={body}
             onChange={(e) => setBody(e.target.value)}
             rows={4}
-            placeholder="What's on your mind?"
+            placeholder="What's on your mind? Add a link below to share it."
             className={`${inputClass} resize-y`}
           />
         )}
       </Field>
+
+      {/* Link URL + Link Label (note type only, shown early for easy access) */}
+      {type === "note" && (
+        <>
+          <Field label="Link URL">
+            <input
+              type="url"
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+              placeholder="https://..."
+              className={inputClass}
+            />
+          </Field>
+
+          {link && (
+            <Field label="Link label">
+              <input
+                type="text"
+                value={linkLabel}
+                onChange={(e) => setLinkLabel(e.target.value)}
+                placeholder="e.g. Read more, Listen now..."
+                className={inputClass}
+              />
+            </Field>
+          )}
+        </>
+      )}
 
       {/* Date */}
       <Field label="Date" required>
@@ -231,18 +258,20 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
           />
         </Field>
 
-        <Field label="Link URL">
-          <input
-            type="url"
-            value={link}
-            onChange={(e) => setLink(e.target.value)}
-            placeholder="https://..."
-            className={inputClass}
-          />
-        </Field>
+        {type === "article" && (
+          <Field label="Link URL">
+            <input
+              type="url"
+              value={link}
+              onChange={(e) => setLink(e.target.value)}
+              placeholder="https://..."
+              className={inputClass}
+            />
+          </Field>
+        )}
       </div>
 
-      {link && (
+      {type === "article" && link && (
         <Field label="Link label">
           <input
             type="text"
