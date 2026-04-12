@@ -4,7 +4,7 @@
     "city": "Ibiza",
     "country": "Spain",
     "date": null,
-    "year_approx": "2000s",
+    "year_approx": "2010",
     "event": null,
     "notes": "One of the world's largest nightclubs.",
     "status": "past"
@@ -14,7 +14,17 @@
     "city": "London",
     "country": "United Kingdom",
     "date": null,
-    "year_approx": "2000s",
+    "year_approx": "2010",
+    "event": null,
+    "notes": null,
+    "status": "past"
+  },
+  {
+    "venue": "Royal Highland Park",
+    "city": "Edinburgh",
+    "country": "Scotland",
+    "date": null,
+    "year_approx": "2010",
     "event": null,
     "notes": null,
     "status": "past"
