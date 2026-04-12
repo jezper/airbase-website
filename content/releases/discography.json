@@ -664,7 +664,7 @@
   },
   {
     "year": 2008,
-    "artist": "Tiësto",
+    "artist": "Ti\u00ebsto",
     "title": "Elements Of Life (Airbase Remix)",
     "type": "Remix",
     "label": "Magik Muzik",
@@ -833,7 +833,7 @@
   },
   {
     "year": 2007,
-    "artist": "Tiësto feat. BT",
+    "artist": "Ti\u00ebsto feat. BT",
     "title": "Break My Fall (Airbase Remix)",
     "type": "Remix",
     "label": "Magik Muzik",
@@ -1200,7 +1200,7 @@
     ],
     "links": {},
     "date": "2004-01-01",
-    "artwork": null
+    "artwork": "/artwork/changes.jpg"
   },
   {
     "year": 2004,
@@ -1423,7 +1423,7 @@
   },
   {
     "year": 2003,
-    "artist": "Jezper Söderlund",
+    "artist": "Jezper S\u00f6derlund",
     "title": "Angel",
     "type": "Single",
     "label": "Go For It",
