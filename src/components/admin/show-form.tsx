@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import type { Show, ShowStatus } from "@/types/content";
 import { saveShow } from "@/app/admin/(protected)/shows/actions";
 
@@ -50,8 +51,40 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
   const [image, setImage] = useState(initialShow?.image ?? "");
   const [ticketLink, setTicketLink] = useState("");
 
+  // Image upload
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setUploadError("");
+    try {
+      const slug =
+        [venue, event, date]
+          .filter(Boolean)
+          .join("-")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-|-$/g, "") || "flyer";
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("slug", slug);
+      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Upload failed");
+      setImage(json.path);
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setUploading(false);
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -191,28 +224,69 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
         />
       </Field>
 
-      {/* Image + Ticket link row */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <Field label="Image URL">
-          <input
-            type="url"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-            placeholder="https://..."
-            className={inputClass}
-          />
-        </Field>
+      {/* Flyer / image upload */}
+      <div>
+        <p className="font-body text-sm font-medium text-text-muted mb-3">Flyer / image</p>
+        <div className="space-y-3">
+          {/* Preview */}
+          {image && (
+            <div className="flex items-center gap-3">
+              <Image
+                src={image}
+                alt="Show flyer preview"
+                width={96}
+                height={96}
+                className="w-24 h-24 rounded object-cover border border-border"
+                unoptimized={image.startsWith("http")}
+              />
+              <button
+                type="button"
+                onClick={() => { setImage(""); if (fileInputRef.current) fileInputRef.current.value = ""; }}
+                className="font-body text-xs text-text-faint hover:text-text transition-colors"
+              >
+                Remove
+              </button>
+            </div>
+          )}
 
-        <Field label="Ticket link">
-          <input
-            type="url"
-            value={ticketLink}
-            onChange={(e) => setTicketLink(e.target.value)}
-            placeholder="https://..."
-            className={inputClass}
-          />
-        </Field>
+          {/* File upload */}
+          <div>
+            <label className="block font-body text-xs font-medium text-text-muted mb-1">
+              Upload file
+            </label>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              disabled={uploading}
+              className="bg-bg border border-border rounded px-3 py-2 font-body text-sm text-text w-full file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:font-body file:text-xs file:font-bold file:uppercase file:bg-bg-alt file:text-text-muted hover:file:text-text file:cursor-pointer disabled:opacity-50"
+            />
+            {uploading && (
+              <p className="font-body text-xs text-text-muted mt-1">Uploading...</p>
+            )}
+            {uploadError && (
+              <p className="font-body text-xs text-red-400 mt-1" role="alert">{uploadError}</p>
+            )}
+          </div>
+
+          {/* Current path (read-only info) */}
+          {image && (
+            <p className="font-mono text-[11px] text-text-faint">{image}</p>
+          )}
+        </div>
       </div>
+
+      {/* Ticket link */}
+      <Field label="Ticket link">
+        <input
+          type="url"
+          value={ticketLink}
+          onChange={(e) => setTicketLink(e.target.value)}
+          placeholder="https://..."
+          className={inputClass}
+        />
+      </Field>
 
       {/* Error */}
       {error && (
