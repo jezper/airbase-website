@@ -66,3 +66,41 @@ export interface FeedPost {
   date: string;
   slug: string;
 }
+
+/* ── Feed Items (unified feed stream) ── */
+
+export interface FeedRelease {
+  type: "release";
+  date: string;
+  data: Release;
+}
+
+export interface FeedShow {
+  type: "show";
+  date: string;
+  data: Show;
+}
+
+export interface FeedNote {
+  type: "note";
+  date: string;
+  data: {
+    body: string;
+    image?: string;
+    link?: string;
+    linkLabel?: string;
+  };
+}
+
+export interface FeedArticle {
+  type: "article";
+  date: string;
+  data: {
+    title: string;
+    excerpt: string;
+    slug: string;
+    coverImage?: string;
+  };
+}
+
+export type FeedItem = FeedRelease | FeedShow | FeedNote | FeedArticle;
