@@ -78,5 +78,25 @@
     "event": "Sensation Belgium",
     "notes": "First & Andre composed the official anthem 'Widescreen' for this event.",
     "status": "past"
+  },
+  {
+    "venue": "Luminosity Beach Festival",
+    "city": "Bloemendaal",
+    "country": "Netherlands",
+    "date": "2026-06-14",
+    "year_approx": null,
+    "event": "Luminosity Beach Festival",
+    "notes": "The return to the beach. Full live set.",
+    "status": "upcoming"
+  },
+  {
+    "venue": "Tomorrowland",
+    "city": "Boom",
+    "country": "Belgium",
+    "date": "2026-08-22",
+    "year_approx": null,
+    "event": "Tomorrowland",
+    "notes": null,
+    "status": "upcoming"
   }
 ]
