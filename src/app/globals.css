@@ -37,9 +37,9 @@
   --max-width-prose-narrow: 680px;
 
   /* Hero type scale */
-  --font-size-hero: clamp(3.5rem, 10vw, 8.75rem);
-  --line-height-hero: 0.88;
-  --letter-spacing-hero: -0.02em;
+  --text-hero: clamp(3.5rem, 10vw, 8.75rem);
+  --leading-hero: 0.88;
+  --tracking-hero: -0.02em;
 
   /* Animations */
   --animate-glow-breathe: glow-breathe 6s ease-in-out infinite alternate;
