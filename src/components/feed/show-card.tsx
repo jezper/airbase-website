@@ -5,39 +5,37 @@ interface ShowCardProps {
   date: string | null;
 }
 
-function formatDateParts(dateStr: string | null): {
-  day: string;
-  month: string;
-  year: string;
-} {
-  if (!dateStr) return { day: "--", month: "---", year: "----" };
+function formatDateParts(dateStr: string | null) {
+  if (!dateStr) return null;
   const d = new Date(dateStr);
-  if (isNaN(d.getTime())) return { day: "--", month: "---", year: "----" };
+  if (isNaN(d.getTime())) return null;
   return {
     day: String(d.getUTCDate()).padStart(2, "0"),
     month: d.toLocaleDateString("en-GB", { month: "short", timeZone: "UTC" }).toUpperCase(),
     year: String(d.getUTCFullYear()),
+    weekday: d.toLocaleDateString("en-GB", { weekday: "short", timeZone: "UTC" }).toUpperCase(),
   };
 }
 
 export default function ShowCard({ show, date }: ShowCardProps) {
-  const { venue, city, country, year_approx, event, notes, status } = show;
+  const { venue, city, country, year_approx, event, notes, status, image } = show;
   const isUpcoming = status === "upcoming";
-  const isCancelled = status === "cancelled";
-  const { day, month, year } = formatDateParts(date);
-  const showYear = year_approx ?? year;
-
-  const image = show.image ?? null;
+  const dateParts = formatDateParts(date);
 
   return (
     <article
-      className="bg-bg-card rounded-lg border hover:border-border-hover transition-all duration-150 overflow-hidden group"
+      className="rounded-lg overflow-hidden transition-all duration-150 group"
       style={{
-        borderColor: isUpcoming ? "rgba(232,93,38,0.3)" : "var(--bd)",
+        background: isUpcoming
+          ? "linear-gradient(135deg, rgba(196,168,124,0.08) 0%, var(--bg-card) 60%)"
+          : "var(--bg-card)",
+        border: isUpcoming
+          ? "1px solid rgba(196,168,124,0.25)"
+          : "1px solid var(--bd)",
       }}
-      aria-label={`Show: ${venue}, ${city}, ${country}`}
+      aria-label={`Show: ${event ?? venue}, ${city}, ${country}`}
     >
-      {/* Banner/flyer image when available */}
+      {/* Banner/flyer when available */}
       {image && (
         <div className="w-full aspect-[2.5/1] relative overflow-hidden">
           <img
@@ -46,96 +44,75 @@ export default function ShowCard({ show, date }: ShowCardProps) {
             className="w-full h-full object-cover"
             loading="lazy"
           />
-          {isUpcoming && (
-            <span
-              className="absolute top-3 left-3 font-mono text-[10px] font-bold uppercase tracking-[0.1em] px-2.5 py-1 rounded-sm"
-              style={{
-                backgroundColor: "rgba(232,93,38,0.2)",
-                color: "var(--ac)",
-                backdropFilter: "blur(6px)",
-              }}
-            >
-              Upcoming
-            </span>
-          )}
         </div>
       )}
 
-      {/* Content area */}
-      <div className="p-5 flex gap-5">
-        {/* Date block */}
-        <div className="shrink-0 flex flex-col items-center justify-start pt-0.5 w-12" aria-hidden="true">
-          {date ? (
-            <>
+      <div className="p-5">
+        {/* Top row: status + date */}
+        <div className="flex items-start justify-between gap-4 mb-3">
+          <div>
+            {isUpcoming && (
               <span
-                className="font-display text-4xl font-black leading-none"
-                style={{ color: isUpcoming ? "var(--ac)" : "var(--tx-muted)" }}
+                className="font-mono text-[10px] font-bold uppercase tracking-[0.15em] inline-block mb-2 px-2 py-0.5 rounded-sm"
+                style={{
+                  backgroundColor: "rgba(196,168,124,0.15)",
+                  color: "var(--gd)",
+                }}
               >
-                {day}
+                Upcoming
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-faint mt-0.5">
-                {month}
-              </span>
-              <span className="font-mono text-[10px] text-text-faint">{year}</span>
-            </>
-          ) : (
-            <span className="font-display text-2xl font-black leading-none text-text-muted">
-              {showYear}
-            </span>
-          )}
-        </div>
-
-        {/* Divider */}
-        <div
-          className="w-px self-stretch rounded-full shrink-0"
-          style={{ backgroundColor: isUpcoming ? "rgba(232,93,38,0.3)" : "var(--bd)" }}
-          aria-hidden="true"
-        />
-
-        {/* Venue info */}
-        <div className="flex-1 min-w-0">
-          {isCancelled && (
-            <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-text-faint mb-1 block line-through">
-              Cancelled
-            </span>
-          )}
-          {isUpcoming && !image && (
-            <span className="font-mono text-[10px] uppercase tracking-[0.12em] mb-1 block" style={{ color: "var(--ac)" }}>
-              Upcoming
-            </span>
-          )}
-
-          {event && (
-            <p className="font-mono text-[10px] uppercase tracking-[0.1em] text-text-faint mb-0.5 truncate">
-              {event}
+            )}
+            {event && event !== venue && (
+              <p className="font-mono text-[11px] uppercase tracking-[0.1em] text-text-faint">
+                {event}
+              </p>
+            )}
+            <h3 className="font-display text-xl sm:text-2xl font-black leading-tight text-text">
+              {venue}
+            </h3>
+            <p className="font-body text-[14px] text-text-muted mt-0.5">
+              {city}, {country}
             </p>
-          )}
+          </div>
 
-          <h3 className="font-display text-lg font-bold leading-snug text-text group-hover:text-accent transition-colors truncate">
-            {venue}
-          </h3>
-
-          <p className="font-body text-[13px] text-text-muted mt-0.5">
-            {city}, {country}
-          </p>
-
-          {notes && (
-            <p className="font-body text-[12px] text-text-faint mt-1 line-clamp-2">
-              {notes}
-            </p>
-          )}
-
-          {isUpcoming && (
-            <div className="mt-3">
+          {/* Date block — right side, gold accent for shows */}
+          {dateParts ? (
+            <div className="shrink-0 text-right">
               <span
-                className="font-body text-[12px] font-bold uppercase tracking-[0.08em] px-4 py-1.5 rounded-sm inline-block"
-                style={{ backgroundColor: "var(--ac)", color: "var(--bg)" }}
+                className="font-display text-4xl sm:text-5xl font-black leading-none block"
+                style={{ color: isUpcoming ? "var(--gd)" : "var(--tx-muted)" }}
               >
-                Tickets
+                {dateParts.day}
+              </span>
+              <span
+                className="font-mono text-[11px] uppercase tracking-[0.08em] block"
+                style={{ color: isUpcoming ? "var(--gd)" : "var(--tx-faint)" }}
+              >
+                {dateParts.month} {dateParts.year}
               </span>
             </div>
+          ) : (
+            <span className="font-display text-2xl font-black text-text-faint shrink-0">
+              {year_approx}
+            </span>
           )}
         </div>
+
+        {notes && (
+          <p className="font-body text-[13px] text-text-faint line-clamp-2 mb-3">
+            {notes}
+          </p>
+        )}
+
+        {isUpcoming && (
+          <a
+            href="#"
+            className="inline-block font-body text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2 rounded-sm transition-colors"
+            style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}
+          >
+            Tickets
+          </a>
+        )}
       </div>
     </article>
   );

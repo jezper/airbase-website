@@ -38,6 +38,39 @@ const SAMPLE_ARTICLES: FeedArticle[] = [
   },
 ];
 
+const SAMPLE_SHOWS: FeedShow[] = [
+  {
+    type: "show",
+    date: "2026-06-14",
+    data: {
+      venue: "Luminosity Beach Festival",
+      city: "Bloemendaal",
+      country: "Netherlands",
+      date: "2026-06-14",
+      year_approx: null,
+      event: "Luminosity Beach Festival",
+      notes: "The return to the beach. Full live set.",
+      image: null,
+      status: "upcoming",
+    },
+  },
+  {
+    type: "show",
+    date: "2026-08-22",
+    data: {
+      venue: "Tomorrowland",
+      city: "Boom",
+      country: "Belgium",
+      date: "2026-08-22",
+      year_approx: null,
+      event: "Tomorrowland",
+      notes: null,
+      image: null,
+      status: "upcoming",
+    },
+  },
+];
+
 export async function getFeedItems(limit?: number): Promise<FeedItem[]> {
   const [releases, shows] = await Promise.all([getAllReleases(), getAllShows()]);
 
@@ -60,6 +93,7 @@ export async function getFeedItems(limit?: number): Promise<FeedItem[]> {
     ...feedShows,
     ...SAMPLE_NOTES,
     ...SAMPLE_ARTICLES,
+    ...SAMPLE_SHOWS,
   ];
 
   allItems.sort(
