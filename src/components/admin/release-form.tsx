@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import { Plus, X } from "lucide-react";
 import type { Release, ReleaseType } from "@/types/content";
 import { saveRelease } from "@/app/admin/(protected)/releases/actions";
@@ -62,8 +63,73 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
   const [soundcloud, setSoundcloud] = useState(initialRelease?.links?.soundcloud ?? "");
   const [smartlink, setSmartlink] = useState(initialRelease?.links?.smartlink ?? "");
 
+  // Artwork upload
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+
+  // Link auto-fetch
+  const [fetchUrl, setFetchUrl] = useState("");
+  const [fetching, setFetching] = useState(false);
+  const [fetchStatus, setFetchStatus] = useState("");
+
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+
+  // Derived: is the release date in the future?
+  const isUpcoming = date > new Date().toISOString().slice(0, 10);
+
+  async function handleArtworkUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setUploadError("");
+    try {
+      const slug =
+        title.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") ||
+        "artwork";
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("slug", slug);
+      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Upload failed");
+      setArtwork(json.path);
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  async function handleFetchLinks() {
+    if (!fetchUrl.trim()) return;
+    setFetching(true);
+    setFetchStatus("");
+    try {
+      const res = await fetch("/api/admin/fetch-links", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url: fetchUrl.trim() }),
+      });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Fetch failed");
+      const links: Record<string, string> = json.links ?? {};
+      let filled = 0;
+      if (links.spotify && !spotify) { setSpotify(links.spotify); filled++; }
+      if (links.beatport && !beatport) { setBeatport(links.beatport); filled++; }
+      if (links.apple && !apple) { setApple(links.apple); filled++; }
+      if (links.youtube && !youtube) { setYoutube(links.youtube); filled++; }
+      if (links.tidal && !tidal) { setTidal(links.tidal); filled++; }
+      if (links.deezer && !deezer) { setDeezer(links.deezer); filled++; }
+      if (links.soundcloud && !soundcloud) { setSoundcloud(links.soundcloud); filled++; }
+      setFetchStatus(filled > 0 ? `Found ${filled} link${filled === 1 ? "" : "s"}` : "No links found");
+    } catch (err) {
+      setFetchStatus(err instanceof Error ? err.message : "Fetch failed");
+    } finally {
+      setFetching(false);
+    }
+  }
 
   function addTrack() {
     setTracks((prev) => [...prev, ""]);
@@ -194,25 +260,83 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
         </Field>
 
         <Field label="Release date" required>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className={`${inputClass} font-mono`}
-          />
+          <div className="space-y-1.5">
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className={`${inputClass} font-mono`}
+            />
+            {isUpcoming && (
+              <span className="inline-block font-mono text-xs font-bold uppercase tracking-wide text-accent-alt bg-accent-alt/10 px-2 py-0.5 rounded-full">
+                upcoming
+              </span>
+            )}
+          </div>
         </Field>
       </div>
 
       {/* Artwork */}
-      <Field label="Artwork URL">
-        <input
-          type="url"
-          value={artwork}
-          onChange={(e) => setArtwork(e.target.value)}
-          placeholder="https://..."
-          className={inputClass}
-        />
-      </Field>
+      <div>
+        <p className="font-body text-sm font-medium text-text-muted mb-3">Artwork</p>
+        <div className="space-y-3">
+          {/* Preview */}
+          {artwork && (
+            <div className="flex items-center gap-3">
+              <Image
+                src={artwork}
+                alt="Release artwork preview"
+                width={96}
+                height={96}
+                className="w-24 h-24 rounded object-cover border border-border"
+                unoptimized={artwork.startsWith("http")}
+              />
+              <button
+                type="button"
+                onClick={() => { setArtwork(""); if (fileInputRef.current) fileInputRef.current.value = ""; }}
+                className="font-body text-xs text-text-faint hover:text-text transition-colors"
+              >
+                Remove
+              </button>
+            </div>
+          )}
+
+          {/* File upload */}
+          <div>
+            <label className="block font-body text-xs font-medium text-text-muted mb-1">
+              Upload file
+            </label>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handleArtworkUpload}
+              disabled={uploading}
+              className="bg-bg border border-border rounded px-3 py-2 font-body text-sm text-text w-full file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:font-body file:text-xs file:font-bold file:uppercase file:bg-bg-alt file:text-text-muted hover:file:text-text file:cursor-pointer disabled:opacity-50"
+            />
+            {uploading && (
+              <p className="font-body text-xs text-text-muted mt-1">Uploading...</p>
+            )}
+            {uploadError && (
+              <p className="font-body text-xs text-red-400 mt-1" role="alert">{uploadError}</p>
+            )}
+          </div>
+
+          {/* URL fallback */}
+          <div>
+            <label className="block font-body text-xs font-medium text-text-muted mb-1">
+              Or enter URL manually
+            </label>
+            <input
+              type="url"
+              value={artwork}
+              onChange={(e) => setArtwork(e.target.value)}
+              placeholder="https://..."
+              className={inputClass}
+            />
+          </div>
+        </div>
+      </div>
 
       {/* Tracks */}
       <Field label="Tracks">
@@ -252,6 +376,29 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
       {/* Streaming links */}
       <div>
         <p className="font-body text-sm font-medium text-text-muted mb-3">Streaming links</p>
+
+        {/* Auto-fetch row */}
+        <div className="flex items-center gap-2 mb-4">
+          <input
+            type="url"
+            value={fetchUrl}
+            onChange={(e) => setFetchUrl(e.target.value)}
+            placeholder="Paste any streaming URL to auto-fill all links"
+            className={`${inputClass} flex-1`}
+          />
+          <button
+            type="button"
+            onClick={handleFetchLinks}
+            disabled={fetching || !fetchUrl.trim()}
+            className="bg-bg-card border border-border text-text-muted hover:text-text hover:border-border-strong font-body text-xs font-bold uppercase px-3 py-1.5 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          >
+            {fetching ? "Fetching..." : "Fetch all"}
+          </button>
+        </div>
+        {fetchStatus && (
+          <p className="font-body text-xs text-text-muted mb-3">{fetchStatus}</p>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Spotify">
             <input
