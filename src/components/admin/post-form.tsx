@@ -293,15 +293,9 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
             {uploading && <p className="font-body text-xs text-text-muted mt-1">Uploading...</p>}
             {uploadError && <p className="font-body text-xs text-red-400 mt-1" role="alert">{uploadError}</p>}
           </div>
-          <div>
-            <input
-              type="url"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              placeholder="Or paste an image URL"
-              className={inputClass}
-            />
-          </div>
+          {image && (
+            <p className="font-mono text-[12px] text-text-faint truncate">{image}</p>
+          )}
         </div>
       </div>
 
