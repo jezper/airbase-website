@@ -22,14 +22,14 @@ export default function ArticleCard({
       <div className="bg-bg-card border border-border rounded-lg overflow-hidden">
         {/* Image at natural size, not forced full-width */}
         {post.image && (
-          <div className="px-5 pt-5">
+          <div className="px-5 pt-5 flex justify-center">
             <Image
               src={post.image}
               alt={post.title ?? ""}
-              width={600}
+              width={400}
               height={400}
-              className="rounded-lg object-cover w-full max-h-64"
-              sizes="(max-width: 768px) 100vw, 600px"
+              className="rounded-lg object-contain max-h-80"
+              sizes="(max-width: 768px) 80vw, 400px"
               unoptimized={post.image.startsWith("http")}
             />
           </div>
