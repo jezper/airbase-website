@@ -11,7 +11,6 @@ const STATS = [
   { number: "25+", label: "Years Active" },
   { number: "100+", label: "Releases" },
   { number: "14", label: "Aliases" },
-  { number: "14", label: "Countries" },
 ];
 
 export default async function Home() {
@@ -226,11 +225,11 @@ export default async function Home() {
 
       {/* Stats bar */}
       <section
-        className="flex flex-wrap justify-between px-6 md:px-12 py-8 border-b border-border-section"
+        className="flex justify-between px-6 md:px-12 py-8 border-b border-border-section"
         aria-label="Career statistics"
       >
         {STATS.map((stat) => (
-          <div key={stat.label} className="text-center px-4 py-3 flex-1 min-w-[120px]">
+          <div key={stat.label} className="text-center px-2 md:px-4 py-3 flex-1">
             <div
               className="font-display text-5xl font-black text-accent"
               style={{ fontVariationSettings: "'opsz' 144" }}
