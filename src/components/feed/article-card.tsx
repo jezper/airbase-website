@@ -1,6 +1,10 @@
 import type { Post } from "@/types/content";
 import { formatDate } from "@/lib/format-date";
 
+function stripHtml(html: string): string {
+  return html.replace(/<[^>]*>/g, "").trim();
+}
+
 export default function ArticleCard({
   post,
   hasContext,
@@ -30,7 +34,7 @@ export default function ArticleCard({
       )}
 
       <p className="font-body text-[16px] text-text-muted leading-relaxed mb-4 max-w-[600px]">
-        {post.excerpt ?? post.body}
+        {stripHtml(post.excerpt ?? post.body)}
       </p>
 
       {post.slug && (

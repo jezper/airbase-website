@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { Post, Release, Show } from "@/types/content";
 import { TiptapEditor } from "./tiptap-editor";
@@ -61,6 +61,32 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
 
+  // Image upload
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploading(true);
+    setUploadError("");
+    try {
+      const slugName = (title || "post").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("slug", `post-${slugName}`);
+      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Upload failed");
+      setImage(json.path);
+    } catch (err) {
+      setUploadError(err instanceof Error ? err.message : "Upload failed");
+    } finally {
+      setUploading(false);
+    }
+  }
+
   function autoSlug(val: string) {
     return val.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   }
@@ -90,7 +116,11 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
       type,
       date,
       body,
-      ...(type === "article" && { title, excerpt: excerpt || undefined, slug: slug || autoSlug(title) }),
+      ...(type === "article" && {
+        title,
+        excerpt: excerpt || body.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().slice(0, 160) || undefined,
+        slug: slug || autoSlug(title),
+      }),
       ...(image.trim() && { image: image.trim() }),
       ...(link.trim() && { link: link.trim() }),
       ...(linkLabel.trim() && { linkLabel: linkLabel.trim() }),
@@ -247,30 +277,58 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
         </select>
       </Field>
 
-      {/* Optional fields */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <Field label="Image URL">
+      {/* Image */}
+      <div>
+        <p className="font-body text-sm font-medium text-text-muted mb-3">Image</p>
+        <div className="space-y-3">
+          {image && (
+            <div className="flex items-center gap-3">
+              <img src={image} alt="Post image preview" className="w-24 h-16 rounded object-cover border border-border" />
+              <button
+                type="button"
+                onClick={() => { setImage(""); if (fileInputRef.current) fileInputRef.current.value = ""; }}
+                className="font-body text-xs text-text-faint hover:text-text transition-colors"
+              >
+                Remove
+              </button>
+            </div>
+          )}
+          <div>
+            <input
+              ref={fileInputRef}
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+              disabled={uploading}
+              className="bg-bg-card border border-border-hover rounded px-3 py-2 font-body text-sm text-text w-full file:mr-3 file:py-1 file:px-3 file:rounded file:border-0 file:font-body file:text-xs file:font-bold file:uppercase file:bg-bg-alt file:text-text-muted hover:file:text-text file:cursor-pointer disabled:opacity-50"
+            />
+            {uploading && <p className="font-body text-xs text-text-muted mt-1">Uploading...</p>}
+            {uploadError && <p className="font-body text-xs text-red-400 mt-1" role="alert">{uploadError}</p>}
+          </div>
+          <div>
+            <input
+              type="url"
+              value={image}
+              onChange={(e) => setImage(e.target.value)}
+              placeholder="Or paste an image URL"
+              className={inputClass}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Link URL (article) */}
+      {type === "article" && (
+        <Field label="Link URL">
           <input
             type="url"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
+            value={link}
+            onChange={(e) => setLink(e.target.value)}
             placeholder="https://..."
             className={inputClass}
           />
         </Field>
-
-        {type === "article" && (
-          <Field label="Link URL">
-            <input
-              type="url"
-              value={link}
-              onChange={(e) => setLink(e.target.value)}
-              placeholder="https://..."
-              className={inputClass}
-            />
-          </Field>
-        )}
-      </div>
+      )}
 
       {type === "article" && link && (
         <Field label="Link label">
