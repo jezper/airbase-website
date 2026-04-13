@@ -60,19 +60,30 @@ export function MetaPreview({ title, description, url, image }: MetaPreviewProps
 
         {tab === "social" && (
           <div className="max-w-md rounded-lg border border-border overflow-hidden">
-            {image ? (
-              <div className="w-full aspect-[1.91/1] bg-bg-card overflow-hidden">
+            <div className="w-full aspect-[1.91/1] bg-bg-card overflow-hidden relative">
+              {image ? (
                 <img
                   src={image}
                   alt="Social card preview"
                   className="w-full h-full object-cover"
                 />
-              </div>
-            ) : (
-              <div className="w-full aspect-[1.91/1] bg-bg-card flex items-center justify-center">
-                <span className="font-body text-sm text-text-faint">No image</span>
-              </div>
-            )}
+              ) : (
+                /* Simulates the auto-generated OG image */
+                <div className="w-full h-full flex flex-col justify-end p-6" style={{ backgroundColor: "#0C0B0A" }}>
+                  <div
+                    className="absolute -top-[20%] -right-[10%] w-[70%] h-[120%] rounded-full"
+                    style={{ background: "radial-gradient(ellipse at center, rgba(232,93,38,0.15) 0%, transparent 65%)" }}
+                  />
+                  <div className="absolute top-4 left-6 right-6 h-[2px]" style={{ background: "linear-gradient(90deg, #E85D26 0%, rgba(232,93,38,0.3) 50%, transparent 100%)" }} />
+                  <p className="font-display text-2xl font-black text-[#EDE7DF] leading-tight relative z-10">
+                    {truncTitle || "Airbase"}
+                  </p>
+                  <p className="font-body text-[11px] text-[#9A928A] mt-1 relative z-10">
+                    Auto-generated from title
+                  </p>
+                </div>
+              )}
+            </div>
             <div className="p-3 bg-bg-card">
               <p className="font-body text-[11px] text-text-faint uppercase tracking-wider">
                 airbasemusic.com
