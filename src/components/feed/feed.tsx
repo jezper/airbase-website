@@ -3,9 +3,7 @@
 import type { FeedItem } from "@/types/content";
 import NoteCard from "./note-card";
 import ArticleCard from "./article-card";
-import ReleaseContext from "./release-context";
 import ReleaseTag from "./release-tag";
-import ShowContext from "./show-context";
 import ShowTag from "./show-tag";
 
 export default function Feed({ items }: { items: FeedItem[] }) {
@@ -26,28 +24,20 @@ export default function Feed({ items }: { items: FeedItem[] }) {
 
             return (
               <div key={`${item.post.type}-${item.post.date}-${i}`} className="py-8 first:pt-0">
-                {/* Featured: big context card above the post */}
-                {isFeatured && item.release && <ReleaseContext release={item.release} relatedRelease={item.relatedRelease} />}
-                {isFeatured && item.show && <ShowContext show={item.show} />}
-
                 {/* The post card */}
                 {item.post.type === "note" && (
-                  <NoteCard
-                    post={item.post}
-                    hasContext={isFeatured && (!!item.release || !!item.show)}
-                  >
-                    {!isFeatured && item.release && <ReleaseTag release={item.release} />}
-                    {!isFeatured && item.show && <ShowTag show={item.show} />}
+                  <NoteCard post={item.post}>
+                    {item.release && <ReleaseTag release={item.release} />}
+                    {item.show && <ShowTag show={item.show} />}
                   </NoteCard>
                 )}
                 {item.post.type === "article" && (
                   <ArticleCard
                     post={item.post}
-                    hasContext={isFeatured && (!!item.release || !!item.show)}
                     featured={isFeatured}
                   >
-                    {!isFeatured && item.release && <ReleaseTag release={item.release} />}
-                    {!isFeatured && item.show && <ShowTag show={item.show} />}
+                    {item.release && <ReleaseTag release={item.release} />}
+                    {item.show && <ShowTag show={item.show} />}
                   </ArticleCard>
                 )}
               </div>

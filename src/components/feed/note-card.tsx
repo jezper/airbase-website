@@ -6,21 +6,15 @@ import { postPermalink } from "@/lib/post-utils";
 
 export default function NoteCard({
   post,
-  hasContext,
   children,
 }: {
   post: Post;
-  hasContext?: boolean;
   children?: React.ReactNode;
 }) {
   return (
     <div
-      className={`px-5 py-4 ${
-        hasContext
-          ? "bg-bg-card border border-border rounded-b-lg"
-          : "border-l-2 border-t-0 border-r-0 border-b-0 pl-5 py-2"
-      }`}
-      style={!hasContext ? { borderLeftColor: "var(--ac)" } : undefined}
+      className="border-l-2 border-t-0 border-r-0 border-b-0 pl-5 py-2"
+      style={{ borderLeftColor: "var(--ac)" }}
     >
       {children}
 

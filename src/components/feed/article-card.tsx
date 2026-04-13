@@ -6,12 +6,10 @@ import { postPermalink } from "@/lib/post-utils";
 
 export default function ArticleCard({
   post,
-  hasContext,
   featured,
   children,
 }: {
   post: Post;
-  hasContext?: boolean;
   featured?: boolean;
   children?: React.ReactNode;
 }) {
@@ -69,7 +67,7 @@ export default function ArticleCard({
 
   // Non-featured: simple layout
   return (
-    <div className={hasContext ? "bg-bg-card border border-border rounded-b-lg px-5 py-5" : ""}>
+    <div>
       {children}
 
       <time dateTime={post.date} className="font-mono text-[13px] uppercase tracking-[0.12em] text-text-muted block mb-3">
