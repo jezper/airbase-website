@@ -23,7 +23,7 @@ export function AdminSidebar() {
   }
 
   return (
-    <aside className="w-[220px] shrink-0 bg-bg-card border-r border-border flex flex-col h-screen sticky top-0">
+    <aside className="w-[220px] shrink-0 bg-bg-card border-r border-border flex flex-col min-h-screen sticky top-0 max-h-screen overflow-y-auto">
       {/* Logo */}
       <div className="px-5 py-5 border-b border-border">
         <Link href="/" aria-label="View public site" title="View public site">
