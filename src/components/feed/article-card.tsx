@@ -39,14 +39,6 @@ export default function ArticleCard({
         </h3>
       )}
 
-      {post.excerpt && (
-        <p className={`font-body text-text-muted leading-relaxed mb-4 italic ${
-          featured ? "text-[18px]" : "text-[16px]"
-        }`}>
-          {stripHtml(post.excerpt)}
-        </p>
-      )}
-
       {bodyIsHtml ? (
         <div
           className={`font-body text-text leading-relaxed mb-4 prose prose-invert max-w-none ${

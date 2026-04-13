@@ -49,7 +49,6 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
   const [type, setType] = useState<"note" | "article">(initialPost?.type ?? "note");
   const [body, setBody] = useState(initialPost?.body ?? "");
   const [title, setTitle] = useState(initialPost?.title ?? "");
-  const [excerpt, setExcerpt] = useState(initialPost?.excerpt ?? "");
   const [slug, setSlug] = useState(initialPost?.slug ?? "");
   const [date, setDate] = useState(initialPost?.date ?? today);
   const [releaseRef, setReleaseRef] = useState(initialPost?.releaseRef ?? "");
@@ -118,7 +117,6 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
       body,
       ...(type === "article" && {
         title,
-        excerpt: excerpt || undefined,
         slug: slug || autoSlug(title),
       }),
       ...(image.trim() && { image: image.trim() }),
@@ -171,16 +169,6 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
               value={title}
               onChange={(e) => handleTitleChange(e.target.value)}
               placeholder="Article title"
-              className={inputClass}
-            />
-          </Field>
-
-          <Field label="Excerpt">
-            <input
-              type="text"
-              value={excerpt}
-              onChange={(e) => setExcerpt(e.target.value)}
-              placeholder="Short summary (auto-generated from body if left blank)"
               className={inputClass}
             />
           </Field>
