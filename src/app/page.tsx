@@ -82,7 +82,7 @@ export default async function Home() {
                 </p>
                 {heroRelated && (
                   <p className="font-mono text-[12px] uppercase tracking-[0.1em] text-text-faint mb-8">
-                    Original: <a href={`/discography#${releaseSlug(heroRelated)}`}
+                    Original: <a href={`/discography/${releaseSlug(heroRelated)}`}
                       className="text-text-muted hover:text-accent transition-colors">
                       {heroRelated.artist} &ndash; {heroRelated.title} ({heroRelated.year})
                     </a>

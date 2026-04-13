@@ -8,27 +8,13 @@
     "date": "2026-04-17",
     "artwork": "/artwork/medusa-darren-porter-remix.jpg",
     "tracks": [
-      "Medusa - Radio Edit",
-      "Medusa - Original Mix"
+      "Medusa (Darren Porter Remix)",
+      "Medusa (Darren Porter Extended Remix)"
     ],
     "links": {
       "spotify": "https://open.spotify.com/album/7E00TIwnFH9PCJulpPAnst"
     },
     "relatedRelease": "one-tear-away-rest-in-peace-medusa",
-    "appearsOn": [
-      {
-        "title": "Maximum Trance, Vol. 6",
-        "year": 2008
-      },
-      {
-        "title": "Trance Top 1000 - Selection 002",
-        "year": 2013
-      },
-      {
-        "title": "Trance Top 1000 - Ibiza Classics",
-        "year": 2019
-      }
-    ],
     "deezerTrackId": 3788325502
   },
   {
@@ -605,55 +591,19 @@
     "deezerTrackId": 62561513
   },
   {
-    "title": "We Might Fall",
-    "artist": "Airbase",
-    "type": "Single",
-    "label": "Intuition Recordings",
-    "year": 2011,
-    "date": "2011-01-01",
-    "artwork": "/artwork/we-might-fall.jpg",
-    "tracks": [
-      "Escape - 2011 Album Mix",
-      "Less Than More - Original Mix",
-      "Sun City - Original Mix",
-      "Asylum - Original Mix",
-      "Sand & Sorrow - Original Mix",
-      "Silent Music For Quiet People - Original Mix",
-      "Last Door On The Left - Original Mix",
-      "We Might Fall - Original Mix",
-      "Affirmation - Original Mix",
-      "40 Miles - Original Mix",
-      "St. Emilion - Original Mix"
-    ],
-    "links": {
-      "spotify": "https://open.spotify.com/album/5rHiE9q72olgJpOAxkQRA9",
-      "apple": "https://song.link/i/582275063",
-      "tidal": "https://listen.tidal.com/track/57831711",
-      "deezer": "https://www.deezer.com/track/120085834"
-    },
-    "deezerTrackId": 120085834
-  },
-  {
-    "year": 2010,
+    "year": 2003,
     "artist": "Solarstone",
-    "title": "Solarcoaster (Airbase Remix)",
+    "title": "Solarcoaster (Airbase Remake)",
     "type": "Remix",
     "label": "Lost Language",
     "tracks": [
-      "Solarcoaster - Markus Schulz Remix",
-      "Solarcoaster - Protoculture Remix",
-      "Solarcoaster (Remastered) - Original Mix",
-      "Solarcoaster - Markus Schulz Radio Edit",
-      "Solarcoaster - Protoculture Radio Edit",
-      "Solarcoaster"
+      "Solarcoaster (Airbase Remake)"
     ],
     "links": {
-      "youtube": "https://www.youtube.com/watch?v=lq8ImWjEENE",
-      "youtube_music": "https://music.youtube.com/watch?v=lq8ImWjEENE",
-      "spotify": "https://open.spotify.com/album/6ORZ6ChjxyQZz1yPDcgKsI"
+      "youtube": "https://www.youtube.com/watch?v=lq8ImWjEENE"
     },
-    "date": "2010-01-01",
-    "artwork": "/artwork/solarcoaster-airbase-remix.jpg"
+    "date": "2003-01-01",
+    "artwork": null
   },
   {
     "year": 2010,
@@ -1018,11 +968,11 @@
   {
     "year": 2008,
     "artist": "Jamaster A",
-    "title": "A Night In Beijing (Airbase Remix)",
+    "title": "One Night In Beijing (Airbase Remix)",
     "type": "Remix",
     "label": "2 Play Records",
     "tracks": [
-      "A Night In Beijing (Airbase Remix)"
+      "One Night In Beijing (Airbase Remix)"
     ],
     "links": {
       "apple": "https://song.link/se/i/280317923"
@@ -1349,15 +1299,15 @@
     "type": "Remix",
     "label": "Technoclub Music",
     "tracks": [
-      "Carry Me (Airbase Mix)"
+      "Carry Me (Airbase Mix)",
+      "Carry Me (Airbase Dub Mix)"
     ],
     "links": {
       "youtube": "https://www.youtube.com/watch?v=H2pQZl1eTys",
       "youtube_music": "https://music.youtube.com/watch?v=H2pQZl1eTys"
     },
     "date": "2006-01-01",
-    "artwork": "/artwork/carry-me-airbase-mix.jpg",
-    "notes": "Vocal and Dub Mix available."
+    "artwork": "/artwork/carry-me-airbase-mix.jpg"
   },
   {
     "year": 2006,
@@ -1430,13 +1380,10 @@
   {
     "year": 2005,
     "artist": "Lennox",
-    "title": "Flying Amongst The Stars (Airbase Remix)",
+    "title": "Flyin' Amongst The Stars (Airbase Remix)",
     "type": "Remix",
     "label": "Mondo Records",
     "tracks": [
-      "Servant Of Justice (Alex M.O.R.P.H. Remi)",
-      "Servant Of Justice (Original Mix)",
-      "Flyin' Amongst The Stars (Original Mix)",
       "Flyin' Amongst The Stars (Airbase Remix)"
     ],
     "links": {
@@ -1450,11 +1397,11 @@
   {
     "year": 2005,
     "artist": "Kenny Hayes",
-    "title": "Daybreaker (Airbase Remix)",
+    "title": "Daybreaker (Airbase Electech Remix)",
     "type": "Remix",
     "label": "Turbulence",
     "tracks": [
-      "Daybreaker (Airbase Remix)"
+      "Daybreaker (Airbase Electech Remix)"
     ],
     "links": {
       "apple": "https://song.link/se/i/1010853783",
@@ -1719,7 +1666,7 @@
     "label": "Mondo Records",
     "tracks": [
       "Rise",
-      "Rise"
+      "Rise (Smith & Pledger Mix)"
     ],
     "links": {
       "spotify": "https://open.spotify.com/album/5ttW13zYr3nsU8iXE09Yjm"
@@ -1741,6 +1688,20 @@
       "Ballroom Dancer"
     ],
     "links": {}
+  },
+  {
+    "year": 2004,
+    "artist": "Tekara feat. Xan",
+    "title": "Wanna Be An Angel (Airbase Remix)",
+    "type": "Remix",
+    "label": "Platipus",
+    "tracks": [
+      "Wanna Be An Angel (Tekara Original Mix)",
+      "Wanna Be An Angel (Airbase Remix)"
+    ],
+    "links": {},
+    "date": "2004-01-01",
+    "artwork": null
   },
   {
     "title": "Near Me (Airbase Remix)",
@@ -1971,14 +1932,40 @@
   {
     "year": 2003,
     "artist": "Envio",
-    "title": "Touch By The Sun (Airbase Remix)",
+    "title": "Touched By The Sun (Airbase Remix)",
     "type": "Remix",
     "label": "A State Of Trance",
     "tracks": [
-      "Touch By The Sun (Airbase Remix)"
+      "Touched By The Sun (Airbase Remix)"
     ],
     "links": {},
     "date": "2003-01-01",
+    "artwork": null
+  },
+  {
+    "year": 2003,
+    "artist": "Inzite",
+    "title": "Out Of Reach (Airbase Remix)",
+    "type": "Remix",
+    "label": "EMT Design",
+    "tracks": [
+      "Out Of Reach (Airbase Remix)"
+    ],
+    "links": {},
+    "date": "2003-01-01",
+    "artwork": null
+  },
+  {
+    "year": 2006,
+    "artist": "Denleo & Alessandro",
+    "title": "Naked (Airbase Mix)",
+    "type": "Remix",
+    "label": "Unknown",
+    "tracks": [
+      "Naked (Airbase Mix)"
+    ],
+    "links": {},
+    "date": "2006-01-01",
     "artwork": null
   },
   {
@@ -2060,6 +2047,19 @@
     "label": "EMT Design",
     "tracks": [
       "Unity Of Earth 2002"
+    ],
+    "links": {},
+    "date": "2002-01-01",
+    "artwork": null
+  },
+  {
+    "year": 2002,
+    "artist": "The Beetseekers",
+    "title": "Skyway (Airbase Remix)",
+    "type": "Remix",
+    "label": "EMT Design",
+    "tracks": [
+      "Skyway (Airbase Remix)"
     ],
     "links": {},
     "date": "2002-01-01",
