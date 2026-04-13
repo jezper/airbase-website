@@ -1,18 +1,12 @@
-import { promises as fs } from "fs";
-import path from "path";
 import type { Release } from "@/types/content";
+import { readReleases } from "./content-writer";
 import { releaseSlug, KNOWN_ALIASES } from "./release-utils";
 
-// Re-export utilities that don't need fs
+// Re-export utilities
 export { releaseSlug, releaseMatchesAlias, KNOWN_ALIASES } from "./release-utils";
 
-const DATA_PATH = path.join(process.cwd(), "content/releases/discography.json");
-
 export async function getAllReleases(): Promise<Release[]> {
-  const raw = await fs.readFile(DATA_PATH, "utf-8");
-  const data: Release[] = JSON.parse(raw);
-  data.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  return data;
+  return readReleases();
 }
 
 export async function getReleasesByYear(): Promise<Map<number, Release[]>> {
