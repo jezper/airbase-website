@@ -21,7 +21,7 @@ export default function ArticleCard({
     <div
       className={hasContext
         ? "bg-bg-card border border-border rounded-b-lg px-5 py-5"
-        : "py-6 border-t border-border"
+        : ""
       }
     >
       {children}
