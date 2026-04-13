@@ -1,27 +1,10 @@
+import Image from "next/image";
 import type { Release } from "@/types/content";
-
-function ArtworkPlaceholder({ title }: { title: string }) {
-  const initial = (title[0] ?? "A").toUpperCase();
-  return (
-    <div
-      className="w-full h-full flex items-center justify-center relative overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-card) 50%, var(--bg) 100%)",
-      }}
-      aria-hidden="true"
-    >
-      <span
-        className="font-display font-black text-[80px] leading-none select-none opacity-[0.06]"
-        style={{ color: "var(--ac)" }}
-      >
-        {initial}
-      </span>
-    </div>
-  );
-}
+import { releaseSlug } from "@/lib/release-utils";
+import { ArtworkPlaceholder } from "@/components/artwork-placeholder";
 
 /** Displayed above a post that references a release (featured) */
-export default function ReleaseContext({ release }: { release: Release }) {
+export default function ReleaseContext({ release, relatedRelease }: { release: Release; relatedRelease?: Release }) {
   const { artist, title, type, label, year, artwork, links } = release;
 
   const streamLinks: { label: string; href: string }[] = [
@@ -38,7 +21,9 @@ export default function ReleaseContext({ release }: { release: Release }) {
       {/* Square artwork — no text overlay, respects the artwork as its own design */}
       <div className="w-full aspect-square overflow-hidden">
         {artwork ? (
-          <img src={artwork} alt={`${title} by ${artist}`} className="w-full h-full object-cover" loading="lazy" />
+          <Image src={artwork} alt={`${title} by ${artist}`} className="w-full h-full object-cover"
+            width={600} height={600} sizes="(max-width: 768px) 100vw, 50vw"
+            unoptimized={artwork.startsWith("http")} />
         ) : (
           <ArtworkPlaceholder title={title} />
         )}
@@ -54,7 +39,10 @@ export default function ReleaseContext({ release }: { release: Release }) {
             {type}
           </span>
           <span className="font-mono text-[13px] text-text-muted">
-            {label} &mdash; {year}
+            {label}
+          </span>
+          <span className="font-mono text-[13px] text-text-faint">
+            {year}
           </span>
         </div>
         <p className="font-body text-[13px] font-bold uppercase tracking-[0.12em] text-text-muted mb-0.5">
@@ -63,6 +51,15 @@ export default function ReleaseContext({ release }: { release: Release }) {
         <h3 className="font-display text-2xl sm:text-3xl font-black leading-tight text-text mb-2">
           {title}
         </h3>
+        {relatedRelease && (
+          <p className="font-mono text-[12px] uppercase tracking-[0.1em] text-text-faint mb-2">
+            Original:{" "}
+            <a href={`/discography#${releaseSlug(relatedRelease)}`}
+              className="text-text-muted hover:text-accent transition-colors">
+              {relatedRelease.artist} &ndash; {relatedRelease.title} ({relatedRelease.year})
+            </a>
+          </p>
+        )}
         {streamLinks.length > 0 && (
           <div className="flex flex-wrap gap-x-4 gap-y-1">
             {streamLinks.map((sl) => (

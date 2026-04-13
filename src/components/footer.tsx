@@ -1,15 +1,5 @@
 import { Logo } from "./logo";
-
-const SOCIAL_LINKS = [
-  { label: "Spotify", href: "https://open.spotify.com/artist/0DgL6pCI4mC68FVMPlzx3L" },
-  { label: "Apple Music", href: "https://music.apple.com/artist/airbase" },
-  { label: "Beatport", href: "https://www.beatport.com/artist/airbase/8317" },
-  { label: "SoundCloud", href: "https://soundcloud.com/airbasemusic" },
-  { label: "YouTube", href: "https://youtube.com/@airbasemusic" },
-  { label: "Instagram", href: "https://instagram.com/airbasemusic" },
-  { label: "X", href: "https://x.com/airbasemusic" },
-  { label: "Facebook", href: "https://facebook.com/airbasemusic" },
-];
+import { SOCIAL_LINKS } from "@/lib/constants";
 
 const LABELS = [
   "Black Hole",

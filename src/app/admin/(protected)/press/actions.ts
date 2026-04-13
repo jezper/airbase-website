@@ -2,12 +2,14 @@
 
 import { revalidatePath } from "next/cache";
 import { readPress, writePress } from "@/lib/content-writer";
+import { isAuthenticated } from "@/lib/auth";
 import type { PressFeature } from "@/types/content";
 
 export async function savePressEntry(
   entry: PressFeature,
   editIndex?: number,
 ): Promise<{ success: boolean; error?: string }> {
+  if (!(await isAuthenticated())) return { success: false, error: "Unauthorized" };
   try {
     const items = await readPress();
 
@@ -29,6 +31,7 @@ export async function savePressEntry(
 export async function deletePressEntry(
   index: number,
 ): Promise<{ success: boolean; error?: string }> {
+  if (!(await isAuthenticated())) return { success: false, error: "Unauthorized" };
   try {
     const items = await readPress();
     if (index < 0 || index >= items.length) {

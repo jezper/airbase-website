@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Show } from "@/types/content";
 
 /** Displayed above a post that references a show */
@@ -26,7 +27,9 @@ export default function ShowContext({ show }: { show: Show }) {
     >
       {image && (
         <div className="w-full aspect-[2.5/1] overflow-hidden">
-          <img src={image} alt={`${event ?? venue} flyer`} className="w-full h-full object-cover" loading="lazy" />
+          <Image src={image} alt={`${event ?? venue} flyer`} className="w-full h-full object-cover"
+            width={800} height={320} sizes="(max-width: 768px) 100vw, 50vw"
+            unoptimized={image.startsWith("http")} />
         </div>
       )}
       <div className="px-5 pt-4 pb-3 flex items-start justify-between gap-4">

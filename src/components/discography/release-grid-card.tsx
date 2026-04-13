@@ -1,77 +1,22 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { Play, Pause } from "lucide-react";
 import type { Release } from "@/types/content";
+import { releaseSlug } from "@/lib/release-utils";
+import { usePreview } from "@/components/preview-player";
+import { ArtworkPlaceholder } from "@/components/artwork-placeholder";
 
 interface ReleaseGridCardProps {
   release: Release;
 }
 
-function ArtworkPlaceholder({ artist, title }: { artist: string; title: string }) {
-  const initial = title.charAt(0).toUpperCase();
-  // Generate a deterministic hue from the title string for variety
-  const hue = Array.from(title).reduce((acc, ch) => acc + ch.charCodeAt(0), 0) % 360;
-  const gradient = `linear-gradient(135deg, hsl(${hue}, 18%, 14%) 0%, hsl(${(hue + 40) % 360}, 14%, 10%) 100%)`;
-
-  return (
-    <div
-      className="w-full aspect-square flex items-center justify-center select-none"
-      style={{ background: gradient }}
-      aria-hidden="true"
-      title={`${artist} — ${title}`}
-    >
-      <span
-        className="font-display font-black text-white/10 leading-none"
-        style={{ fontSize: "clamp(3rem, 30%, 5rem)" }}
-      >
-        {initial}
-      </span>
-    </div>
-  );
-}
-
-function TypeBadge({ type }: { type: Release["type"] }) {
-  const isRemix = type === "Remix";
-  const bg = isRemix
-    ? "rgba(196,168,124,0.14)"
-    : "rgba(232,93,38,0.12)";
-  const border = isRemix
-    ? "rgba(196,168,124,0.3)"
-    : "rgba(232,93,38,0.3)";
-  const color = isRemix ? "var(--gd)" : "var(--ac)";
-
-  return (
-    <span
-      className="font-mono text-[11px] font-medium tracking-[0.1em] uppercase px-1.5 py-0.5 rounded-sm inline-block"
-      style={{ backgroundColor: bg, border: `1px solid ${border}`, color }}
-    >
-      {type}
-    </span>
-  );
-}
-
-function StreamingLink({ href, label }: { href: string; label: string }) {
-  return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="font-mono text-[11px] uppercase tracking-[0.08em] text-text-muted hover:text-accent transition-colors duration-150"
-      aria-label={label}
-    >
-      {label}
-    </a>
-  );
-}
-
 export default function ReleaseGridCard({ release }: ReleaseGridCardProps) {
-  const { artist, title, label, type, artwork, links } = release;
-
-  const primaryLink =
-    links.spotify ||
-    links.beatport ||
-    links.apple ||
-    links.youtube ||
-    links.tidal ||
-    links.deezer ||
-    null;
+  const { artist, title, label, type, artwork, links, deezerTrackId } = release;
+  const slug = releaseSlug(release);
+  const { playingId, play, stop } = usePreview();
+  const isPlaying = playingId === deezerTrackId;
 
   const streamingEntries: Array<{ href: string; label: string }> = [
     links.spotify && { href: links.spotify, label: "Spotify" },
@@ -82,61 +27,79 @@ export default function ReleaseGridCard({ release }: ReleaseGridCardProps) {
     links.deezer && { href: links.deezer, label: "Deezer" },
   ].filter(Boolean) as Array<{ href: string; label: string }>;
 
-  // Shorten artist for display (strip "feat." collaborators)
   const displayArtist = artist.split(/\s+feat\.?\s+/i)[0].trim();
 
   return (
     <article className="bg-bg-card rounded-lg border border-border hover:border-border-hover hover:-translate-y-1 transition-all duration-200 overflow-hidden group">
-      {/* Artwork */}
-      <div className="w-full aspect-square overflow-hidden">
-        {artwork ? (
-          <img
-            src={artwork}
-            alt={`${title} by ${artist}`}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        ) : (
-          <ArtworkPlaceholder artist={artist} title={title} />
+      {/* Artwork with play button overlay */}
+      <div className="relative w-full aspect-square overflow-hidden">
+        <Link href={`/discography/${slug}`} className="block w-full h-full">
+          {artwork ? (
+            <Image
+              src={artwork}
+              alt={`${title} by ${artist}`}
+              className="w-full h-full object-cover"
+              width={600} height={600}
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              unoptimized={artwork.startsWith("http")}
+            />
+          ) : (
+            <ArtworkPlaceholder artist={artist} title={title} />
+          )}
+        </Link>
+
+        {/* Play button - z-index above the Link */}
+        {deezerTrackId && (
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); e.preventDefault(); isPlaying ? stop() : play(deezerTrackId); }}
+            style={{ width: 40, height: 40, borderRadius: "50%" }}
+            className="absolute bottom-2 right-2 z-10 bg-accent flex items-center justify-center cursor-pointer shadow-lg transition-transform duration-150 hover:scale-110"
+            aria-label={isPlaying ? `Pause ${title}` : `Play preview of ${title}`}
+          >
+            {isPlaying ? (
+              <Pause size={16} fill="#0C0B0A" stroke="#0C0B0A" />
+            ) : (
+              <Play size={16} fill="#0C0B0A" stroke="#0C0B0A" className="ml-0.5" />
+            )}
+          </button>
         )}
       </div>
 
       {/* Metadata */}
-      <div className="p-2.5 flex flex-col gap-1">
-        {/* Type badge */}
-        <TypeBadge type={type} />
+      <div className="px-3 py-3 flex flex-col gap-0.5">
+        {/* Title (primary) */}
+        <Link
+          href={`/discography/${slug}`}
+          className="font-display text-sm sm:text-[15px] font-bold leading-snug text-text hover:text-accent transition-colors duration-150 line-clamp-2 block"
+        >
+          {title}
+        </Link>
 
-        {/* Artist */}
-        <p className="font-body text-[12px] font-bold uppercase tracking-[0.08em] text-text-muted leading-tight mt-0.5">
+        {/* Artist (secondary) */}
+        <p className="font-body text-[13px] text-text-muted leading-snug truncate">
           {displayArtist}
         </p>
 
-        {/* Title */}
-        {primaryLink ? (
-          <a
-            href={primaryLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-display text-sm font-bold leading-tight text-text hover:text-accent transition-colors duration-150 line-clamp-2"
-          >
-            {title}
-          </a>
-        ) : (
-          <span className="font-display text-sm font-bold leading-tight text-text line-clamp-2">
-            {title}
-          </span>
-        )}
-
-        {/* Label */}
-        <p className="font-mono text-[12px] text-text-muted leading-tight truncate">
-          {label}
+        {/* Type · Label (third) */}
+        <p className="font-body text-[13px] text-text-muted leading-snug truncate opacity-60">
+          {type} · {label}
         </p>
 
-        {/* Streaming links */}
+        {/* Streaming links (last) */}
         {streamingEntries.length > 0 && (
-          <div className="flex flex-wrap gap-x-2 gap-y-0.5 mt-0.5">
+          <div className="flex flex-wrap gap-x-2 gap-y-0.5 mt-1">
             {streamingEntries.map(({ href, label: lbl }) => (
-              <StreamingLink key={lbl} href={href} label={lbl} />
+              <a
+                key={lbl}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body text-[13px] text-text-muted hover:text-accent transition-colors duration-150 opacity-50 hover:opacity-100"
+                aria-label={lbl}
+              >
+                {lbl}
+              </a>
             ))}
           </div>
         )}

@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
   },
+  alternates: {
+    types: {
+      "application/rss+xml": "/feed.xml",
+    },
+  },
 };
 
 export default function RootLayout({
@@ -35,6 +40,29 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-body bg-bg text-text antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MusicGroup",
+              name: "Airbase",
+              alternateName: "Jezper Söderlund",
+              url: "https://airbasemusic.com",
+              genre: ["Trance", "Progressive Trance"],
+              foundingLocation: { "@type": "Place", name: "Gothenburg, Sweden" },
+              sameAs: [
+                "https://open.spotify.com/artist/3R3fc4fBMzzmJoSrRgVdKe",
+                "https://www.beatport.com/artist/airbase/8317",
+                "https://music.apple.com/artist/airbase",
+                "https://youtube.com/@airbasemusic",
+                "https://instagram.com/airbasemusic",
+                "https://x.com/airbasemusic",
+                "https://facebook.com/airbasemusic",
+              ],
+            }),
+          }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -48,9 +76,9 @@ export default function RootLayout({
             Skip to content
           </a>
           <Nav />
-          <div id="main-content">
+          <main id="main-content">
             {children}
-          </div>
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

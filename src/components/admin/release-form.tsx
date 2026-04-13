@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Plus, X } from "lucide-react";
 import type { Release, ReleaseType } from "@/types/content";
 import { saveRelease } from "@/app/admin/(protected)/releases/actions";
+import { MetaPreview } from "./meta-preview";
 
 interface ReleaseFormProps {
   initialRelease?: Release;
@@ -52,6 +53,7 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
   const [tracks, setTracks] = useState<string[]>(
     initialRelease?.tracks?.length ? initialRelease.tracks : [""],
   );
+  const [relatedRelease, setRelatedRelease] = useState(initialRelease?.relatedRelease ?? "");
 
   // Links
   const [spotify, setSpotify] = useState(initialRelease?.links?.spotify ?? "");
@@ -60,13 +62,13 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
   const [youtube, setYoutube] = useState(initialRelease?.links?.youtube ?? "");
   const [tidal, setTidal] = useState(initialRelease?.links?.tidal ?? "");
   const [deezer, setDeezer] = useState(initialRelease?.links?.deezer ?? "");
-  const [soundcloud, setSoundcloud] = useState(initialRelease?.links?.soundcloud ?? "");
   const [smartlink, setSmartlink] = useState(initialRelease?.links?.smartlink ?? "");
 
   // Artwork upload
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
+  const [artworkCacheBust, setArtworkCacheBust] = useState(0);
 
   // Link auto-fetch
   const [fetchUrl, setFetchUrl] = useState("");
@@ -85,9 +87,10 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
     setUploading(true);
     setUploadError("");
     try {
-      const slug =
+      const baseSlug =
         title.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") ||
         "artwork";
+      const slug = type === "Album" ? `${baseSlug}-album` : baseSlug;
       const fd = new FormData();
       fd.append("file", file);
       fd.append("slug", slug);
@@ -95,6 +98,7 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
       const json = await res.json();
       if (!res.ok) throw new Error(json.error ?? "Upload failed");
       setArtwork(json.path);
+      setArtworkCacheBust(Date.now());
     } catch (err) {
       setUploadError(err instanceof Error ? err.message : "Upload failed");
     } finally {
@@ -122,7 +126,6 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
       if (links.youtube && !youtube) { setYoutube(links.youtube); filled++; }
       if (links.tidal && !tidal) { setTidal(links.tidal); filled++; }
       if (links.deezer && !deezer) { setDeezer(links.deezer); filled++; }
-      if (links.soundcloud && !soundcloud) { setSoundcloud(links.soundcloud); filled++; }
       setFetchStatus(filled > 0 ? `Found ${filled} link${filled === 1 ? "" : "s"}` : "No links found");
     } catch (err) {
       setFetchStatus(err instanceof Error ? err.message : "Fetch failed");
@@ -174,6 +177,7 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
       date,
       artwork: artwork.trim() || null,
       tracks: tracks.map((t) => t.trim()).filter(Boolean),
+      ...(relatedRelease.trim() && { relatedRelease: relatedRelease.trim() }),
       links: {
         ...(spotify.trim() && { spotify: spotify.trim() }),
         ...(beatport.trim() && { beatport: beatport.trim() }),
@@ -181,7 +185,6 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
         ...(youtube.trim() && { youtube: youtube.trim() }),
         ...(tidal.trim() && { tidal: tidal.trim() }),
         ...(deezer.trim() && { deezer: deezer.trim() }),
-        ...(soundcloud.trim() && { soundcloud: soundcloud.trim() }),
         ...(smartlink.trim() && { smartlink: smartlink.trim() }),
       },
     };
@@ -284,12 +287,12 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
           {artwork && (
             <div className="flex items-center gap-3">
               <Image
-                src={artwork}
+                src={artworkCacheBust ? `${artwork}?v=${artworkCacheBust}` : artwork}
                 alt="Release artwork preview"
                 width={96}
                 height={96}
                 className="w-24 h-24 rounded object-cover border border-border"
-                unoptimized={artwork.startsWith("http")}
+                unoptimized
               />
               <button
                 type="button"
@@ -362,6 +365,17 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
             Add track
           </button>
         </div>
+      </Field>
+
+      {/* Related release */}
+      <Field label="Related release (slug)">
+        <input
+          type="text"
+          value={relatedRelease}
+          onChange={(e) => setRelatedRelease(e.target.value)}
+          placeholder="e.g. medusa for a remix of Medusa"
+          className={inputClass}
+        />
       </Field>
 
       {/* Streaming links */}
@@ -445,15 +459,6 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
               className={inputClass}
             />
           </Field>
-          <Field label="SoundCloud">
-            <input
-              type="url"
-              value={soundcloud}
-              onChange={(e) => setSoundcloud(e.target.value)}
-              placeholder="https://soundcloud.com/..."
-              className={inputClass}
-            />
-          </Field>
           <Field label="Smart link">
             <input
               type="url"
@@ -465,6 +470,19 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
           </Field>
         </div>
       </div>
+
+      {/* Meta preview */}
+      {title && (
+        <div>
+          <p className="font-body text-sm font-medium text-text-muted mb-3">Search & social preview</p>
+          <MetaPreview
+            title={`${artist} - ${title} | Airbase`}
+            description={`${type} on ${label}${year ? ` (${year})` : ""}.`}
+            url={`https://airbasemusic.com/discography/${title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}`}
+            image={artwork || undefined}
+          />
+        </div>
+      )}
 
       {/* Error */}
       {error && (

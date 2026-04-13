@@ -1,10 +1,5 @@
 import type { Post } from "@/types/content";
-
-function formatDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  if (isNaN(d.getTime())) return dateStr;
-  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
-}
+import { formatDate } from "@/lib/format-date";
 
 export default function ArticleCard({
   post,
@@ -19,9 +14,8 @@ export default function ArticleCard({
     <div
       className={hasContext
         ? "bg-bg-card border border-border rounded-b-lg px-5 py-5"
-        : "py-6 border-t"
+        : "py-6 border-t border-border"
       }
-      style={!hasContext ? { borderColor: "var(--bd-section)" } : undefined}
     >
       {children}
 

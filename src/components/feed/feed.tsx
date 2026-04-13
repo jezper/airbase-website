@@ -15,7 +15,7 @@ export default function Feed({ items }: { items: FeedItem[] }) {
         Feed
       </h2>
 
-      <div className="flex flex-col gap-6 max-w-prose mx-auto">
+      <div className="flex flex-col gap-6 max-w-content mx-auto">
         {items.length === 0 ? (
           <p className="text-center text-text-faint font-body py-16">
             No posts to show right now.
@@ -27,7 +27,7 @@ export default function Feed({ items }: { items: FeedItem[] }) {
             return (
               <div key={`${item.post.type}-${item.post.date}-${i}`}>
                 {/* Featured: big context card above the post */}
-                {isFeatured && item.release && <ReleaseContext release={item.release} />}
+                {isFeatured && item.release && <ReleaseContext release={item.release} relatedRelease={item.relatedRelease} />}
                 {isFeatured && item.show && <ShowContext show={item.show} />}
 
                 {/* The post card */}

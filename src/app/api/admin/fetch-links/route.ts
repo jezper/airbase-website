@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isAuthenticated } from "@/lib/auth";
 
 interface OdesliResponse {
   linksByPlatform: Record<string, { url: string }>;
@@ -12,10 +13,10 @@ const PLATFORM_MAP: Record<string, string> = {
   beatport: "beatport",
   deezer: "deezer",
   tidal: "tidal",
-  soundcloud: "soundcloud",
 };
 
 export async function POST(req: NextRequest) {
+  if (!(await isAuthenticated())) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   const { url } = await req.json();
   if (!url)
     return NextResponse.json({ error: "No URL provided" }, { status: 400 });

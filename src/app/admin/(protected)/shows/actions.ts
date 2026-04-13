@@ -2,12 +2,14 @@
 
 import { revalidatePath } from "next/cache";
 import { readShows, writeShows } from "@/lib/content-writer";
+import { isAuthenticated } from "@/lib/auth";
 import type { Show } from "@/types/content";
 
 export async function saveShow(
   show: Show,
   editIndex?: number,
 ): Promise<{ success: boolean; error?: string }> {
+  if (!(await isAuthenticated())) return { success: false, error: "Unauthorized" };
   try {
     const shows = await readShows();
 
@@ -30,6 +32,7 @@ export async function saveShow(
 export async function deleteShow(
   index: number,
 ): Promise<{ success: boolean; error?: string }> {
+  if (!(await isAuthenticated())) return { success: false, error: "Unauthorized" };
   try {
     const shows = await readShows();
     if (index < 0 || index >= shows.length) {

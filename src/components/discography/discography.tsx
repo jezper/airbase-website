@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import type { Release, ReleaseType } from "@/types/content";
 import { releaseMatchesAlias } from "@/lib/release-utils";
+import { PreviewProvider } from "@/components/preview-player";
 import YearGroup from "./year-group";
 
 interface DiscographyProps {
@@ -226,17 +227,19 @@ export default function Discography({ releases, aliases, remixedArtists }: Disco
       </div>
 
       {/* Year groups */}
-      {byYear.length > 0 ? (
-        <div className="flex flex-col gap-16">
-          {byYear.map(([year, yearReleases]) => (
-            <YearGroup key={year} year={year} releases={yearReleases} />
-          ))}
-        </div>
-      ) : (
-        <p className="font-body text-text-muted text-sm py-12 text-center">
-          No releases match this filter combination.
-        </p>
-      )}
+      <PreviewProvider>
+        {byYear.length > 0 ? (
+          <div className="flex flex-col gap-16">
+            {byYear.map(([year, yearReleases]) => (
+              <YearGroup key={year} year={year} releases={yearReleases} />
+            ))}
+          </div>
+        ) : (
+          <p className="font-body text-text-muted text-sm py-12 text-center">
+            No releases match this filter combination.
+          </p>
+        )}
+      </PreviewProvider>
 
       <p className="font-mono text-[13px] text-text-faint mt-12 text-center">
         {isFiltered

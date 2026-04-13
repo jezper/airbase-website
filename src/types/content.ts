@@ -6,7 +6,6 @@ export interface ReleaseLinks {
   spotify?: string;
   beatport?: string;
   youtube?: string;
-  soundcloud?: string;
   apple?: string;
   smartlink?: string;
   [key: string]: string | undefined;
@@ -22,6 +21,9 @@ export interface Release {
   links: ReleaseLinks;
   date: string;
   artwork: string | null;
+  relatedRelease?: string; // slug of a related release (e.g. original for a remix)
+  appearsOn?: { title: string; year: number; label?: string }[];
+  deezerTrackId?: number;
 }
 
 /* ── Show ── */
@@ -83,6 +85,7 @@ export interface Post {
 
 export interface FeedItem {
   post: Post;
-  release?: Release;     // resolved from releaseRef
-  show?: Show;           // resolved from showRef
+  release?: Release;        // resolved from releaseRef
+  relatedRelease?: Release; // resolved from release.relatedRelease
+  show?: Show;              // resolved from showRef
 }

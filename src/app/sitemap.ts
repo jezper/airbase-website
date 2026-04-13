@@ -1,6 +1,17 @@
 import { MetadataRoute } from "next";
+import { getAllReleases } from "@/lib/releases";
+import { releaseSlug } from "@/lib/release-utils";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const releases = await getAllReleases();
+
+  const releasePages: MetadataRoute.Sitemap = releases.map((r) => ({
+    url: `https://airbasemusic.com/discography/${releaseSlug(r)}`,
+    lastModified: new Date(r.date),
+    changeFrequency: "yearly" as const,
+    priority: 0.6,
+  }));
+
   return [
     {
       url: "https://airbasemusic.com",
@@ -14,6 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    ...releasePages,
     {
       url: "https://airbasemusic.com/shows",
       lastModified: new Date(),

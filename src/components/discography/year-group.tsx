@@ -15,7 +15,7 @@ export default function YearGroup({ year, releases }: YearGroupProps) {
       >
         {year}
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
         {releases.map((release, i) => (
           <ReleaseGridCard key={`${release.year}-${release.artist}-${release.title}-${i}`} release={release} />
         ))}

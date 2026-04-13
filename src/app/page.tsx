@@ -1,9 +1,11 @@
-import { Play } from "lucide-react";
+import Image from "next/image";
 import { getFeedItems } from "@/lib/feed";
-import { getAllReleases } from "@/lib/releases";
+import { getAllReleases, getReleaseBySlug } from "@/lib/releases";
+import { releaseSlug } from "@/lib/release-utils";
 import { getAllShows } from "@/lib/shows";
 import { readSiteConfig, readPosts } from "@/lib/content-writer";
 import Feed from "@/components/feed/feed";
+import { HeroPlayButton } from "@/components/hero-play-button";
 
 const STATS = [
   { number: "25+", label: "Years Active" },
@@ -23,14 +25,15 @@ export default async function Home() {
 
   const hero = siteConfig.hero;
   const heroRelease = hero.type === "release" ? (releases[hero.releaseIndex ?? 0] ?? releases[0]) : null;
+  const heroRelated = heroRelease?.relatedRelease ? await getReleaseBySlug(heroRelease.relatedRelease) : null;
   const heroPost = hero.type === "post" ? posts[hero.postIndex ?? 0] : null;
   const heroShow = hero.type === "show" ? shows[hero.showIndex ?? 0] : null;
 
   return (
     <>
       {/* Hero */}
-      <section className={`relative flex flex-col justify-end px-6 md:px-12 pb-16 md:pb-20 overflow-hidden ${
-        heroRelease ? "min-h-[85vh] pt-16 md:pt-20" : "pt-32 md:pt-48 pb-16 md:pb-20"
+      <section className={`relative flex flex-col justify-center px-6 md:px-12 overflow-hidden ${
+        heroRelease ? "min-h-[85vh] py-24 md:py-28" : "pt-32 md:pt-48 pb-16 md:pb-20"
       }`}>
         {/* Ambient glow */}
         <div
@@ -54,38 +57,54 @@ export default async function Home() {
           ].filter(Boolean) as { label: string; href: string }[];
 
           return (
-            <div className="relative z-10 grid grid-cols-1 md:grid-cols-[2fr_3fr] items-center gap-8 md:gap-12 max-w-content mx-auto">
+            <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 items-center gap-8 md:gap-16 max-w-content mx-auto">
               {heroRelease.artwork && (
-                <div className="order-1 flex justify-center">
-                  <img src={heroRelease.artwork} alt={`${heroRelease.title} by ${heroRelease.artist}`}
-                    className="w-full aspect-square rounded-lg shadow-2xl object-cover" />
+                <div className="order-1 flex justify-center md:justify-end">
+                  <Image src={heroRelease.artwork} alt={`${heroRelease.title} by ${heroRelease.artist}`}
+                    className="w-full max-w-md aspect-square rounded-lg shadow-2xl object-cover"
+                    width={600} height={600} sizes="(max-width: 768px) 100vw, 50vw" priority
+                    unoptimized={heroRelease.artwork.startsWith("http")} />
                 </div>
               )}
               <div className="order-2">
                 <p className="font-mono text-[13px] font-medium uppercase tracking-[0.2em] text-accent mb-4 md:mb-5">
-                  {isUpcoming ? `Upcoming / ${heroRelease.date}` : `New Release / ${heroRelease.year}`}
+                  {isUpcoming ? `Out ${heroRelease.date}` : `New Release / ${heroRelease.year}`}
                 </p>
                 <h1 className="font-display text-hero font-black leading-hero tracking-hero mb-5 md:mb-6">
                   {heroRelease.title}
                 </h1>
-                <p className="font-body text-[15px] font-extrabold uppercase tracking-[0.15em] text-accent mb-8">
-                  {heroRelease.artist} &mdash; {heroRelease.label}
+                <p className="font-body text-[15px] font-extrabold uppercase tracking-[0.15em] text-accent mb-2">
+                  {heroRelease.artist}
                 </p>
-                {links.length > 0 && (
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-                    <a href={links[0].href} target="_blank" rel="noopener noreferrer"
-                      className="w-16 h-16 rounded-full bg-accent flex items-center justify-center hover:scale-110 transition-transform duration-150 shrink-0"
-                      aria-label={`Play ${heroRelease.title}`}>
-                      <Play size={22} fill="#0C0B0A" stroke="#0C0B0A" className="ml-1" />
+                <p className="font-mono text-[13px] uppercase tracking-[0.12em] text-text-muted mb-4">
+                  {heroRelease.label}
+                </p>
+                {heroRelated && (
+                  <p className="font-mono text-[12px] uppercase tracking-[0.1em] text-text-faint mb-8">
+                    Original: <a href={`/discography#${releaseSlug(heroRelated)}`}
+                      className="text-text-muted hover:text-accent transition-colors">
+                      {heroRelated.artist} &ndash; {heroRelated.title} ({heroRelated.year})
                     </a>
-                    <div className="flex flex-wrap gap-x-5 gap-y-2">
-                      {links.map((l) => (
-                        <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
-                          className="font-body text-[13px] font-bold uppercase tracking-[0.08em] text-accent hover:border-b-2 hover:border-accent pb-0.5 transition-all duration-150">
-                          {l.label}
-                        </a>
-                      ))}
-                    </div>
+                  </p>
+                )}
+                {!heroRelated && <div className="mb-4" />}
+                {(links.length > 0 || heroRelease.deezerTrackId) && (
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
+                    <HeroPlayButton
+                      title={heroRelease.title}
+                      streamingUrl={links[0]?.href}
+                      deezerTrackId={heroRelease.deezerTrackId}
+                    />
+                    {links.length > 0 && (
+                      <div className="flex flex-wrap gap-x-5 gap-y-2">
+                        {links.map((l) => (
+                          <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
+                            className="font-body text-[13px] font-bold uppercase tracking-[0.08em] text-accent hover:border-b-2 hover:border-accent pb-0.5 transition-all duration-150">
+                            {l.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -144,8 +163,10 @@ export default async function Home() {
             <div className="relative z-10 max-w-content mx-auto">
               {heroShow.image && (
                 <div className="mb-8">
-                  <img src={heroShow.image} alt={`${heroShow.event ?? heroShow.venue} flyer`}
-                    className="w-full max-w-md rounded-lg shadow-2xl object-cover" />
+                  <Image src={heroShow.image} alt={`${heroShow.event ?? heroShow.venue} flyer`}
+                    className="w-full max-w-md rounded-lg shadow-2xl object-cover"
+                    width={600} height={600} sizes="(max-width: 768px) 100vw, 50vw" priority
+                    unoptimized={heroShow.image.startsWith("http")} />
                 </div>
               )}
               {isUpcoming && (
@@ -176,7 +197,9 @@ export default async function Home() {
           <div className="relative z-10 max-w-content mx-auto">
             {hero.image && (
               <div className="mb-8">
-                <img src={hero.image} alt={hero.title ?? ""} className="w-48 h-48 rounded-lg shadow-2xl object-cover" />
+                <Image src={hero.image} alt={hero.title ?? ""} className="w-48 h-48 rounded-lg shadow-2xl object-cover"
+                  width={192} height={192} priority
+                  unoptimized={hero.image.startsWith("http")} />
               </div>
             )}
             <h1 className="font-display text-hero font-black leading-hero tracking-hero mb-5 md:mb-6">

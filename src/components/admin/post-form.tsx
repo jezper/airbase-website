@@ -7,6 +7,7 @@ import { TiptapEditor } from "./tiptap-editor";
 import { releaseSlug } from "@/lib/release-utils";
 import { showSlug } from "@/lib/show-utils";
 import { savePost } from "@/app/admin/(protected)/posts/actions";
+import { MetaPreview } from "./meta-preview";
 
 interface PostFormProps {
   releases: Release[];
@@ -296,6 +297,18 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
           Featured (displays with expanded release/show context)
         </label>
       </div>
+
+      {/* Meta preview */}
+      {(title || body) && type === "article" && (
+        <div>
+          <p className="font-body text-sm font-medium text-text-muted mb-3">Search & social preview</p>
+          <MetaPreview
+            title={title ? `${title} | Airbase` : "Airbase"}
+            description={body.slice(0, 160)}
+            url={slug ? `https://airbasemusic.com/feed/${slug}` : "https://airbasemusic.com"}
+          />
+        </div>
+      )}
 
       {/* Error */}
       {error && (

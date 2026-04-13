@@ -1,10 +1,6 @@
+import Image from "next/image";
 import type { Post } from "@/types/content";
-
-function formatDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  if (isNaN(d.getTime())) return dateStr;
-  return d.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
-}
+import { formatDate } from "@/lib/format-date";
 
 export default function NoteCard({
   post,
@@ -31,7 +27,9 @@ export default function NoteCard({
       </p>
 
       {post.image && (
-        <img src={post.image} alt="" className="mt-3 rounded-md w-full object-cover max-h-48" loading="lazy" />
+        <Image src={post.image} alt="" className="mt-3 rounded-md w-full object-cover max-h-48"
+          width={600} height={192} sizes="(max-width: 768px) 100vw, 50vw"
+          unoptimized={post.image.startsWith("http")} />
       )}
 
       {post.link && (

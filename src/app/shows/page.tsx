@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getUpcomingShows, getPastShows } from "@/lib/shows";
 
 export const metadata: Metadata = {
@@ -23,8 +24,30 @@ export default async function ShowsPage() {
     getPastShows(),
   ]);
 
+  const eventJsonLd = upcoming
+    .filter((s) => s.date)
+    .map((s) => ({
+      "@context": "https://schema.org",
+      "@type": "MusicEvent",
+      name: s.event ?? s.venue,
+      startDate: s.date,
+      location: {
+        "@type": "Place",
+        name: s.venue,
+        address: { "@type": "PostalAddress", addressLocality: s.city, addressCountry: s.country },
+      },
+      performer: { "@type": "MusicGroup", name: "Airbase" },
+      ...(s.ticketLink && { offers: { "@type": "Offer", url: s.ticketLink } }),
+    }));
+
   return (
     <div className="px-6 md:px-12 py-12 max-w-content mx-auto">
+      {eventJsonLd.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+        />
+      )}
       <div>
         <h1 className="font-display text-5xl md:text-6xl font-black leading-tight mb-2">
           Shows
@@ -61,11 +84,12 @@ export default async function ShowsPage() {
                         rel="noopener noreferrer"
                         className="block mb-5 -mx-6 -mt-6 overflow-hidden rounded-t-lg hover:opacity-90 transition-opacity"
                       >
-                        <img
+                        <Image
                           src={show.image}
                           alt={`${show.event ?? show.venue} flyer`}
                           className="w-full max-h-80 object-contain bg-bg"
-                          loading="lazy"
+                          width={800} height={320} sizes="(max-width: 768px) 100vw, 50vw"
+                          unoptimized={show.image.startsWith("http")}
                         />
                       </a>
                     )}
@@ -150,11 +174,12 @@ export default async function ShowsPage() {
                           rel="noopener noreferrer"
                           className="block shrink-0 w-20 h-20 rounded overflow-hidden hover:opacity-80 transition-opacity"
                         >
-                          <img
+                          <Image
                             src={show.image}
                             alt={`${show.event ?? show.venue} flyer`}
                             className="w-full h-full object-cover"
-                            loading="lazy"
+                            width={80} height={80}
+                            unoptimized={show.image.startsWith("http")}
                           />
                         </a>
                       )}

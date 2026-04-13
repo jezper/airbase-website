@@ -62,7 +62,6 @@ const PLATFORM_MAP: Record<string, string> = {
   youtube: "youtube",
   youtubeMusic: "youtube_music",
   beatport: "beatport",
-  soundcloud: "soundcloud",
   deezer: "deezer",
   tidal: "tidal",
 };
@@ -78,7 +77,7 @@ function slugify(title: string): string {
 function getSeedUrl(release: Release): string | null {
   // Pick the best seed URL for Odesli lookup
   // Prefer Spotify > Apple > Beatport > SoundCloud > smartlink > any other
-  const priority = ["spotify", "apple", "beatport", "soundcloud", "smartlink"];
+  const priority = ["spotify", "apple", "beatport", "smartlink"];
   for (const key of priority) {
     // Handle apple_1, apple_2, etc.
     for (const [k, v] of Object.entries(release.links)) {

@@ -1,0 +1,37 @@
+# Airbase (airbasemusic.com)
+
+> Airbase is a Swedish trance producer and DJ (Jezper Söderlund), active since the mid-1990s. This is his official website.
+
+## Key facts
+- Real name: Jezper Söderlund
+- Origin: Gothenburg, Sweden
+- Genres: Trance, Progressive Trance
+- Active since: mid-1990s
+- 100+ releases across 14 aliases
+- Co-creator of trance.nu
+- Labels: Black Hole Recordings, Armada Music, In Trance We Trust, Platipus, Flashover, Anjunabeats, and more
+
+## Aliases
+Airbase, Ozone, Rah, The Scarab, Parc, Narthex, First & Andre, Mono, One Man Army, J., J.L.N.D., Jezper, Inner State, Loken
+
+## Notable releases
+- Escape (2006) - biggest hit
+- Denial feat. Floria Ambra (2008) - most recognized vocal track
+- Genie (2002) - breakout hit
+- We Might Fall (2011) - debut album on Intuition Recordings
+- Everything Else Could Wait (2026) - comeback single on Black Hole Recordings
+- Widescreen (2005) - Sensation Belgium anthem (as First & Andre)
+
+## Site structure
+- / - Feed (notes, articles, release announcements)
+- /discography - Complete discography with filters by alias and type
+- /discography/{slug} - Individual release pages with tracklist, streaming links, compilation appearances
+- /shows - Performance history
+- /about - Biography
+- /press - Press features and interviews
+- /contact - Booking and contact info
+- /feed.xml - RSS feed
+
+## Contact
+- Booking: dj@airbasemusic.com
+- General: jezper@airbasemusic.com

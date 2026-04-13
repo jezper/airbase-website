@@ -10,7 +10,7 @@ export interface SessionData {
 
 const sessionOptions = {
   cookieName: "airbase_admin_session",
-  password: process.env.SESSION_SECRET ?? "fallback-secret-change-in-production",
+  password: process.env.SESSION_SECRET || (() => { throw new Error("SESSION_SECRET env var is required"); })(),
   cookieOptions: {
     secure: process.env.NODE_ENV === "production",
     httpOnly: true,

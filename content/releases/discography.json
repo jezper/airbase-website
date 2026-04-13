@@ -2,13 +2,34 @@
   {
     "title": "Medusa (Darren Porter Remix)",
     "artist": "Airbase",
-    "type": "Single",
+    "type": "Remix",
     "label": "Armada Music",
     "year": 2026,
     "date": "2026-04-17",
     "artwork": "/artwork/medusa-darren-porter-remix.jpg",
-    "tracks": [],
-    "links": {}
+    "tracks": [
+      "Medusa - Radio Edit",
+      "Medusa - Original Mix"
+    ],
+    "links": {
+      "spotify": "https://open.spotify.com/album/7E00TIwnFH9PCJulpPAnst"
+    },
+    "relatedRelease": "one-tear-away-rest-in-peace-medusa",
+    "appearsOn": [
+      {
+        "title": "Maximum Trance, Vol. 6",
+        "year": 2008
+      },
+      {
+        "title": "Trance Top 1000 - Selection 002",
+        "year": 2013
+      },
+      {
+        "title": "Trance Top 1000 - Ibiza Classics",
+        "year": 2019
+      }
+    ],
+    "deezerTrackId": 3788325502
   },
   {
     "year": 2026,
@@ -23,11 +44,17 @@
     "links": {
       "spotify": "https://open.spotify.com/album/4ZfQAvaurXtnLDajcazRHE",
       "beatport": "https://www.beatport.com/track/everything-else-could-wait/23324813",
-      "soundcloud": "https://soundcloud.com/airbasemusic/everything-else-could-wait-1",
       "smartlink": "https://blackhole.lnk.to/EverythingWait"
     },
     "date": "2026-02-06",
-    "artwork": "/artwork/everything-else-could-wait.jpg"
+    "artwork": "/artwork/everything-else-could-wait.jpg",
+    "appearsOn": [
+      {
+        "title": "FYH483 - Find Your Harmony Radio Episode #483",
+        "year": 2026
+      }
+    ],
+    "deezerTrackId": 3760725592
   },
   {
     "year": 2021,
@@ -36,15 +63,18 @@
     "type": "Single",
     "label": "Airbase Music",
     "tracks": [
-      "Idun"
+      "Idun",
+      "Idun (Radio Edit)"
     ],
     "links": {
       "apple": "https://song.link/i/1593645049",
       "deezer": "https://www.deezer.com/track/1542738662",
-      "tidal": "https://listen.tidal.com/track/203967647"
+      "tidal": "https://listen.tidal.com/track/203967647",
+      "spotify": "https://open.spotify.com/album/0tBvqVHqGcJfSizQy7PG5o"
     },
     "date": "2021-01-01",
-    "artwork": "/artwork/idun.jpg"
+    "artwork": "/artwork/idun.jpg",
+    "deezerTrackId": 1542738662
   },
   {
     "year": 2018,
@@ -53,14 +83,31 @@
     "type": "Single",
     "label": "A State Of Trance",
     "tracks": [
-      "Vermillion"
+      "Vermillion",
+      "Vermillion (Extended Mix)"
     ],
     "links": {
       "apple": "https://song.link/i/1372253911",
-      "deezer": "https://www.deezer.com/track/486457372"
+      "deezer": "https://www.deezer.com/track/486457372",
+      "spotify": "https://open.spotify.com/album/7GOfrWSWmbWyIccI2d1Lfu"
     },
     "date": "2018-01-01",
-    "artwork": "/artwork/vermillion.jpg"
+    "artwork": "/artwork/vermillion.jpg",
+    "appearsOn": [
+      {
+        "title": "A State Of Trance 2018 (Mixed by Armin van Buuren)",
+        "year": 2018
+      },
+      {
+        "title": "In Search of Sunrise 14",
+        "year": 2018
+      },
+      {
+        "title": "In Search of Sunrise 14 Mixed by Markus Schulz, Gabriel & Dresden and Andy Moor",
+        "year": 2018
+      }
+    ],
+    "deezerTrackId": 486457362
   },
   {
     "year": 2017,
@@ -69,15 +116,37 @@
     "type": "Single",
     "label": "RNM",
     "tracks": [
-      "Palm Of My Heart"
+      "Palm of My Heart - Original Mix",
+      "Palm of My Heart - Extended Mix",
+      "Palm of My Heart - Dub"
     ],
     "links": {
       "apple": "https://song.link/i/1363564056",
       "deezer": "https://www.deezer.com/track/475381732",
-      "tidal": "https://listen.tidal.com/track/86875900"
+      "tidal": "https://listen.tidal.com/track/86875900",
+      "spotify": "https://open.spotify.com/album/2cwGesDgq4f5auVn6bf7Dg"
     },
     "date": "2017-01-01",
-    "artwork": "/artwork/palm-of-my-heart.jpg"
+    "artwork": "/artwork/palm-of-my-heart.jpg",
+    "appearsOn": [
+      {
+        "title": "Female Vocal Trance Anthems 2017",
+        "year": 2017
+      },
+      {
+        "title": "Corsten's Countdown 528",
+        "year": 2017
+      },
+      {
+        "title": "Corsten's Countdown 529",
+        "year": 2017
+      },
+      {
+        "title": "Corsten's Countdown 548 - Yearmix Of 2017",
+        "year": 2018
+      }
+    ],
+    "deezerTrackId": 393089622
   },
   {
     "year": 2016,
@@ -86,15 +155,57 @@
     "type": "Single",
     "label": "Flashover Recordings",
     "tracks": [
-      "Lachrymose"
+      "Lachrymose",
+      "Lachrymose - Extended Mix",
+      "Lachrymose - Intro Mix"
     ],
     "links": {
       "apple": "https://song.link/i/1083847508",
       "deezer": "https://www.deezer.com/track/118671186",
-      "tidal": "https://listen.tidal.com/track/144518619"
+      "tidal": "https://listen.tidal.com/track/144518619",
+      "spotify": "https://open.spotify.com/album/1ZWabzUxTBa3mnX4ceZ2of"
     },
     "date": "2016-01-01",
-    "artwork": "/artwork/lachrymose.jpg"
+    "artwork": "/artwork/lachrymose.jpg",
+    "appearsOn": [
+      {
+        "title": "A State Of Trance Episode 756",
+        "year": 2016
+      },
+      {
+        "title": "Corsten's Countdown 496 (Corsten's Countdown Yearmix of 2016)",
+        "year": 2016
+      },
+      {
+        "title": "Transmission Radio Episode 061",
+        "year": 2016
+      },
+      {
+        "title": "Corsten's Countdown 455",
+        "year": 2016
+      },
+      {
+        "title": "Global DJ Broadcast - Top 20 June 2016",
+        "year": 2016
+      },
+      {
+        "title": "Corsten's Countdown 456",
+        "year": 2016
+      },
+      {
+        "title": "Black Hole Trance Music 06-16",
+        "year": 2016
+      },
+      {
+        "title": "Corsten's Countdown 454",
+        "year": 2016
+      },
+      {
+        "title": "Corsten's Countdown 457",
+        "year": 2016
+      }
+    ],
+    "deezerTrackId": 118671186
   },
   {
     "year": 2016,
@@ -102,31 +213,51 @@
     "title": "The Mix Compilation",
     "type": "Album",
     "label": "Flashover Recordings",
-    "tracks": [],
+    "tracks": [
+      "Airbase - Lachrymose (Intro Mix)",
+      "Rafael Osmo - Scream",
+      "Bart Claessen - Hartseer (Fisherman & Hawkins Remix)",
+      "Johnny Yono - Flux",
+      "PARITY - Nepal",
+      "Konstantin Kolyada - Open Gate",
+      "Assaf - Citadel",
+      "Dimension - Bocanegra",
+      "Somna - Volcano",
+      "Nick Winth - Spirit",
+      "Andy Moor - Resurrection (Mike Saint-Jules Interstellar Mix)",
+      "Ferry Corsten - Follow You",
+      "Max Graham - End Beginning",
+      "Sagar Dawani - The Essence of Waiting",
+      "Dennis Sheperd - Where I Begin (Evoland Remix)"
+    ],
     "links": {
       "apple": "https://album.link/i/1083847491",
       "deezer": "https://www.deezer.com/album/12339536",
       "tidal": "https://listen.tidal.com/album/175248523"
     },
     "date": "2016-01-01",
-    "artwork": "/artwork/the-mix-compilation.jpg"
+    "artwork": "/artwork/the-mix-compilation.jpg",
+    "deezerTrackId": 118671186
   },
   {
-    "year": 2015,
-    "artist": "Airbase",
     "title": "Oil",
+    "artist": "Airbase",
     "type": "Single",
     "label": "Flashover Recordings",
+    "year": 2015,
+    "date": "2015-01-01",
+    "artwork": "/artwork/oil.jpg",
     "tracks": [
-      "Oil"
+      "Oil",
+      "Oil (Extended Mix)"
     ],
     "links": {
+      "spotify": "https://open.spotify.com/album/03tiQnxfNzxl4CovZjDayj",
       "apple": "https://song.link/i/1517457836",
-      "deezer": "https://www.deezer.com/track/985682272",
-      "tidal": "https://listen.tidal.com/track/85721824"
+      "tidal": "https://listen.tidal.com/track/85721824",
+      "deezer": "https://www.deezer.com/track/985682272"
     },
-    "date": "2015-01-01",
-    "artwork": "/artwork/oil.jpg"
+    "deezerTrackId": 470765052
   },
   {
     "year": 2015,
@@ -135,15 +266,18 @@
     "type": "Single",
     "label": "A State Of Trance",
     "tracks": [
-      "Mondegreen"
+      "Mondegreen (Radio Edit)",
+      "Mondegreen (Original Mix)"
     ],
     "links": {
       "apple": "https://song.link/i/993193266",
       "deezer": "https://www.deezer.com/track/100103902",
-      "tidal": "https://listen.tidal.com/track/46920563"
+      "tidal": "https://listen.tidal.com/track/46920563",
+      "spotify": "https://open.spotify.com/album/5biokdHIpnN9FjdtBYNNOX"
     },
     "date": "2015-01-01",
-    "artwork": "/artwork/mondegreen.jpg"
+    "artwork": "/artwork/mondegreen.jpg",
+    "deezerTrackId": 100103900
   },
   {
     "year": 2015,
@@ -157,10 +291,26 @@
     "links": {
       "apple": "https://song.link/i/1039271209",
       "deezer": "https://www.deezer.com/track/113058614",
-      "tidal": "https://listen.tidal.com/track/54103675"
+      "tidal": "https://listen.tidal.com/track/54103675",
+      "spotify": "https://open.spotify.com/album/2PQQnXRknghdyGFK8klo9J"
     },
     "date": "2015-01-01",
-    "artwork": "/artwork/epoch.jpg"
+    "artwork": "/artwork/epoch.jpg",
+    "appearsOn": [
+      {
+        "title": "Transmission Radio Episode 039",
+        "year": 2015
+      },
+      {
+        "title": "Transmission Radio Episode 045",
+        "year": 2015
+      },
+      {
+        "title": "Angels, Humans & Robots Vol. 1",
+        "year": 2016
+      }
+    ],
+    "deezerTrackId": 113058614
   },
   {
     "year": 2015,
@@ -169,14 +319,28 @@
     "type": "Remix",
     "label": "Flashover Recordings",
     "tracks": [
-      "Hope (Airbase Remix)"
+      "Hope",
+      "Hope - Extended Mix",
+      "Hope - Club Mix",
+      "Hope - Faruk Sabanci Remix",
+      "Hope - Airbase Remix",
+      "Hope - Faruk Sabanci Extended Remix",
+      "Hope - Airbase Extended Remix"
     ],
     "links": {
       "apple": "https://song.link/i/1520712532",
-      "deezer": "https://www.deezer.com/track/1004621852"
+      "deezer": "https://www.deezer.com/track/1004621852",
+      "spotify": "https://open.spotify.com/album/6gLR1NygsY7YpHGAGQNyxH"
     },
     "date": "2015-01-01",
-    "artwork": "/artwork/hope-airbase-remix.png"
+    "artwork": "/artwork/hope-airbase-remix.png",
+    "appearsOn": [
+      {
+        "title": "Hope",
+        "year": 2010
+      }
+    ],
+    "deezerTrackId": 1004621832
   },
   {
     "year": 2015,
@@ -185,6 +349,7 @@
     "type": "Remix",
     "label": "Blue Soho Recordings",
     "tracks": [
+      "Aftershock",
       "Aftershock (Airbase Remix)"
     ],
     "links": {
@@ -192,7 +357,8 @@
       "deezer": "https://www.deezer.com/track/97953302"
     },
     "date": "2015-01-01",
-    "artwork": "/artwork/aftershock-airbase-remix.jpg"
+    "artwork": "/artwork/aftershock-airbase-remix.jpg",
+    "deezerTrackId": 551204162
   },
   {
     "year": 2014,
@@ -201,7 +367,13 @@
     "type": "Single",
     "label": "Flashover Recordings",
     "tracks": [
-      "Panache"
+      "Panache - Original Mix",
+      "Panache - DIM3NSION Remix",
+      "Panache - Willem de Roo Remix",
+      "Panache - Abdou Ramoul Remix",
+      "Panache - DIM3NSION Extended Remix",
+      "Panache - Willem de Roo Extended Remix",
+      "Panache - Abdou Ramoul Extended Remix"
     ],
     "links": {
       "spotify": "https://open.spotify.com/album/5EB8PlNajQglhsUwoRBFYd",
@@ -209,7 +381,14 @@
       "tidal": "https://listen.tidal.com/album/144518493"
     },
     "date": "2014-01-01",
-    "artwork": "/artwork/panache.jpg"
+    "artwork": "/artwork/panache.jpg",
+    "appearsOn": [
+      {
+        "title": "Translations",
+        "year": 2018
+      }
+    ],
+    "deezerTrackId": 985802812
   },
   {
     "year": 2013,
@@ -218,15 +397,18 @@
     "type": "Single",
     "label": "A State Of Trance",
     "tracks": [
-      "Modus Operandi"
+      "Modus Operandi (Original Mix)",
+      "Modus Operandi (Radio Edit)"
     ],
     "links": {
       "apple": "https://song.link/i/640142545",
       "deezer": "https://www.deezer.com/track/66804423",
-      "tidal": "https://listen.tidal.com/track/20270334"
+      "tidal": "https://listen.tidal.com/track/20270334",
+      "spotify": "https://open.spotify.com/album/3fyESWeEOkIVmNNiylloHZ"
     },
     "date": "2013-01-01",
-    "artwork": "/artwork/modus-operandi.jpg"
+    "artwork": "/artwork/modus-operandi.jpg",
+    "deezerTrackId": 71923189
   },
   {
     "year": 2012,
@@ -235,32 +417,39 @@
     "type": "Single",
     "label": "Intuition Recordings",
     "tracks": [
-      "Less Than More"
+      "Less Than More (Original Mix)",
+      "Less Than More (MaRLo Remix)",
+      "Less Than More (Radio Edit)"
     ],
     "links": {
       "apple": "https://song.link/i/583002810",
       "deezer": "https://www.deezer.com/track/62600301",
-      "tidal": "https://listen.tidal.com/track/18209874"
+      "tidal": "https://listen.tidal.com/track/18209874",
+      "spotify": "https://open.spotify.com/album/4cljBPhnO5c9KelEa0NuC7"
     },
     "date": "2012-01-01",
-    "artwork": "/artwork/less-than-more.jpg"
+    "artwork": "/artwork/less-than-more.jpg",
+    "deezerTrackId": 120085822
   },
   {
-    "year": 2012,
-    "artist": "Airbase",
     "title": "Uppercut",
+    "artist": "Airbase",
     "type": "Single",
     "label": "A State Of Trance",
+    "year": 2012,
+    "date": "2012-01-01",
+    "artwork": "/artwork/uppercut.jpg",
     "tracks": [
-      "Uppercut"
+      "Uppercut (Original Mix)",
+      "Uppercut (Radio Edit)"
     ],
     "links": {
+      "spotify": "https://open.spotify.com/album/3oA5RfOc9L6DnKP8O6NNLU",
       "apple": "https://song.link/i/580834470",
-      "deezer": "https://www.deezer.com/track/62917727",
-      "tidal": "https://listen.tidal.com/track/18404265"
+      "tidal": "https://listen.tidal.com/track/18404265",
+      "deezer": "https://www.deezer.com/track/62917727"
     },
-    "date": "2012-01-01",
-    "artwork": "/artwork/uppercut.jpg"
+    "deezerTrackId": 3543316641
   },
   {
     "year": 2012,
@@ -277,7 +466,14 @@
       "tidal": "https://listen.tidal.com/track/86937336"
     },
     "date": "2012-01-01",
-    "artwork": "/artwork/resurrection.jpg"
+    "artwork": "/artwork/resurrection.jpg",
+    "appearsOn": [
+      {
+        "title": "Next Level",
+        "year": 2012
+      }
+    ],
+    "deezerTrackId": 482131832
   },
   {
     "year": 2012,
@@ -293,14 +489,23 @@
       "deezer": "https://www.deezer.com/track/1236618652"
     },
     "date": "2012-01-01",
-    "artwork": "/artwork/don-t-tar-me-with-the-same-brush-airbase-remix.jpg"
+    "artwork": "/artwork/don-t-tar-me-with-the-same-brush-airbase-remix.jpg",
+    "appearsOn": [
+      {
+        "title": "Open All Hours",
+        "year": 2012
+      }
+    ],
+    "deezerTrackId": 1236618652
   },
   {
-    "year": 2011,
-    "artist": "Airbase",
     "title": "We Might Fall",
+    "artist": "Airbase",
     "type": "Album",
     "label": "Intuition Recordings",
+    "year": 2011,
+    "date": "2011-02-21",
+    "artwork": "/artwork/we-might-fall-album.jpg",
     "tracks": [
       "Escape (2011 Album Mix)",
       "Less than More",
@@ -315,100 +520,118 @@
       "St. Emilion"
     ],
     "links": {
+      "spotify": "https://open.spotify.com/album/5rHiE9q72olgJpOAxkQRA9",
       "apple": "https://album.link/i/1088715268",
-      "deezer": "https://www.deezer.com/album/12521742",
-      "tidal": "https://listen.tidal.com/album/18209872"
+      "tidal": "https://listen.tidal.com/album/18209872",
+      "deezer": "https://www.deezer.com/album/12521742"
     },
-    "date": "2011-02-21",
-    "artwork": "/artwork/we-might-fall.jpg"
+    "deezerTrackId": 120085834
   },
   {
-    "year": 2011,
-    "artist": "Airbase",
     "title": "40 Miles / Last Door On The Left",
+    "artist": "Airbase",
     "type": "Single",
     "label": "Intuition Recordings",
+    "year": 2011,
+    "date": "2011-01-01",
+    "artwork": "/artwork/40-miles-last-door-on-the-left.jpg",
     "tracks": [
       "40 Miles (feat. Empyreal Sun)",
       "Last Door On The Left"
     ],
     "links": {
       "apple": "https://geo.music.apple.com/se/album/_/1088715268?i=1088715315&mt=1&app=music&ls=1&at=1000lHKX&ct=api_http&itscg=30200&itsct=odsl_m",
-      "deezer": "https://www.deezer.com/track/120085838",
-      "tidal": "https://listen.tidal.com/track/57831713"
+      "tidal": "https://listen.tidal.com/track/57831713",
+      "deezer": "https://www.deezer.com/track/120085838"
     },
-    "date": "2011-01-01",
-    "artwork": "/artwork/40-miles-last-door-on-the-left.jpg"
+    "deezerTrackId": 62561531
   },
   {
-    "year": 2011,
-    "artist": "Airbase feat. Ilana",
     "title": "Affirmation",
+    "artist": "Airbase feat. Ilana",
     "type": "Single",
     "label": "Intuition Recordings",
+    "year": 2011,
+    "date": "2011-01-01",
+    "artwork": "/artwork/affirmation.jpg",
     "tracks": [
-      "Affirmation"
+      "Affirmation - Original Mix",
+      "Affirmation - Radio Edit"
     ],
     "links": {
+      "spotify": "https://open.spotify.com/album/2RTJb8JJTietpk8MI7KG9S",
       "apple": "https://song.link/i/582273968",
-      "deezer": "https://www.deezer.com/track/62561557",
-      "tidal": "https://listen.tidal.com/track/18209881"
+      "tidal": "https://listen.tidal.com/track/18209881",
+      "deezer": "https://www.deezer.com/track/62561557"
     },
-    "date": "2011-01-01",
-    "artwork": "/artwork/affirmation.jpg"
+    "deezerTrackId": 120085836
   },
   {
-    "year": 2011,
-    "artist": "Airbase",
     "title": "St. Emilion / Sand And Sorrow",
+    "artist": "Airbase",
     "type": "Single",
     "label": "Intuition Recordings",
+    "year": 2011,
+    "date": "2011-01-01",
+    "artwork": "/artwork/st-emilion-sand-and-sorrow.jpg",
     "tracks": [
       "St. Emilion",
       "Sand And Sorrow"
     ],
     "links": {
       "apple": "https://geo.music.apple.com/se/album/_/582284813?i=582287044&mt=1&app=music&ls=1&at=1000lHKX&ct=api_http&itscg=30200&itsct=odsl_m",
-      "deezer": "https://www.deezer.com/track/120085840",
-      "tidal": "https://listen.tidal.com/track/57831714"
+      "tidal": "https://listen.tidal.com/track/57831714",
+      "deezer": "https://www.deezer.com/track/120085840"
     },
-    "date": "2011-01-01",
-    "artwork": "/artwork/st-emilion-sand-and-sorrow.jpg"
+    "deezerTrackId": 120085840
   },
   {
-    "year": 2011,
-    "artist": "Airbase",
     "title": "Asylum / Sun City",
+    "artist": "Airbase",
     "type": "Single",
     "label": "Intuition Recordings",
+    "year": 2011,
+    "date": "2011-01-01",
+    "artwork": "/artwork/asylum-sun-city.jpg",
     "tracks": [
       "Asylum",
       "Sun City"
     ],
     "links": {
       "apple": "https://geo.music.apple.com/se/album/_/582284813?i=582285626&mt=1&app=music&ls=1&at=1000lHKX&ct=api_http&itscg=30200&itsct=odsl_m",
-      "deezer": "https://www.deezer.com/track/120085826",
-      "tidal": "https://listen.tidal.com/track/18209706"
+      "tidal": "https://listen.tidal.com/track/18209706",
+      "deezer": "https://www.deezer.com/track/120085826"
     },
-    "date": "2011-01-01",
-    "artwork": "/artwork/asylum-sun-city.jpg"
+    "deezerTrackId": 62561513
   },
   {
-    "year": 2011,
-    "artist": "Airbase",
     "title": "We Might Fall",
+    "artist": "Airbase",
     "type": "Single",
     "label": "Intuition Recordings",
+    "year": 2011,
+    "date": "2011-01-01",
+    "artwork": "/artwork/we-might-fall.jpg",
     "tracks": [
-      "We Might Fall"
+      "Escape - 2011 Album Mix",
+      "Less Than More - Original Mix",
+      "Sun City - Original Mix",
+      "Asylum - Original Mix",
+      "Sand & Sorrow - Original Mix",
+      "Silent Music For Quiet People - Original Mix",
+      "Last Door On The Left - Original Mix",
+      "We Might Fall - Original Mix",
+      "Affirmation - Original Mix",
+      "40 Miles - Original Mix",
+      "St. Emilion - Original Mix"
     ],
     "links": {
+      "spotify": "https://open.spotify.com/album/5rHiE9q72olgJpOAxkQRA9",
       "apple": "https://song.link/i/582275063",
-      "deezer": "https://www.deezer.com/track/120085834",
-      "tidal": "https://listen.tidal.com/track/57831711"
+      "tidal": "https://listen.tidal.com/track/57831711",
+      "deezer": "https://www.deezer.com/track/120085834"
     },
-    "date": "2011-01-01",
-    "artwork": "/artwork/we-might-fall.jpg"
+    "deezerTrackId": 120085834
   },
   {
     "year": 2010,
@@ -417,11 +640,17 @@
     "type": "Remix",
     "label": "Lost Language",
     "tracks": [
-      "Solarcoaster (Airbase Remix)"
+      "Solarcoaster - Markus Schulz Remix",
+      "Solarcoaster - Protoculture Remix",
+      "Solarcoaster (Remastered) - Original Mix",
+      "Solarcoaster - Markus Schulz Radio Edit",
+      "Solarcoaster - Protoculture Radio Edit",
+      "Solarcoaster"
     ],
     "links": {
       "youtube": "https://www.youtube.com/watch?v=lq8ImWjEENE",
-      "youtube_music": "https://music.youtube.com/watch?v=lq8ImWjEENE"
+      "youtube_music": "https://music.youtube.com/watch?v=lq8ImWjEENE",
+      "spotify": "https://open.spotify.com/album/6ORZ6ChjxyQZz1yPDcgKsI"
     },
     "date": "2010-01-01",
     "artwork": "/artwork/solarcoaster-airbase-remix.jpg"
@@ -433,7 +662,10 @@
     "type": "Remix",
     "label": "Klubbstyle Media",
     "tracks": [
-      "Into The Sun (Airbase Remix)"
+      "Into the Sun (Airbase Radio Mix)",
+      "Into the Sun (Original Radio Mix)",
+      "Into the Sun (Airbase Remix)",
+      "Into the Sun (Original Mix)"
     ],
     "links": {
       "apple": "https://song.link/i/974794880",
@@ -441,7 +673,8 @@
       "tidal": "https://listen.tidal.com/track/44482584"
     },
     "date": "2010-01-01",
-    "artwork": "/artwork/into-the-sun-airbase-remix.jpg"
+    "artwork": "/artwork/into-the-sun-airbase-remix.jpg",
+    "deezerTrackId": 596736502
   },
   {
     "year": 2009,
@@ -450,14 +683,27 @@
     "type": "Single",
     "label": "In Trance We Trust",
     "tracks": [
-      "Wonders"
+      "Wonders",
+      "Wonders - Virtual Vault Remix",
+      "Wonders - Virtual Vault Dub"
     ],
     "links": {
       "apple": "https://song.link/i/323857964",
-      "tidal": "https://listen.tidal.com/track/5931137"
+      "tidal": "https://listen.tidal.com/track/5931137",
+      "spotify": "https://open.spotify.com/album/1YiFTFrInJW1NOpikoA6El"
     },
     "date": "2009-01-01",
-    "artwork": "/artwork/wonders.jpg"
+    "artwork": "/artwork/wonders.jpg",
+    "appearsOn": [
+      {
+        "title": "Forevermore, Vol. 4",
+        "year": 2009
+      },
+      {
+        "title": "Transmission Radio Episode 047",
+        "year": 2016
+      }
+    ]
   },
   {
     "year": 2009,
@@ -466,15 +712,23 @@
     "type": "Single",
     "label": "Intuition Recordings",
     "tracks": [
-      "Interfere"
+      "Interfere (Vocal Mix)",
+      "Interfere (Dub Mix)",
+      "Interfere (Vocal Edit)",
+      "Interfere (Dub Edit)",
+      "Interfere (Radio Edit)",
+      "Interfere (Kimito Lopez Loves Ibiza Remix)",
+      "Interfere (Kimito Lopez Loves Ibiza Dub)"
     ],
     "links": {
       "apple": "https://song.link/i/582341998",
       "deezer": "https://www.deezer.com/track/62561721",
-      "tidal": "https://listen.tidal.com/track/18209342"
+      "tidal": "https://listen.tidal.com/track/18209342",
+      "spotify": "https://open.spotify.com/album/14ZwwcocJBU5Of2pG3TrU0"
     },
     "date": "2009-01-01",
-    "artwork": "/artwork/interfere.jpg"
+    "artwork": "/artwork/interfere.jpg",
+    "deezerTrackId": 17754599
   },
   {
     "year": 2009,
@@ -483,15 +737,18 @@
     "type": "Single",
     "label": "In Trance We Trust",
     "tracks": [
-      "Back"
+      "Back",
+      "Back - Radio Edit"
     ],
     "links": {
       "apple": "https://song.link/i/317083184",
       "deezer": "https://www.deezer.com/track/14604293",
-      "tidal": "https://listen.tidal.com/track/5931551"
+      "tidal": "https://listen.tidal.com/track/5931551",
+      "spotify": "https://open.spotify.com/album/1rdmwt8VyfIeGFZGHFL0DI"
     },
     "date": "2009-01-01",
-    "artwork": "/artwork/back.jpg"
+    "artwork": "/artwork/back.jpg",
+    "deezerTrackId": 680351142
   },
   {
     "year": 2009,
@@ -500,14 +757,21 @@
     "type": "Remix",
     "label": "Infrasonic Recordings",
     "tracks": [
-      "A Little Bit Special (Airbase Remix)"
+      "A Little Bit Special",
+      "A Little Bit Special (Airbase Remix)",
+      "A Little Bit Special (Airbase Dub)",
+      "A Little Bit Special (Sundriver Remix)",
+      "A Little Bit Special (Andrelli & Blue Remix)",
+      "A Little Bit Special (Andrelli & Blue Dub)",
+      "A Little Bit Special (Radio Edit)"
     ],
     "links": {
       "apple": "https://song.link/i/309309310",
       "deezer": "https://www.deezer.com/track/15998614"
     },
     "date": "2009-01-01",
-    "artwork": "/artwork/a-little-bit-special-airbase-remix.jpg"
+    "artwork": "/artwork/a-little-bit-special-airbase-remix.jpg",
+    "deezerTrackId": 15998614
   },
   {
     "year": 2009,
@@ -516,14 +780,29 @@
     "type": "Remix",
     "label": "Armada Music",
     "tracks": [
-      "My Religion 2009 (Airbase Remix)"
+      "My Religion 2009 - Airbase Remix",
+      "My Religion - Corderoy pres. DFunkt Remix",
+      "My Religion - Extended Mix",
+      "My Religion - Lange Mix"
     ],
     "links": {
       "apple": "https://song.link/i/331906824",
-      "deezer": "https://www.deezer.com/track/106098664"
+      "deezer": "https://www.deezer.com/track/106098664",
+      "spotify": "https://open.spotify.com/album/6yFCy7cQpV7PKSpXA2kj6v"
     },
     "date": "2009-01-01",
-    "artwork": "/artwork/my-religion-2009-airbase-remix.png"
+    "artwork": "/artwork/my-religion-2009-airbase-remix.png",
+    "appearsOn": [
+      {
+        "title": "A State Of Trance 550",
+        "year": 2012
+      },
+      {
+        "title": "Trance Top 1000 - Ibiza Classics",
+        "year": 2019
+      }
+    ],
+    "deezerTrackId": 6512627
   },
   {
     "year": 2009,
@@ -568,10 +847,26 @@
     "links": {
       "apple": "https://geo.music.apple.com/se/album/_/292434233?i=292434239&mt=1&app=music&ls=1&at=1000lHKX&ct=api_http&itscg=30200&itsct=odsl_m",
       "deezer": "https://www.deezer.com/track/10286936",
-      "tidal": "https://listen.tidal.com/track/5930283"
+      "tidal": "https://listen.tidal.com/track/5930283",
+      "spotify": "https://open.spotify.com/album/6DO38surOorQY14BN469Ov"
     },
     "date": "2008-01-01",
-    "artwork": "/artwork/denial.jpg"
+    "artwork": "/artwork/denial.jpg",
+    "appearsOn": [
+      {
+        "title": "In Search of Sunrise 7 (Asia) mixed by Tiësto",
+        "year": 2009
+      },
+      {
+        "title": "In Search Of Sunrise 7 - Asia",
+        "year": 2009
+      },
+      {
+        "title": "Trance Top 1000 - Selection 001",
+        "year": 2013
+      }
+    ],
+    "deezerTrackId": 542096252
   },
   {
     "year": 2008,
@@ -580,15 +875,29 @@
     "type": "Single",
     "label": "In Trance We Trust",
     "tracks": [
-      "The Road Not Taken"
+      "The Road Not Taken",
+      "The Road Not Taken - Leon Bolier Remix",
+      "The Road Not Taken - Radio Edit"
     ],
     "links": {
       "apple": "https://song.link/se/i/299499518",
       "deezer": "https://www.deezer.com/track/124227836",
-      "tidal": "https://listen.tidal.com/track/5933450"
+      "tidal": "https://listen.tidal.com/track/5933450",
+      "spotify": "https://open.spotify.com/album/1xbV6dXmRNi4wVjTnMazvv"
     },
     "date": "2008-01-01",
-    "artwork": "/artwork/the-road-not-taken.jpg"
+    "artwork": "/artwork/the-road-not-taken.jpg",
+    "appearsOn": [
+      {
+        "title": "Black Hole Recordings presents Anthems & Hymns 2",
+        "year": 2011
+      },
+      {
+        "title": "In Trance We Trust Trance Classics Volume 03",
+        "year": 2016
+      }
+    ],
+    "deezerTrackId": 124227836
   },
   {
     "year": 2008,
@@ -603,10 +912,18 @@
     "links": {
       "apple": "https://geo.music.apple.com/se/album/_/582335305?i=582335565&mt=1&app=music&ls=1&at=1000lHKX&ct=api_http&itscg=30200&itsct=odsl_m",
       "deezer": "https://www.deezer.com/track/66839764",
-      "tidal": "https://listen.tidal.com/track/18825491"
+      "tidal": "https://listen.tidal.com/track/18825491",
+      "spotify": "https://open.spotify.com/album/7pquCHS6LvOF7G773f3L4D"
     },
     "date": "2008-01-01",
-    "artwork": "/artwork/tangerine-spion.jpg"
+    "artwork": "/artwork/tangerine-spion.jpg",
+    "appearsOn": [
+      {
+        "title": "Trance Top 1000 Selection, Vol. 18",
+        "year": 2015
+      }
+    ],
+    "deezerTrackId": 62561704
   },
   {
     "year": 2008,
@@ -615,15 +932,18 @@
     "type": "Single",
     "label": "Moonrising Records",
     "tracks": [
-      "Lucid"
+      "Lucid",
+      "Lucid (Kimito Lopez Remix)"
     ],
     "links": {
       "apple": "https://song.link/se/i/1447239947",
       "deezer": "https://www.deezer.com/track/606975622",
-      "tidal": "https://listen.tidal.com/track/101286472"
+      "tidal": "https://listen.tidal.com/track/101286472",
+      "spotify": "https://open.spotify.com/album/4HCncVdWmfcjrrNEfDHWj6"
     },
     "date": "2008-01-01",
-    "artwork": "/artwork/lucid.jpg"
+    "artwork": "/artwork/lucid.jpg",
+    "deezerTrackId": 606975622
   },
   {
     "year": 2008,
@@ -648,7 +968,8 @@
     "type": "Remix",
     "label": "2 Play Records",
     "tracks": [
-      "YE (Airbase Remix)"
+      "Ye",
+      "Ye (Airbase Remix)"
     ],
     "links": {
       "apple": "https://song.link/se/i/294017396",
@@ -656,7 +977,8 @@
       "tidal": "https://listen.tidal.com/track/85700977"
     },
     "date": "2008-01-01",
-    "artwork": "/artwork/ye-airbase-remix.jpg"
+    "artwork": "/artwork/ye-airbase-remix.jpg",
+    "deezerTrackId": 470990502
   },
   {
     "year": 2008,
@@ -671,7 +993,8 @@
       "apple": "https://song.link/se/i/282477566"
     },
     "date": "2008-01-01",
-    "artwork": "/artwork/phoria-airbase-remix.jpg"
+    "artwork": "/artwork/phoria-airbase-remix.jpg",
+    "deezerTrackId": 2488794
   },
   {
     "year": 2008,
@@ -685,10 +1008,12 @@
     "links": {
       "apple": "https://song.link/se/i/375052007",
       "deezer": "https://www.deezer.com/track/588881742",
-      "tidal": "https://listen.tidal.com/track/415046244"
+      "tidal": "https://listen.tidal.com/track/415046244",
+      "spotify": "https://open.spotify.com/album/5ANtLhW4sK2SwpVlvlj0zG"
     },
     "date": "2008-01-01",
-    "artwork": "/artwork/elements-of-life-airbase-remix.jpg"
+    "artwork": "/artwork/elements-of-life-airbase-remix.jpg",
+    "deezerTrackId": 3212563771
   },
   {
     "year": 2008,
@@ -735,10 +1060,12 @@
     "links": {
       "apple": "https://geo.music.apple.com/se/album/_/1539675722?i=1539675723&mt=1&app=music&ls=1&at=1000lHKX&ct=api_http&itscg=30200&itsct=odsl_m",
       "deezer": "https://www.deezer.com/track/1137609032",
-      "tidal": "https://listen.tidal.com/track/161755622"
+      "tidal": "https://listen.tidal.com/track/161755622",
+      "spotify": "https://open.spotify.com/album/6YrB9FYChxuf7hV6BspqqD"
     },
     "date": "2007-01-01",
-    "artwork": "/artwork/garden-state-moorea.jpg"
+    "artwork": "/artwork/garden-state-moorea.jpg",
+    "deezerTrackId": 1137609032
   },
   {
     "year": 2007,
@@ -757,7 +1084,8 @@
       "tidal": "https://listen.tidal.com/track/92339175"
     },
     "date": "2007-01-01",
-    "artwork": "/artwork/one-tear-away-rest-in-peace-medusa.jpg"
+    "artwork": "/artwork/one-tear-away-rest-in-peace-medusa.jpg",
+    "deezerTrackId": 530653511
   },
   {
     "year": 2007,
@@ -766,15 +1094,18 @@
     "type": "Single",
     "label": "Moonrising Records",
     "tracks": [
-      "Roots"
+      "Roots",
+      "Roots (Andy Blueman Remix)"
     ],
     "links": {
       "apple": "https://song.link/se/i/1450168748",
       "deezer": "https://www.deezer.com/track/631124742",
-      "tidal": "https://listen.tidal.com/track/103941878"
+      "tidal": "https://listen.tidal.com/track/103941878",
+      "spotify": "https://open.spotify.com/album/4HtDS0Dy4FWgf2u11nYsaq"
     },
     "date": "2007-01-01",
-    "artwork": "/artwork/roots.jpg"
+    "artwork": "/artwork/roots.jpg",
+    "deezerTrackId": 631124742
   },
   {
     "year": 2007,
@@ -783,15 +1114,19 @@
     "type": "Single",
     "label": "High Contrast Recordings",
     "tracks": [
-      "Cruiser"
+      "Cruiser (Alex M.O.R.P.H. Remix)",
+      "Cruiser (Original Mix)",
+      "Cruiser (Director's Cut)"
     ],
     "links": {
       "apple": "https://song.link/se/i/256029842",
       "deezer": "https://www.deezer.com/track/119447106",
-      "tidal": "https://listen.tidal.com/track/57416016"
+      "tidal": "https://listen.tidal.com/track/57416016",
+      "spotify": "https://open.spotify.com/album/07jR235CSnyVE1nVSV6wnv"
     },
     "date": "2007-01-01",
-    "artwork": "/artwork/cruiser.jpg"
+    "artwork": "/artwork/cruiser.jpg",
+    "deezerTrackId": 119447104
   },
   {
     "year": 2007,
@@ -800,14 +1135,21 @@
     "type": "Remix",
     "label": "Armind",
     "tracks": [
-      "Arisen (Airbase pres. Parc Remix)"
+      "Arisen (Airbase pr. Parc Remix)"
     ],
     "links": {
       "apple": "https://song.link/se/i/189644118",
       "deezer": "https://www.deezer.com/track/6102110"
     },
     "date": "2007-01-01",
-    "artwork": "/artwork/arisen-airbase-pres-parc-remix.jpg"
+    "artwork": "/artwork/arisen-airbase-pres-parc-remix.jpg",
+    "appearsOn": [
+      {
+        "title": "Armin van Buuren presents 100 Armind Tunes",
+        "year": 2011
+      }
+    ],
+    "deezerTrackId": 120416044
   },
   {
     "year": 2007,
@@ -816,7 +1158,14 @@
     "type": "Remix",
     "label": "Monster Pure",
     "tracks": [
-      "Lightwave (Airbase Dub Mix)"
+      "Lightwave (Airbase Dub Mix)",
+      "Lightwave (Airbase Remix)",
+      "Lightwave (Airbase Radio Edit)",
+      "Lightwave (Kenneth Thomas Dub Mix)",
+      "Lightwave (Kenneth Thomas Remix)",
+      "Lightwave (Mike Foyle Remix)",
+      "Lightwave (Peter Wibe Remix)",
+      "Lightwave"
     ],
     "links": {
       "apple": "https://song.link/se/i/1138590906",
@@ -824,7 +1173,8 @@
       "tidal": "https://listen.tidal.com/track/59585995"
     },
     "date": "2007-01-01",
-    "artwork": "/artwork/lightwave-airbase-dub-mix.jpg"
+    "artwork": "/artwork/lightwave-airbase-dub-mix.jpg",
+    "deezerTrackId": 16207548
   },
   {
     "year": 2007,
@@ -857,7 +1207,8 @@
       "tidal": "https://listen.tidal.com/track/415046352"
     },
     "date": "2007-01-01",
-    "artwork": "/artwork/break-my-fall-airbase-remix.jpg"
+    "artwork": "/artwork/break-my-fall-airbase-remix.jpg",
+    "deezerTrackId": 3212574641
   },
   {
     "year": 2007,
@@ -866,7 +1217,9 @@
     "type": "Remix",
     "label": "Liquid Recordings",
     "tracks": [
-      "Bells Of Tiananmen (Airbase Remix)"
+      "Bells Of Tiananmen - Airbase Radio Mix",
+      "Bells Of Tiananmen - Jamaster A Radio Mix",
+      "Bells Of Tiananmen - Airbase Mix"
     ],
     "links": {
       "apple": "https://song.link/se/i/383794758",
@@ -874,7 +1227,8 @@
       "tidal": "https://listen.tidal.com/track/4290017"
     },
     "date": "2007-01-01",
-    "artwork": "/artwork/bells-of-tiananmen-airbase-remix.jpg"
+    "artwork": "/artwork/bells-of-tiananmen-airbase-remix.jpg",
+    "deezerTrackId": 479833492
   },
   {
     "year": 2006,
@@ -882,14 +1236,27 @@
     "title": "Collection",
     "type": "Album",
     "label": "Airbase Music",
-    "tracks": [],
+    "tracks": [
+      "Nangiala",
+      "Genie 2",
+      "Maya Bay",
+      "Gibson",
+      "Silver Cell",
+      "My Life",
+      "White Feather",
+      "Hypno",
+      "Monday P.M.",
+      "Monday A.M."
+    ],
     "links": {
       "apple": "https://album.link/se/i/1269482596",
       "deezer": "https://www.deezer.com/album/6846386",
-      "tidal": "https://listen.tidal.com/album/104386905"
+      "tidal": "https://listen.tidal.com/album/104386905",
+      "spotify": "https://open.spotify.com/album/5As7KGDq211TAFJZ0ecKrE"
     },
     "date": "2006-01-01",
-    "artwork": "/artwork/collection.jpg"
+    "artwork": "/artwork/collection.jpg",
+    "deezerTrackId": 69833346
   },
   {
     "year": 2006,
@@ -907,7 +1274,8 @@
       "tidal": "https://listen.tidal.com/track/17621516"
     },
     "date": "2006-01-01",
-    "artwork": "/artwork/escape-for-the-fallen.jpg"
+    "artwork": "/artwork/escape-for-the-fallen.jpg",
+    "deezerTrackId": 61230931
   },
   {
     "year": 2006,
@@ -936,10 +1304,12 @@
     ],
     "links": {
       "apple": "https://song.link/se/i/898523458",
-      "tidal": "https://listen.tidal.com/track/9641813"
+      "tidal": "https://listen.tidal.com/track/9641813",
+      "spotify": "https://open.spotify.com/album/0NIZwpsvgz2Zcw3ePO5nzk"
     },
     "date": "2006-01-01",
-    "artwork": "/artwork/bully.jpg"
+    "artwork": "/artwork/bully.jpg",
+    "deezerTrackId": 1137629122
   },
   {
     "year": 2006,
@@ -1003,7 +1373,8 @@
       "deezer": "https://www.deezer.com/track/6043936"
     },
     "date": "2006-01-01",
-    "artwork": "/artwork/wall-of-sound-airbase-pres-parc-remix.png"
+    "artwork": "/artwork/wall-of-sound-airbase-pres-parc-remix.png",
+    "deezerTrackId": 6043936
   },
   {
     "year": 2006,
@@ -1053,7 +1424,8 @@
     },
     "date": "2005-01-01",
     "artwork": "/artwork/widescreen-sensation-belgium-anthem.jpg",
-    "notes": "Official anthem for Sensation Belgium 2005."
+    "notes": "Official anthem for Sensation Belgium 2005.",
+    "deezerTrackId": 61682235
   },
   {
     "year": 2005,
@@ -1062,14 +1434,18 @@
     "type": "Remix",
     "label": "Mondo Records",
     "tracks": [
-      "Flying Amongst The Stars (Airbase Remix)"
+      "Servant Of Justice (Alex M.O.R.P.H. Remi)",
+      "Servant Of Justice (Original Mix)",
+      "Flyin' Amongst The Stars (Original Mix)",
+      "Flyin' Amongst The Stars (Airbase Remix)"
     ],
     "links": {
       "apple": "https://song.link/se/i/1073721594",
       "deezer": "https://www.deezer.com/track/1484465"
     },
     "date": "2005-01-01",
-    "artwork": "/artwork/flying-amongst-the-stars-airbase-remix.jpg"
+    "artwork": "/artwork/flying-amongst-the-stars-airbase-remix.jpg",
+    "deezerTrackId": 1484465
   },
   {
     "year": 2005,
@@ -1094,7 +1470,19 @@
     "type": "Remix",
     "label": "Couture Discs",
     "tracks": [
-      "Sculptured (Airbase Club Remix)"
+      "Sculptured (Flipside Radio Mix)",
+      "Sculptured (Used and Abused Radio Mix)",
+      "Sculptured (Airbase Radio Mix)",
+      "Sculptured (Chris Salt Radio Mix)",
+      "Sculptured (Benny Maze Club Mix)",
+      "Sculptured (Suryanto & Micalizzi Dub)",
+      "Sculptured (Flipside Extended Club Mix)",
+      "Sculptured (Used and Abused Club Mix)",
+      "Sculptured (Airbase Extended Club Mix)",
+      "Sculptured (Chris Salt Club Mix)",
+      "Sculptured (Suryanto & Micalizzi Club Mix)",
+      "Sculptured (Wandii Club Mix)",
+      "Sculptured (Flipside Radio Instrumental)"
     ],
     "links": {
       "apple": "https://song.link/se/i/40810078",
@@ -1102,7 +1490,8 @@
       "tidal": "https://listen.tidal.com/track/12770097"
     },
     "date": "2005-01-01",
-    "artwork": "/artwork/sculptured-airbase-club-remix.jpg"
+    "artwork": "/artwork/sculptured-airbase-club-remix.jpg",
+    "deezerTrackId": 2068591
   },
   {
     "year": 2005,
@@ -1125,14 +1514,22 @@
     "type": "Remix",
     "label": "W.O.T! Records",
     "tracks": [
-      "Love Again (Airbase Vocal Mix)"
+      "Love Again (Original Classic Mix)",
+      "Love Again (Airbase Classic Mix)",
+      "Love Again (Fandy Remix)",
+      "Love Again (Fandy Dub Mix)",
+      "Love Again (Miroslav Vrlík & Squarz Kamel Remix)",
+      "Love Again (Miroslav Vrlík & Squarz Kamel Dub Mix)",
+      "Love Again (Another World Vocal Mix)",
+      "Love Again (Another World Dub Mix)"
     ],
     "links": {
       "apple": "https://song.link/se/i/879449087",
       "deezer": "https://www.deezer.com/track/79350153"
     },
     "date": "2005-01-01",
-    "artwork": "/artwork/love-again-airbase-vocal-mix.jpg"
+    "artwork": "/artwork/love-again-airbase-vocal-mix.jpg",
+    "deezerTrackId": 79350153
   },
   {
     "year": 2005,
@@ -1141,6 +1538,9 @@
     "type": "Remix",
     "label": "Discover Digital",
     "tracks": [
+      "Restricted Motion (Original Mix)",
+      "Restricted Motion (John Askew Mix)",
+      "Restricted Motion (Aled Mann Mix)",
       "Restricted Motion (Airbase Remix)"
     ],
     "links": {
@@ -1149,7 +1549,8 @@
       "tidal": "https://listen.tidal.com/track/9641814"
     },
     "date": "2005-01-01",
-    "artwork": "/artwork/restricted-motion-airbase-remix.jpg"
+    "artwork": "/artwork/restricted-motion-airbase-remix.jpg",
+    "deezerTrackId": 1195699012
   },
   {
     "year": 2005,
@@ -1195,10 +1596,12 @@
     "links": {
       "apple": "https://geo.music.apple.com/se/album/_/110899739?i=110899611&mt=1&app=music&ls=1&at=1000lHKX&ct=api_http&itscg=30200&itsct=odsl_m",
       "deezer": "https://www.deezer.com/track/1675354357",
-      "tidal": "https://listen.tidal.com/track/219385167"
+      "tidal": "https://listen.tidal.com/track/219385167",
+      "spotify": "https://open.spotify.com/album/5mQq0UFzJ8U44HqP0Tiw47"
     },
     "date": "2004-01-01",
-    "artwork": "/artwork/pandemonium-ocean-realm.jpg"
+    "artwork": "/artwork/pandemonium-ocean-realm.jpg",
+    "deezerTrackId": 1675354367
   },
   {
     "year": 2004,
@@ -1207,11 +1610,16 @@
     "type": "Single",
     "label": "First Second Recordings",
     "tracks": [
-      "Changes"
+      "Changes",
+      "Changes (John O'Callaghan Remix)"
     ],
-    "links": {},
+    "links": {
+      "spotify": "https://open.spotify.com/album/2sPhrCW406XN5fTy0sV9zP",
+      "deezer": "https://www.deezer.com/track/2017085067"
+    },
     "date": "2004-01-01",
-    "artwork": "/artwork/changes.jpg"
+    "artwork": "/artwork/changes.jpg",
+    "deezerTrackId": 2017085067
   },
   {
     "year": 2004,
@@ -1220,8 +1628,9 @@
     "type": "Single",
     "label": "Captivating Sounds",
     "tracks": [
-      "I Scream",
-      "Breaking The Silence"
+      "I Scream (Original Mix)",
+      "Breaking The Silence (Original Mix)",
+      "I Scream (Psilodump Remix)"
     ],
     "links": {
       "spotify": "https://album.link/s/6NsBVCJf3BOkdLoZJQvJVX",
@@ -1229,7 +1638,8 @@
       "tidal": "https://listen.tidal.com/album/16194741"
     },
     "date": "2004-01-01",
-    "artwork": "/artwork/i-scream-breaking-the-silence.jpg"
+    "artwork": "/artwork/i-scream-breaking-the-silence.jpg",
+    "deezerTrackId": 3329092541
   },
   {
     "year": 2004,
@@ -1308,77 +1718,82 @@
     "type": "Single",
     "label": "Mondo Records",
     "tracks": [
+      "Rise",
       "Rise"
     ],
-    "links": {},
+    "links": {
+      "spotify": "https://open.spotify.com/album/5ttW13zYr3nsU8iXE09Yjm"
+    },
     "date": "2004-01-01",
-    "artwork": "/artwork/rise.jpg"
+    "artwork": "/artwork/rise.jpg",
+    "deezerTrackId": 80636912
   },
   {
-    "year": 2004,
-    "artist": "One Man Army",
     "title": "The Anthem / Ballroom Dancer",
+    "artist": "One Man Army",
     "type": "Single",
     "label": "Joof Recordings",
+    "year": 2004,
+    "date": "2004-01-01",
+    "artwork": "/artwork/the-anthem-ballroom-dancer.jpg",
     "tracks": [
       "The Anthem",
       "Ballroom Dancer"
     ],
-    "links": {},
-    "date": "2004-01-01",
-    "artwork": null
+    "links": {}
   },
   {
-    "year": 2004,
-    "artist": "Matanka feat. Sheryl Deane",
     "title": "Near Me (Airbase Remix)",
+    "artist": "Matanka feat. Sheryl Deane",
     "type": "Remix",
     "label": "CAOZ",
+    "year": 2004,
+    "date": "2004-01-01",
+    "artwork": "/artwork/near-me-airbase-remix.jpg",
     "tracks": [
       "Near Me (Airbase Remix)"
     ],
-    "links": {},
-    "date": "2004-01-01",
-    "artwork": null
+    "links": {}
   },
   {
-    "year": 2004,
-    "artist": "Michael Splint feat. Sasja",
     "title": "Secrets (Broke My Heart) (Airbase Remix)",
+    "artist": "Michael Splint feat. Sasja",
     "type": "Remix",
     "label": "Reality Bites Records",
+    "year": 2004,
+    "date": "2004-01-01",
+    "artwork": "/artwork/secrets-broke-my-heart-airbase-remix.jpg",
     "tracks": [
       "Secrets (Broke My Heart) (Airbase Remix)"
     ],
-    "links": {},
-    "date": "2004-01-01",
-    "artwork": null
+    "links": {}
   },
   {
-    "year": 2004,
-    "artist": "Nordlicht vs. Anergy",
     "title": "In Music (Airbase Remix)",
+    "artist": "Nordlicht vs. Anergy",
     "type": "Remix",
     "label": "Reality Bites Records",
+    "year": 2004,
+    "date": "2004-01-01",
+    "artwork": "/artwork/in-music-airbase-remix.jpg",
     "tracks": [
       "In Music (Airbase Remix)"
     ],
-    "links": {},
-    "date": "2004-01-01",
-    "artwork": null
+    "links": {}
   },
   {
-    "year": 2004,
-    "artist": "Jaron Inc.",
     "title": "Nothing To Lose (Airbase Remix)",
+    "artist": "Jaron Inc.",
     "type": "Remix",
     "label": "ID&T",
+    "year": 2004,
+    "date": "2004-01-01",
+    "artwork": "/artwork/nothing-to-lose-airbase-remix.jpg",
     "tracks": [
       "Nothing To Lose (Airbase Remix)"
     ],
     "links": {},
-    "date": "2004-01-01",
-    "artwork": null
+    "deezerTrackId": 108323698
   },
   {
     "year": 2004,
@@ -1387,11 +1802,17 @@
     "type": "Remix",
     "label": "In-telligence",
     "tracks": [
-      "Destination Paradise (Ozone Remix)"
+      "Destination Paradise - Radio Version",
+      "Destination Paradise - Airbase Remix Radio Edit",
+      "Destination Paradise - Original Club Mix",
+      "Destination Paradise - Airbase Remix",
+      "Destination Paradise - Instrumental Version"
     ],
-    "links": {},
+    "links": {
+      "spotify": "https://open.spotify.com/album/0mFnIH9CEa59KJoCXvySgK"
+    },
     "date": "2004-01-01",
-    "artwork": null
+    "artwork": "/artwork/destination-paradise-ozone-remix.jpg"
   },
   {
     "year": 2004,
@@ -1417,7 +1838,8 @@
     ],
     "links": {},
     "date": "2004-01-01",
-    "artwork": null
+    "artwork": null,
+    "deezerTrackId": 10194884
   },
   {
     "year": 2004,
@@ -1430,7 +1852,8 @@
     ],
     "links": {},
     "date": "2004-01-01",
-    "artwork": null
+    "artwork": null,
+    "deezerTrackId": 1102687
   },
   {
     "year": 2003,
@@ -1439,11 +1862,14 @@
     "type": "Single",
     "label": "Go For It",
     "tracks": [
-      "Angel"
+      "Angel - Original Mix",
+      "Angel - Bravo & Priest Remix"
     ],
-    "links": {},
+    "links": {
+      "spotify": "https://open.spotify.com/album/2zpiJY7wgTh3g4XDWyUuOs"
+    },
     "date": "2003-01-01",
-    "artwork": null
+    "artwork": "/artwork/angel.jpg"
   },
   {
     "year": 2003,
@@ -1456,7 +1882,8 @@
     ],
     "links": {},
     "date": "2003-01-01",
-    "artwork": "/artwork/rock.jpg"
+    "artwork": "/artwork/rock.jpg",
+    "deezerTrackId": 1003958352
   },
   {
     "year": 2003,
@@ -1497,7 +1924,8 @@
     ],
     "links": {},
     "date": "2003-01-01",
-    "artwork": null
+    "artwork": null,
+    "deezerTrackId": 5958738
   },
   {
     "year": 2003,
@@ -1534,9 +1962,11 @@
     "tracks": [
       "Nadjanema (Airbase Remix)"
     ],
-    "links": {},
+    "links": {
+      "spotify": "https://open.spotify.com/album/4zrO9Nvs1tR6Q919XKZN0F"
+    },
     "date": "2003-01-01",
-    "artwork": null
+    "artwork": "/artwork/nadjanema-airbase-remix.jpg"
   },
   {
     "year": 2003,
@@ -1562,33 +1992,52 @@
     ],
     "links": {},
     "date": "2003-01-01",
-    "artwork": null
+    "artwork": null,
+    "deezerTrackId": 13930278
   },
   {
-    "year": 2002,
-    "artist": "Airbase",
     "title": "Genie",
+    "artist": "Airbase",
     "type": "Single",
     "label": "Go For It",
-    "tracks": [
-      "Genie"
-    ],
-    "links": {},
+    "year": 2002,
     "date": "2002-01-01",
-    "artwork": null
+    "artwork": "/artwork/genie.jpg",
+    "tracks": [
+      "Genie - Original Mix",
+      "Genie - Michael Splint vs F & W Remix"
+    ],
+    "links": {
+      "spotify": "https://open.spotify.com/album/05v8vG3U1QRYCCrNOSbQtc"
+    },
+    "appearsOn": [
+      {
+        "title": "101 Rave Hits 2012 (Best of Electronic Dance Music, Hard House, Hard Dance, NuNrg, Hard Trance, Goa, Psytrance, Dubstep Anthems)",
+        "year": 2012
+      },
+      {
+        "title": "100 Halloween Hits Goa Trance Psy Acid Tech House DJ MIX 2014 - Goa Party Dance Hits",
+        "year": 2014
+      }
+    ],
+    "deezerTrackId": 102611372
   },
   {
-    "year": 2002,
-    "artist": "Airbase",
     "title": "Emotion",
+    "artist": "Airbase",
     "type": "Single",
     "label": "Go For It",
-    "tracks": [
-      "Emotion"
-    ],
-    "links": {},
+    "year": 2002,
     "date": "2002-01-01",
-    "artwork": null
+    "artwork": "/artwork/emotion.jpg",
+    "tracks": [
+      "Emotion",
+      "Club Point"
+    ],
+    "links": {
+      "spotify": "https://open.spotify.com/album/4yEjrMNLQjTPyPDaGclSir"
+    },
+    "deezerTrackId": 1675352237
   },
   {
     "year": 2002,
@@ -1640,7 +2089,14 @@
     ],
     "links": {},
     "date": "2002-01-01",
-    "artwork": null
+    "artwork": null,
+    "appearsOn": [
+      {
+        "title": "Trance Top 1000 - The Legends",
+        "year": 2019
+      }
+    ],
+    "deezerTrackId": 109826901
   },
   {
     "year": 2002,

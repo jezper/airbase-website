@@ -2,9 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { readPosts, writePosts } from "@/lib/content-writer";
+import { isAuthenticated } from "@/lib/auth";
 import type { Post } from "@/types/content";
 
 export async function savePost(post: Post, editIndex?: number): Promise<{ success: boolean; error?: string }> {
+  if (!(await isAuthenticated())) return { success: false, error: "Unauthorized" };
   try {
     const posts = await readPosts();
 
@@ -27,6 +29,7 @@ export async function savePost(post: Post, editIndex?: number): Promise<{ succes
 }
 
 export async function deletePost(index: number): Promise<{ success: boolean; error?: string }> {
+  if (!(await isAuthenticated())) return { success: false, error: "Unauthorized" };
   try {
     const posts = await readPosts();
     if (index < 0 || index >= posts.length) {

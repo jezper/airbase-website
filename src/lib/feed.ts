@@ -3,44 +3,8 @@ import { getShowBySlug } from "./shows";
 import { readPosts } from "./content-writer";
 import type { Post, FeedItem } from "@/types/content";
 
-// Sample shows (will come from shows.json / admin later)
-const SAMPLE_SHOW_DATA = [
-  {
-    slug: "luminosity-beach-festival-2026",
-    show: {
-      venue: "Luminosity Beach Festival",
-      city: "Bloemendaal",
-      country: "Netherlands",
-      date: "2026-06-14",
-      year_approx: null,
-      event: "Luminosity Beach Festival",
-      notes: "The return to the beach. Full live set.",
-      image: null as string | null,
-      status: "upcoming" as const,
-    },
-  },
-  {
-    slug: "tomorrowland-2026",
-    show: {
-      venue: "Tomorrowland",
-      city: "Boom",
-      country: "Belgium",
-      date: "2026-08-22",
-      year_approx: null,
-      event: "Tomorrowland",
-      notes: null,
-      image: null as string | null,
-      status: "upcoming" as const,
-    },
-  },
-];
-
 async function resolveShowRef(slug: string) {
-  // First check the database
-  const dbShow = await getShowBySlug(slug);
-  if (dbShow) return dbShow;
-  // Fall back to sample data
-  return SAMPLE_SHOW_DATA.find((s) => s.slug === slug)?.show;
+  return getShowBySlug(slug);
 }
 
 export async function getFeedItems(limit?: number): Promise<FeedItem[]> {
@@ -52,7 +16,13 @@ export async function getFeedItems(limit?: number): Promise<FeedItem[]> {
 
       if (post.releaseRef) {
         const release = await getReleaseBySlug(post.releaseRef);
-        if (release) item.release = release;
+        if (release) {
+          item.release = release;
+          if (release.relatedRelease) {
+            const related = await getReleaseBySlug(release.relatedRelease);
+            if (related) item.relatedRelease = related;
+          }
+        }
       }
 
       if (post.showRef) {
