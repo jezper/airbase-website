@@ -25,6 +25,7 @@ export async function POST(req: NextRequest) {
     const blob = await put(filename, buffer, {
       access: "public",
       addRandomSuffix: false,
+      token: process.env.BLOB_READ_WRITE_TOKEN,
     });
     const sizeKB = Math.round(buffer.length / 1024);
     return NextResponse.json({ path: blob.url, size: `${sizeKB}KB` });
