@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import type { Metadata } from "next";
 import { getAllReleases, getOwnAliases, getRemixedArtists } from "@/lib/releases";
 import Discography from "@/components/discography/discography";

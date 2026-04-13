@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Image from "next/image";
 import { getFeedItems } from "@/lib/feed";
 import { getAllReleases, getReleaseBySlug } from "@/lib/releases";
