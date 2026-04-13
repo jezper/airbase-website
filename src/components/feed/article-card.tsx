@@ -54,14 +54,6 @@ export default function ArticleCard({
         </p>
       )}
 
-      {post.slug && (
-        <a
-          href={`/feed/${post.slug}`}
-          className="font-body text-[13px] font-bold uppercase tracking-[0.08em] text-accent hover:text-accent-hover transition-colors"
-        >
-          Read &rarr;
-        </a>
-      )}
     </div>
   );
 }
