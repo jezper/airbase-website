@@ -92,20 +92,6 @@ export default function ArticleCard({
         </h3>
       )}
 
-      {post.image && (
-        <div className="mb-4">
-          <Image
-            src={post.image}
-            alt={post.title ?? ""}
-            width={200}
-            height={200}
-            className="rounded-md object-cover w-32 aspect-square"
-            sizes="128px"
-            unoptimized={post.image.startsWith("http")}
-          />
-        </div>
-      )}
-
       {bodyIsHtml ? (
         <div
           className="font-body text-[16px] text-text leading-relaxed prose prose-invert max-w-none"
