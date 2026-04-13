@@ -21,20 +21,19 @@ export default function ArticleCard({
       <div className="bg-bg-card border border-border rounded-lg overflow-hidden p-5">
         {/* Two-column: artwork left, meta + title right */}
         {post.image ? (
-          <div className="flex flex-col sm:flex-row gap-5 mb-5">
+          <div className="flex flex-col sm:flex-row gap-6 mb-5">
             <div className="shrink-0">
               <Image
                 src={post.image}
                 alt={post.title ?? ""}
-                width={200}
-                height={200}
-                className="rounded-lg object-cover w-full sm:w-48 aspect-square"
-                sizes="(max-width: 640px) 100vw, 200px"
+                width={280}
+                height={280}
+                className="rounded-lg object-cover w-full sm:w-64 aspect-square"
+                sizes="(max-width: 640px) 100vw, 260px"
                 unoptimized={post.image.startsWith("http")}
               />
             </div>
-            <div className="flex-1 min-w-0">
-              {children}
+            <div className="flex-1 min-w-0 flex flex-col justify-center">
               <time dateTime={post.date} className="font-mono text-[13px] uppercase tracking-[0.12em] text-text-muted block mb-3">
                 {formatDate(post.date)}
               </time>
@@ -49,7 +48,6 @@ export default function ArticleCard({
           </div>
         ) : (
           <div className="mb-4">
-            {children}
             <time dateTime={post.date} className="font-mono text-[13px] uppercase tracking-[0.12em] text-text-muted block mb-3">
               {formatDate(post.date)}
             </time>
@@ -73,6 +71,8 @@ export default function ArticleCard({
             {post.body}
           </p>
         )}
+
+        {children && <div className="mt-4 pt-4 border-t border-border">{children}</div>}
       </div>
     );
   }
@@ -80,8 +80,6 @@ export default function ArticleCard({
   // Non-featured
   return (
     <div>
-      {children}
-
       <time dateTime={post.date} className="font-mono text-[13px] uppercase tracking-[0.12em] text-text-muted block mb-3">
         {formatDate(post.date)}
       </time>
@@ -118,6 +116,8 @@ export default function ArticleCard({
           {post.body}
         </p>
       )}
+
+      {children && <div className="mt-3">{children}</div>}
     </div>
   );
 }
