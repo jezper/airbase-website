@@ -32,10 +32,10 @@ function Field({
 }
 
 const inputClass =
-  "w-full bg-bg border border-border rounded px-3 py-2 font-body text-sm text-text placeholder:text-text-faint focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors";
+  "w-full bg-bg-card border border-border-hover rounded px-3 py-2.5 font-body text-sm text-text placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors";
 
 const selectClass =
-  "w-full bg-bg border border-border rounded px-3 py-2 font-body text-sm text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors";
+  "w-full bg-bg-card border border-border-hover rounded px-3 py-2.5 font-body text-sm text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors";
 
 export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
   const router = useRouter();

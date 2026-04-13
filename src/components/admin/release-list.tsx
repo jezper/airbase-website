@@ -77,7 +77,7 @@ export function ReleaseList({ releases, heroReleaseIndex }: ReleaseListProps) {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search artist, title, or label..."
-          className="w-full bg-bg border border-border rounded px-3 py-2 font-body text-sm text-text placeholder:text-text-faint focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
+          className="w-full bg-bg-card border border-border-hover rounded px-3 py-2.5 font-body text-sm text-text placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
         />
       </div>
 
