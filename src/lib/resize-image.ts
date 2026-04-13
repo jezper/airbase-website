@@ -5,33 +5,47 @@
 export async function resizeImage(
   file: File,
   maxSize = 1200,
-  maxBytes = 4 * 1024 * 1024, // 4MB to stay under Vercel's 4.5MB limit
+  maxBytes = 4 * 1024 * 1024,
 ): Promise<Blob> {
-  const bitmap = await createImageBitmap(file);
-  const { width, height } = bitmap;
+  return new Promise((resolve, reject) => {
+    const img = new window.Image();
+    img.onload = () => {
+      let { width, height } = img;
 
-  let targetW = width;
-  let targetH = height;
+      if (width > maxSize || height > maxSize) {
+        const ratio = Math.min(maxSize / width, maxSize / height);
+        width = Math.round(width * ratio);
+        height = Math.round(height * ratio);
+      }
 
-  if (width > maxSize || height > maxSize) {
-    const ratio = Math.min(maxSize / width, maxSize / height);
-    targetW = Math.round(width * ratio);
-    targetH = Math.round(height * ratio);
-  }
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) { reject(new Error("Canvas not supported")); return; }
+      ctx.drawImage(img, 0, 0, width, height);
 
-  const canvas = new OffscreenCanvas(targetW, targetH);
-  const ctx = canvas.getContext("2d")!;
-  ctx.drawImage(bitmap, 0, 0, targetW, targetH);
-  bitmap.close();
+      let quality = 0.85;
 
-  let quality = 0.85;
-  let blob = await canvas.convertToBlob({ type: "image/jpeg", quality });
+      function tryCompress() {
+        canvas.toBlob(
+          (blob) => {
+            if (!blob) { reject(new Error("Compression failed")); return; }
+            if (blob.size > maxBytes && quality > 0.3) {
+              quality -= 0.1;
+              tryCompress();
+            } else {
+              resolve(blob);
+            }
+          },
+          "image/jpeg",
+          quality,
+        );
+      }
 
-  // Reduce quality until under maxBytes
-  while (blob.size > maxBytes && quality > 0.3) {
-    quality -= 0.1;
-    blob = await canvas.convertToBlob({ type: "image/jpeg", quality });
-  }
-
-  return blob;
+      tryCompress();
+    };
+    img.onerror = () => reject(new Error("Failed to load image"));
+    img.src = URL.createObjectURL(file);
+  });
 }
