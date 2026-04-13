@@ -34,7 +34,6 @@ async function createTables() {
   await sql`DROP TABLE IF EXISTS releases`;
   await sql`DROP TABLE IF EXISTS posts`;
   await sql`DROP TABLE IF EXISTS shows`;
-  await sql`DROP TABLE IF EXISTS press_entries`;
   await sql`DROP TABLE IF EXISTS site_config`;
 
   await sql`
@@ -89,19 +88,6 @@ async function createTables() {
       ticket_link TEXT,
       event_link TEXT,
       status TEXT NOT NULL DEFAULT 'past',
-      created_at TIMESTAMP DEFAULT NOW()
-    )
-  `;
-
-  await sql`
-    CREATE TABLE IF NOT EXISTS press_entries (
-      id SERIAL PRIMARY KEY,
-      title TEXT NOT NULL,
-      publication TEXT NOT NULL,
-      date TEXT,
-      url TEXT NOT NULL,
-      pull_quote TEXT,
-      context TEXT,
       created_at TIMESTAMP DEFAULT NOW()
     )
   `;
@@ -185,23 +171,6 @@ async function seedShows() {
   console.log(`Seeded ${data.length} shows`);
 }
 
-async function seedPress() {
-  const data = JSON.parse(readFileSync(join(CONTENT_DIR, "press/press.json"), "utf-8"));
-  await sql`DELETE FROM press_entries`;
-
-  for (const p of data) {
-    await db.insert(schema.pressEntries).values({
-      title: p.title,
-      publication: p.publication,
-      date: p.date ?? null,
-      url: p.url,
-      pullQuote: p.pullQuote ?? null,
-      context: p.context ?? null,
-    });
-  }
-  console.log(`Seeded ${data.length} press entries`);
-}
-
 async function seedSiteConfig() {
   const data = JSON.parse(readFileSync(join(CONTENT_DIR, "site-config.json"), "utf-8"));
   await sql`DELETE FROM site_config`;
@@ -219,7 +188,6 @@ async function main() {
   await seedReleases();
   await seedPosts();
   await seedShows();
-  await seedPress();
   await seedSiteConfig();
   console.log("\n=== Done ===");
   process.exit(0);

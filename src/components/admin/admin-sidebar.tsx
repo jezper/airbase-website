@@ -2,14 +2,13 @@
 
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { FileText, Disc3, Calendar, Newspaper, Settings, LogOut } from "lucide-react";
+import { FileText, Disc3, Calendar, Settings, LogOut } from "lucide-react";
 import { Logo } from "@/components/logo";
 
 const NAV_LINKS = [
   { href: "/admin/posts", label: "Posts", icon: FileText },
   { href: "/admin/releases", label: "Releases", icon: Disc3 },
   { href: "/admin/shows", label: "Shows", icon: Calendar },
-  { href: "/admin/press", label: "Press", icon: Newspaper },
 ];
 
 export function AdminSidebar() {

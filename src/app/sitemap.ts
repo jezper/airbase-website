@@ -39,12 +39,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     },
     {
-      url: "https://airbasemusic.com/press",
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.5,
-    },
-    {
       url: "https://airbasemusic.com/contact",
       lastModified: new Date(),
       changeFrequency: "yearly",

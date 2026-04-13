@@ -59,17 +59,6 @@ export const shows = pgTable("shows", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-export const pressEntries = pgTable("press_entries", {
-  id: serial("id").primaryKey(),
-  title: text("title").notNull(),
-  publication: text("publication").notNull(),
-  date: text("date"),
-  url: text("url").notNull(),
-  pullQuote: text("pull_quote"),
-  context: text("context"),
-  createdAt: timestamp("created_at").defaultNow(),
-});
-
 export const siteConfig = pgTable("site_config", {
   id: serial("id").primaryKey(),
   key: text("key").notNull().unique(),

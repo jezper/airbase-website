@@ -2,7 +2,7 @@
 
 import { db, schema } from "./db";
 import { desc, eq } from "drizzle-orm";
-import type { Post, Release, Show, PressFeature } from "@/types/content";
+import type { Post, Release, Show } from "@/types/content";
 
 /* ── Post lookup ── */
 
@@ -187,34 +187,6 @@ export async function writeShows(shows: Show[]): Promise<void> {
       ticketLink: s.ticketLink ?? null,
       eventLink: s.eventLink ?? null,
       status: s.status ?? "past",
-    });
-  }
-}
-
-/* ── Press ── */
-
-export async function readPress(): Promise<PressFeature[]> {
-  const rows = await db.select().from(schema.pressEntries);
-  return rows.map((r) => ({
-    title: r.title,
-    publication: r.publication,
-    date: r.date ?? null,
-    url: r.url,
-    pullQuote: r.pullQuote ?? null,
-    context: r.context ?? null,
-  }));
-}
-
-export async function writePress(items: PressFeature[]): Promise<void> {
-  await db.delete(schema.pressEntries);
-  for (const p of items) {
-    await db.insert(schema.pressEntries).values({
-      title: p.title,
-      publication: p.publication,
-      date: p.date ?? null,
-      url: p.url,
-      pullQuote: p.pullQuote ?? null,
-      context: p.context ?? null,
     });
   }
 }

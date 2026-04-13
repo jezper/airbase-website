@@ -44,17 +44,6 @@ export interface Show {
   status: ShowStatus;
 }
 
-/* ── Press ── */
-
-export interface PressFeature {
-  title: string;
-  publication: string;
-  date: string | null;
-  url: string;
-  pullQuote: string | null;
-  context: string | null;
-}
-
 /* ── MDX Page ── */
 
 export interface MDXPage {
