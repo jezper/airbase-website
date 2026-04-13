@@ -8,6 +8,7 @@ import { releaseSlug } from "@/lib/release-utils";
 import { showSlug } from "@/lib/show-utils";
 import { savePost } from "@/app/admin/(protected)/posts/actions";
 import { MetaPreview } from "./meta-preview";
+import { resizeImage } from "@/lib/resize-image";
 
 interface PostFormProps {
   releases: Release[];
@@ -72,8 +73,9 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
     setUploadError("");
     try {
       const slugName = (title || "post").trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+      const resized = await resizeImage(file);
       const fd = new FormData();
-      fd.append("file", file);
+      fd.append("file", new File([resized], "image.jpg", { type: "image/jpeg" }));
       fd.append("slug", `post-${slugName}`);
       const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
       const json = await res.json();

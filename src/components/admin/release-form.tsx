@@ -7,6 +7,7 @@ import { Plus, X } from "lucide-react";
 import type { Release, ReleaseType } from "@/types/content";
 import { saveRelease } from "@/app/admin/(protected)/releases/actions";
 import { MetaPreview } from "./meta-preview";
+import { resizeImage } from "@/lib/resize-image";
 
 interface ReleaseFormProps {
   initialRelease?: Release;
@@ -91,8 +92,9 @@ export function ReleaseForm({ initialRelease, editIndex }: ReleaseFormProps) {
         title.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") ||
         "artwork";
       const slug = type === "Album" ? `${baseSlug}-album` : baseSlug;
+      const resized = await resizeImage(file);
       const fd = new FormData();
-      fd.append("file", file);
+      fd.append("file", new File([resized], "image.jpg", { type: "image/jpeg" }));
       fd.append("slug", slug);
       const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
       const json = await res.json();

@@ -3,6 +3,8 @@ import { put } from "@vercel/blob";
 import sharp from "sharp";
 import { isAuthenticated } from "@/lib/auth";
 
+
+
 const MAX_SIZE = 1200;
 const MAX_FILE_BYTES = 10 * 1024 * 1024; // 10MB
 
