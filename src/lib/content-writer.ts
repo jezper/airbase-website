@@ -4,11 +4,31 @@ import { db, schema } from "./db";
 import { desc, eq } from "drizzle-orm";
 import type { Post, Release, Show, PressFeature } from "@/types/content";
 
+/* ── Post lookup ── */
+
+export async function getPostByPermalink(permalink: string): Promise<Post | undefined> {
+  const posts = await readPosts();
+
+  // Try slug match first (articles)
+  const bySlug = posts.find((p) => p.slug === permalink);
+  if (bySlug) return bySlug;
+
+  // Try date-id match (notes): "2026-04-12-42"
+  const idMatch = permalink.match(/-(\d+)$/);
+  if (idMatch) {
+    const id = parseInt(idMatch[1], 10);
+    return posts.find((p) => p.id === id);
+  }
+
+  return undefined;
+}
+
 /* ── Posts ── */
 
 export async function readPosts(): Promise<Post[]> {
   const rows = await db.select().from(schema.posts).orderBy(desc(schema.posts.date));
   return rows.map((r) => ({
+    id: r.id,
     type: r.type as Post["type"],
     date: r.date,
     body: r.body,

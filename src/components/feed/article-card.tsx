@@ -1,9 +1,7 @@
+import Link from "next/link";
 import type { Post } from "@/types/content";
 import { formatDate } from "@/lib/format-date";
-
-function stripHtml(html: string): string {
-  return html.replace(/<[^>]*>/g, "").trim();
-}
+import { postPermalink } from "@/lib/post-utils";
 
 export default function ArticleCard({
   post,
@@ -17,6 +15,7 @@ export default function ArticleCard({
   children?: React.ReactNode;
 }) {
   const bodyIsHtml = post.body.includes("<");
+  const permalink = postPermalink(post);
 
   return (
     <div
@@ -32,10 +31,12 @@ export default function ArticleCard({
       </time>
 
       {post.title && (
-        <h3 className={`font-display font-black leading-tight text-text mb-3 ${
+        <h3 className={`font-display font-black leading-tight mb-3 ${
           featured ? "text-3xl sm:text-4xl md:text-5xl" : "text-2xl sm:text-3xl"
         }`}>
-          {post.title}
+          <Link href={permalink} className="text-text hover:text-accent transition-colors">
+            {post.title}
+          </Link>
         </h3>
       )}
 
@@ -53,7 +54,6 @@ export default function ArticleCard({
           {post.body}
         </p>
       )}
-
     </div>
   );
 }

@@ -67,6 +67,7 @@ export interface MDXPage {
 export type PostType = "note" | "article";
 
 export interface Post {
+  id?: number;
   type: PostType;
   date: string;
   body: string;

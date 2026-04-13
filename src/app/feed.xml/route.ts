@@ -1,4 +1,5 @@
 import { readPosts } from "@/lib/content-writer";
+import { postPermalink } from "@/lib/post-utils";
 
 const SITE_URL = "https://airbasemusic.com";
 
@@ -19,16 +20,16 @@ export async function GET() {
 
   const items = sorted.map((post) => {
     const title =
-      post.title ?? post.body?.slice(0, 80) + (post.body && post.body.length > 80 ? "..." : "");
-    const link = SITE_URL;
-    const description = post.excerpt ?? post.body ?? "";
+      post.title ?? post.body?.replace(/<[^>]*>/g, "").slice(0, 80) + (post.body && post.body.length > 80 ? "..." : "");
+    const link = `${SITE_URL}${postPermalink(post)}`;
+    const description = post.body?.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim() ?? "";
 
     return `    <item>
       <title>${escapeXml(title)}</title>
       <link>${link}</link>
       <description>${escapeXml(description)}</description>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
-      <guid>${link}#${post.date}</guid>
+      <guid isPermaLink="true">${link}</guid>
     </item>`;
   });
 

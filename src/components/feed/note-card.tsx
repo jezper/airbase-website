@@ -1,6 +1,8 @@
+import Link from "next/link";
 import Image from "next/image";
 import type { Post } from "@/types/content";
 import { formatDate } from "@/lib/format-date";
+import { postPermalink } from "@/lib/post-utils";
 
 export default function NoteCard({
   post,
@@ -43,9 +45,9 @@ export default function NoteCard({
         </a>
       )}
 
-      <time dateTime={post.date} className="font-mono text-[12px] uppercase tracking-[0.1em] text-text-muted block mt-3">
-        {formatDate(post.date)}
-      </time>
+      <Link href={postPermalink(post)} className="font-mono text-[12px] uppercase tracking-[0.1em] text-text-muted hover:text-accent transition-colors block mt-3">
+        <time dateTime={post.date}>{formatDate(post.date)}</time>
+      </Link>
     </div>
   );
 }
