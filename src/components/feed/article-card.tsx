@@ -16,6 +16,8 @@ export default function ArticleCard({
   featured?: boolean;
   children?: React.ReactNode;
 }) {
+  const bodyIsHtml = post.body.includes("<");
+
   return (
     <div
       className={hasContext
@@ -38,10 +40,25 @@ export default function ArticleCard({
       )}
 
       {post.excerpt && (
-        <p className={`font-body text-text-muted leading-relaxed mb-4 ${
+        <p className={`font-body text-text-muted leading-relaxed mb-4 italic ${
           featured ? "text-[18px]" : "text-[16px]"
         }`}>
           {stripHtml(post.excerpt)}
+        </p>
+      )}
+
+      {bodyIsHtml ? (
+        <div
+          className={`font-body text-text leading-relaxed mb-4 prose prose-invert max-w-none ${
+            featured ? "text-[18px]" : "text-[16px]"
+          }`}
+          dangerouslySetInnerHTML={{ __html: post.body }}
+        />
+      ) : (
+        <p className={`font-body text-text leading-relaxed mb-4 ${
+          featured ? "text-[18px]" : "text-[16px]"
+        }`}>
+          {post.body}
         </p>
       )}
 
