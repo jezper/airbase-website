@@ -209,7 +209,7 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
         <>
           <Field label="Link URL">
             <input
-              type="url"
+              type="text"
               value={link}
               onChange={(e) => setLink(e.target.value)}
               placeholder="https://..."
