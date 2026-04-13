@@ -8,10 +8,12 @@ function stripHtml(html: string): string {
 export default function ArticleCard({
   post,
   hasContext,
+  featured,
   children,
 }: {
   post: Post;
   hasContext?: boolean;
+  featured?: boolean;
   children?: React.ReactNode;
 }) {
   return (
@@ -28,14 +30,20 @@ export default function ArticleCard({
       </time>
 
       {post.title && (
-        <h3 className="font-display text-2xl sm:text-3xl font-black leading-tight text-text mb-3">
+        <h3 className={`font-display font-black leading-tight text-text mb-3 ${
+          featured ? "text-3xl sm:text-4xl md:text-5xl" : "text-2xl sm:text-3xl"
+        }`}>
           {post.title}
         </h3>
       )}
 
-      <p className="font-body text-[16px] text-text-muted leading-relaxed mb-4 max-w-[600px]">
-        {stripHtml(post.excerpt ?? post.body)}
-      </p>
+      {post.excerpt && (
+        <p className={`font-body text-text-muted leading-relaxed mb-4 ${
+          featured ? "text-[18px]" : "text-[16px]"
+        }`}>
+          {stripHtml(post.excerpt)}
+        </p>
+      )}
 
       {post.slug && (
         <a

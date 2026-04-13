@@ -118,7 +118,7 @@ export function PostForm({ releases, shows, initialPost, editIndex }: PostFormPr
       body,
       ...(type === "article" && {
         title,
-        excerpt: excerpt || body.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim().slice(0, 160) || undefined,
+        excerpt: excerpt || undefined,
         slug: slug || autoSlug(title),
       }),
       ...(image.trim() && { image: image.trim() }),

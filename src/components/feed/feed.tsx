@@ -44,6 +44,7 @@ export default function Feed({ items }: { items: FeedItem[] }) {
                   <ArticleCard
                     post={item.post}
                     hasContext={isFeatured && (!!item.release || !!item.show)}
+                    featured={isFeatured}
                   >
                     {!isFeatured && item.release && <ReleaseTag release={item.release} />}
                     {!isFeatured && item.show && <ShowTag show={item.show} />}
