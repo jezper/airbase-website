@@ -3,6 +3,7 @@ import { ThemeProvider } from "next-themes";
 import { fraunces, syne, jetbrainsMono } from "@/lib/fonts";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -80,6 +81,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
