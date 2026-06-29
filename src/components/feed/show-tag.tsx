@@ -1,8 +1,9 @@
 import type { Show } from "@/types/content";
+import { isUpcomingShow } from "@/lib/show-utils";
 
 /** Subtle inline reference to a show. Used for non-featured posts. */
 export default function ShowTag({ show }: { show: Show }) {
-  const isUpcoming = show.status === "upcoming";
+  const isUpcoming = isUpcomingShow(show);
 
   return (
     <div className="flex items-center gap-3 mb-3">

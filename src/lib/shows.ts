@@ -1,9 +1,9 @@
 import type { Show } from "@/types/content";
 import { readShows } from "./content-writer";
-import { showSlug } from "./show-utils";
+import { showSlug, getShowStatus, showSortKey } from "./show-utils";
 
-// Re-export pure utility
-export { showSlug } from "./show-utils";
+// Re-export pure utilities
+export { showSlug, getShowStatus, isUpcomingShow, showSortKey } from "./show-utils";
 
 export async function getShowBySlug(slug: string): Promise<Show | undefined> {
   const shows = await getAllShows();
@@ -16,22 +16,14 @@ export async function getAllShows(): Promise<Show[]> {
 
 export async function getUpcomingShows(): Promise<Show[]> {
   const shows = await getAllShows();
-  return shows.filter((s) => s.status === "upcoming");
-}
-
-function showSortKey(s: Show): string {
-  if (s.date) return s.date;
-  if (s.year_approx) {
-    const parts = s.year_approx.split("-");
-    if (parts.length === 2) return `${parts[0]}-${parts[1]}-15`;
-    if (parts.length === 1) return `${parts[0]}-06-15`;
-  }
-  return "1900-01-01";
+  return shows
+    .filter((s) => getShowStatus(s) === "upcoming")
+    .sort((a, b) => showSortKey(a).localeCompare(showSortKey(b))); // soonest first
 }
 
 export async function getPastShows(): Promise<Show[]> {
   const shows = await getAllShows();
   return shows
-    .filter((s) => s.status === "past")
+    .filter((s) => getShowStatus(s) === "past")
     .sort((a, b) => showSortKey(b).localeCompare(showSortKey(a)));
 }

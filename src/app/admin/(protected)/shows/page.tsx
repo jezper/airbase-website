@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Plus } from "lucide-react";
 import { readShows, readSiteConfig } from "@/lib/content-writer";
+import { getShowStatus } from "@/lib/show-utils";
 import { DeleteShowButton } from "@/components/admin/delete-show-button";
 import { SetHeroButton } from "@/components/admin/set-hero-button";
 
@@ -80,9 +81,14 @@ export default async function ShowsPage() {
                   <span className="font-body text-xs text-text-muted">{s.city}, {s.country}</span>
                 </td>
                 <td className="px-4 py-2.5">
-                  <span className={`font-mono text-[12px] px-1.5 py-0.5 rounded capitalize ${STATUS_COLORS[s.status] ?? "bg-bg-card text-text-muted"}`}>
-                    {s.status}
-                  </span>
+                  {(() => {
+                    const derived = getShowStatus(s);
+                    return (
+                      <span className={`font-mono text-[12px] px-1.5 py-0.5 rounded capitalize ${STATUS_COLORS[derived] ?? "bg-bg-card text-text-muted"}`}>
+                        {derived}
+                      </span>
+                    );
+                  })()}
                 </td>
                 <td className="px-4 py-2.5 text-right">
                   <div className="flex items-center justify-end gap-3">

@@ -4,10 +4,11 @@ import Image from "next/image";
 import { getFeedItems } from "@/lib/feed";
 import { getAllReleases, getReleaseBySlug } from "@/lib/releases";
 import { releaseSlug } from "@/lib/release-utils";
-import { getAllShows } from "@/lib/shows";
+import { getAllShows, isUpcomingShow, showSortKey, showSlug } from "@/lib/shows";
 import { readSiteConfig, readPosts } from "@/lib/content-writer";
 import Feed from "@/components/feed/feed";
 import { HeroPlayButton } from "@/components/hero-play-button";
+import UpcomingStrip from "@/components/upcoming-strip";
 
 const STATS = [
   { number: "25+", label: "Years Active" },
@@ -30,8 +31,18 @@ export default async function Home() {
   const heroPost = hero.type === "post" ? posts[hero.postIndex ?? 0] : null;
   const heroShow = hero.type === "show" ? shows[hero.showIndex ?? 0] : null;
 
+  // Upcoming shows for the top strip, soonest first. Exclude the show that's
+  // already starred into the hero so it never appears twice.
+  const heroShowSlug = heroShow ? showSlug(heroShow) : null;
+  const upcomingStripShows = shows
+    .filter((s) => isUpcomingShow(s) && showSlug(s) !== heroShowSlug)
+    .sort((a, b) => showSortKey(a).localeCompare(showSortKey(b)));
+
   return (
     <>
+      {/* Next-show strip — only renders when an upcoming show exists */}
+      <UpcomingStrip shows={upcomingStripShows} />
+
       {/* Hero */}
       <section className={`relative flex flex-col justify-center px-6 md:px-12 overflow-hidden ${
         heroRelease ? "min-h-[85vh] py-24 md:py-28" : "pt-32 md:pt-48 pb-16 md:pb-20"
@@ -158,7 +169,7 @@ export default async function Home() {
 
         {/* Show hero — gold accent, date, venue, tickets */}
         {heroShow && (() => {
-          const isUpcoming = heroShow.status === "upcoming";
+          const isUpcoming = isUpcomingShow(heroShow);
           const d = heroShow.date ? new Date(heroShow.date) : null;
           return (
             <div className="relative z-10 max-w-content mx-auto">

@@ -1,5 +1,6 @@
 import { getReleaseBySlug } from "./releases";
-import { getShowBySlug } from "./shows";
+import { getShowBySlug, getAllShows } from "./shows";
+import { showSlug, showSortKey, getShowStatus } from "./show-utils";
 import { readPosts } from "./content-writer";
 import type { Post, FeedItem } from "@/types/content";
 
@@ -10,9 +11,10 @@ async function resolveShowRef(slug: string) {
 export async function getFeedItems(limit?: number): Promise<FeedItem[]> {
   const posts = await readPosts();
 
-  const feedItems: FeedItem[] = await Promise.all(
+  // Posts (with their resolved release/show references)
+  const postItems: FeedItem[] = await Promise.all(
     posts.map(async (post) => {
-      const item: FeedItem = { post };
+      const item: FeedItem = { post, date: post.date };
 
       if (post.releaseRef) {
         const release = await getReleaseBySlug(post.releaseRef);
@@ -34,7 +36,18 @@ export async function getFeedItems(limit?: number): Promise<FeedItem[]> {
     })
   );
 
-  feedItems.sort((a, b) => new Date(b.post.date).getTime() - new Date(a.post.date).getTime());
+  // Standalone shows — every show flows into the feed on its own, except
+  // cancelled ones and shows already referenced by a post (avoid duplicates).
+  const referencedShowSlugs = new Set(
+    postItems.map((i) => i.show && showSlug(i.show)).filter(Boolean) as string[]
+  );
+  const shows = await getAllShows();
+  const showItems: FeedItem[] = shows
+    .filter((s) => getShowStatus(s) !== "cancelled" && !referencedShowSlugs.has(showSlug(s)))
+    .map((show) => ({ show, date: showSortKey(show) }));
+
+  const feedItems = [...postItems, ...showItems];
+  feedItems.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return limit ? feedItems.slice(0, limit) : feedItems;
 }

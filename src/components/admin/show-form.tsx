@@ -34,9 +34,6 @@ function Field({
 const inputClass =
   "w-full bg-bg-card border border-border-hover rounded px-3 py-2.5 font-body text-sm text-text placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors";
 
-const selectClass =
-  "w-full bg-bg-card border border-border-hover rounded px-3 py-2.5 font-body text-sm text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors";
-
 export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
   const router = useRouter();
 
@@ -46,7 +43,7 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
   const [event, setEvent] = useState(initialShow?.event ?? "");
   const [date, setDate] = useState(initialShow?.date ?? "");
   const [yearApprox, setYearApprox] = useState(initialShow?.year_approx ?? "");
-  const [status, setStatus] = useState<ShowStatus>(initialShow?.status ?? "past");
+  const [cancelled, setCancelled] = useState<boolean>(initialShow?.status === "cancelled");
   const [notes, setNotes] = useState(initialShow?.notes ?? "");
   const [image, setImage] = useState(initialShow?.image ?? "");
   const [ticketLink, setTicketLink] = useState(initialShow?.ticketLink ?? "");
@@ -109,6 +106,14 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
     setSaving(true);
     setError("");
 
+    // Upcoming/past is derived from the date; "cancelled" is the only manual state.
+    const today = new Date().toISOString().slice(0, 10);
+    const computedStatus: ShowStatus = cancelled
+      ? "cancelled"
+      : date && date > today
+        ? "upcoming"
+        : "past";
+
     const show: Show = {
       venue: venue.trim(),
       city: city.trim(),
@@ -120,7 +125,7 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
       image: image.trim() || null,
       ticketLink: ticketLink.trim() || null,
       eventLink: eventLink.trim() || null,
-      status,
+      status: computedStatus,
     };
 
     const result = await saveShow(show, editIndex);
@@ -203,18 +208,21 @@ export function ShowForm({ initialShow, editIndex }: ShowFormProps) {
         </Field>
       </div>
 
-      {/* Status */}
-      <Field label="Status" required>
-        <select
-          value={status}
-          onChange={(e) => setStatus(e.target.value as ShowStatus)}
-          className={selectClass}
-        >
-          <option value="upcoming">Upcoming</option>
-          <option value="past">Past</option>
-          <option value="cancelled">Cancelled</option>
-        </select>
-      </Field>
+      {/* Cancelled — upcoming/past is derived from the date automatically */}
+      <div>
+        <label className="flex items-center gap-2.5 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={cancelled}
+            onChange={(e) => setCancelled(e.target.checked)}
+            className="w-4 h-4 rounded border-border-hover text-accent focus:ring-accent focus:ring-offset-0"
+          />
+          <span className="font-body text-sm text-text">Cancelled</span>
+        </label>
+        <p className="font-body text-xs text-text-faint mt-1.5">
+          Upcoming or past is set automatically from the date. Check this only if the show was cancelled.
+        </p>
+      </div>
 
       {/* Notes */}
       <Field label="Notes">

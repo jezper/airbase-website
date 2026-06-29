@@ -5,6 +5,7 @@ import NoteCard from "./note-card";
 import ArticleCard from "./article-card";
 import ReleaseTag from "./release-tag";
 import ShowTag from "./show-tag";
+import ShowCard from "./show-card";
 
 export default function Feed({ items }: { items: FeedItem[] }) {
   return (
@@ -20,26 +21,28 @@ export default function Feed({ items }: { items: FeedItem[] }) {
           </p>
         ) : (
           items.map((item, i) => {
-            const isFeatured = item.post.featured === true;
+            const post = item.post;
 
             return (
-              <div key={`${item.post.type}-${item.post.date}-${i}`} className="py-8 first:pt-0">
-                {/* The post card */}
-                {item.post.type === "note" && (
-                  <NoteCard post={item.post}>
+              <div key={`${post ? post.type : "show"}-${item.date}-${i}`} className="py-8 first:pt-0">
+                {/* Authored post */}
+                {post?.type === "note" && (
+                  <NoteCard post={post}>
                     {item.release && <ReleaseTag release={item.release} />}
                     {item.show && <ShowTag show={item.show} />}
                   </NoteCard>
                 )}
-                {item.post.type === "article" && (
+                {post?.type === "article" && (
                   <ArticleCard
-                    post={item.post}
-                    featured={isFeatured}
+                    post={post}
+                    featured={post.featured === true}
                   >
                     {item.release && <ReleaseTag release={item.release} />}
                     {item.show && <ShowTag show={item.show} />}
                   </ArticleCard>
                 )}
+                {/* Standalone show (no attached post) */}
+                {!post && item.show && <ShowCard show={item.show} />}
               </div>
             );
           })

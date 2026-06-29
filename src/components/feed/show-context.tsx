@@ -1,10 +1,11 @@
 import Image from "next/image";
 import type { Show } from "@/types/content";
+import { isUpcomingShow } from "@/lib/show-utils";
 
 /** Displayed above a post that references a show */
 export default function ShowContext({ show }: { show: Show }) {
-  const { venue, city, country, event, date, status, image } = show;
-  const isUpcoming = status === "upcoming";
+  const { venue, city, country, event, date, image } = show;
+  const isUpcoming = isUpcomingShow(show);
 
   const dateParts = date ? (() => {
     const d = new Date(date);

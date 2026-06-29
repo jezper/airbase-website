@@ -71,11 +71,12 @@ export interface Post {
   featured?: boolean;    // true = big artwork/context card. default = subtle inline tag.
 }
 
-/* ── Feed Item (post + resolved references) ── */
+/* ── Feed Item (post + resolved references, or a standalone show) ── */
 
 export interface FeedItem {
-  post: Post;
+  post?: Post;              // present for authored posts; absent for standalone shows
   release?: Release;        // resolved from releaseRef
   relatedRelease?: Release; // resolved from release.relatedRelease
-  show?: Show;              // resolved from showRef
+  show?: Show;              // resolved from showRef, or the standalone show itself
+  date: string;             // unified sort key (post date, or show date)
 }

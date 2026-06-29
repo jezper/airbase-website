@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import type { Metadata } from "next";
 import Image from "next/image";
-import { getUpcomingShows, getPastShows } from "@/lib/shows";
+import { getUpcomingShows, getPastShows, isUpcomingShow } from "@/lib/shows";
 
 export const metadata: Metadata = {
   title: "Shows",
@@ -124,7 +124,7 @@ export default async function ShowsPage() {
                       </p>
                     )}
                     <div className="flex gap-3 mt-5">
-                      {show.ticketLink && show.status === "upcoming" && (
+                      {show.ticketLink && isUpcomingShow(show) && (
                         <a
                           href={show.ticketLink}
                           target="_blank"
@@ -204,9 +204,9 @@ export default async function ShowsPage() {
                             {show.notes}
                           </p>
                         )}
-                        {(show.eventLink || (show.ticketLink && show.status === "upcoming")) && (
+                        {(show.eventLink || (show.ticketLink && isUpcomingShow(show))) && (
                           <div className="flex gap-2 mt-2">
-                            {show.ticketLink && show.status === "upcoming" && (
+                            {show.ticketLink && isUpcomingShow(show) && (
                               <a href={show.ticketLink} target="_blank" rel="noopener noreferrer"
                                 className="font-body text-[13px] font-bold uppercase tracking-[0.08em] px-3 py-1 rounded-sm transition-opacity hover:opacity-85"
                                 style={{ backgroundColor: "var(--gd)", color: "var(--bg)" }}>
