@@ -2,7 +2,7 @@
 
 ## Overview
 
-A personal artist website for **Airbase** (Jezper Söderlund), a Swedish trance producer and DJ active since the mid-1990s. The site replaces the current WordPress site at airbasemusic.com and is built for deployment on Vercel with Git version control.
+A personal artist website for **Airbase** (Jezper Lorné, formerly Söderlund), a Swedish trance producer and DJ active since the mid-1990s. The site replaces the current WordPress site at airbasemusic.com and is built for deployment on Vercel with Git version control.
 
 The site is not a typical electronic music artist site. It deliberately avoids the cliché trance/EDM aesthetic of space imagery, futuristic neon, and dark cyber themes. Instead, it leans into warmth, organic texture, and editorial craft — a site that feels like it was designed by someone who cares about design, not by someone who Googled "DJ website template."
 

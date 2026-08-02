@@ -38,7 +38,7 @@ export async function GET() {
   <channel>
     <title>Airbase</title>
     <link>${SITE_URL}</link>
-    <description>Notes, articles, and releases from Airbase (Jezper Söderlund).</description>
+    <description>Notes, articles, and releases from Airbase (Jezper Lorné, formerly Söderlund).</description>
     <language>en</language>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
 ${items.join("\n")}

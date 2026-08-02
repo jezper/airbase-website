@@ -6,7 +6,7 @@ import Discography from "@/components/discography/discography";
 
 export const metadata: Metadata = {
   title: "Discography",
-  description: "Complete discography of Airbase (Jezper Söderlund) — 25 years of trance music across 14 aliases.",
+  description: "Complete discography of Airbase (Jezper Lorné, formerly Söderlund) — 25 years of trance music across 14 aliases.",
 };
 
 export default async function DiscographyPage() {

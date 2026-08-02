@@ -1,6 +1,6 @@
 # Airbase Artist Website
 
-Personal website for Airbase (Jezper Söderlund), Swedish trance producer and DJ. Replaces WordPress site at airbasemusic.com. Vercel + Git.
+Personal website for Airbase (Jezper Lorné, formerly Söderlund), Swedish trance producer and DJ. Replaces WordPress site at airbasemusic.com. Vercel + Git.
 
 ## Skills (.claude/skills/)
 

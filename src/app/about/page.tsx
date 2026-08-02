@@ -4,7 +4,7 @@ import { renderMDXPage } from "@/lib/mdx";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Jezper Söderlund, aka Airbase. Swedish trance producer and DJ from Gothenburg, active since the mid-1990s.",
+    "Jezper Lorné (formerly Söderlund), aka Airbase. Swedish trance producer and DJ from Gothenburg, active since the mid-1990s.",
 };
 
 export default async function AboutPage() {

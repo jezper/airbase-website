@@ -48,7 +48,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "MusicGroup",
               name: "Airbase",
-              alternateName: "Jezper Söderlund",
+              alternateName: ["Jezper Lorné", "Jezper Söderlund"],
               url: "https://airbasemusic.com",
               genre: ["Trance", "Progressive Trance"],
               foundingLocation: { "@type": "Place", name: "Gothenburg, Sweden" },
