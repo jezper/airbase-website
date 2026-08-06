@@ -57,8 +57,8 @@ The original spec is strong on archive and editorial content but light on what m
 
 ## Key Rules
 
+Behaviour/quality/design/a11y rules: inherited from global ~/.claude/CLAUDE.md.
+
 - Start with `/visual-brainstorm` before any code. No exceptions.
 - `/ux-ui-design` overrides `/frontend-design` on any conflict.
-- No em dashes in any writing. Direct, conversational tone. No AI phrases.
-- WCAG 2.1 AA accessibility is non-negotiable.
 - This site must NOT look like a typical electronic music website. No space/neon/futuristic. Warm, organic, editorial.
