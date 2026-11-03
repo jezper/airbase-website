@@ -1,21 +1,113 @@
 {
   "asOf": "2026-11-03",
   "headline": "35+ million streams and views",
-  "suggestedLine": "35+ million streams and views · 123K monthly listeners on Spotify · Streamed in 200+ countries · 40+ A State of Trance features · 109 releases on 49 labels · Since 2002",
+  "suggestedLine": "35+ million streams and views · 123K monthly listeners on Spotify · Streamed in 200+ countries · 40+ A State of Trance features · 112 releases on 60 labels · Since 2002",
   "metrics": [
-    { "id": "streams_total", "label": "Streams and views", "value": 35000000, "display": "35M+", "exact": false, "note": "Spotify 28.9M + YouTube 7.0M (lower bound). Apple Music, Deezer, TikTok etc. not included." },
-    { "id": "spotify_streams", "label": "Spotify streams", "value": 28866044, "display": "28.9M", "exact": true, "source": "Spotify for Artists, all-time, top 200 tracks" },
-    { "id": "escape_streams", "label": "Escape (Radio Edit) on Spotify", "value": 9833181, "display": "9.8M", "exact": true, "source": "Spotify for Artists, all-time" },
-    { "id": "youtube_views", "label": "YouTube views", "value": 7015007, "display": "7M+", "exact": false, "source": "350 YouTube videos of Airbase tracks incl. fan uploads; search-limited, lower bound" },
-    { "id": "monthly_listeners", "label": "Monthly listeners on Spotify", "value": 123395, "display": "123K", "exact": true, "source": "Spotify for Artists, last 28 days", "changesOften": true },
-    { "id": "spotify_followers", "label": "Spotify followers", "value": 18000, "display": "18K", "exact": true, "source": "Spotify for Artists", "changesOften": true },
-    { "id": "countries", "label": "Countries and territories streamed in", "value": 204, "display": "200+", "exact": false, "source": "Armada royalty statements 2023-2026, Escape only (lower bound)" },
-    { "id": "asot_features", "label": "A State of Trance episodes", "value": 40, "display": "40+", "exact": false, "source": "Tracks titled ASOT nnn on Spotify for Artists (lower bound)" },
-    { "id": "tracks_over_1m", "label": "Tracks over 1M Spotify streams", "value": 6, "display": "6", "exact": true, "source": "Spotify for Artists" },
-    { "id": "releases", "label": "Releases", "value": 109, "display": "109", "exact": true, "source": "content/releases/discography.json" },
-    { "id": "labels", "label": "Labels", "value": 49, "display": "49", "exact": true, "source": "content/releases/discography.json" },
-    { "id": "compilations", "label": "Compilation appearances", "value": 274, "display": "270+", "exact": false, "source": "Discogs, all aliases" },
-    { "id": "since", "label": "Releasing since", "value": 2002, "display": "2002", "exact": true }
+    {
+      "id": "streams_total",
+      "label": "Streams and views",
+      "value": 35000000,
+      "display": "35M+",
+      "exact": false,
+      "note": "Spotify 28.9M + YouTube 7.0M (lower bound). Apple Music, Deezer, TikTok etc. not included."
+    },
+    {
+      "id": "spotify_streams",
+      "label": "Spotify streams",
+      "value": 28866044,
+      "display": "28.9M",
+      "exact": true,
+      "source": "Spotify for Artists, all-time, top 200 tracks"
+    },
+    {
+      "id": "escape_streams",
+      "label": "Escape (Radio Edit) on Spotify",
+      "value": 9833181,
+      "display": "9.8M",
+      "exact": true,
+      "source": "Spotify for Artists, all-time"
+    },
+    {
+      "id": "youtube_views",
+      "label": "YouTube views",
+      "value": 7015007,
+      "display": "7M+",
+      "exact": false,
+      "source": "350 YouTube videos of Airbase tracks incl. fan uploads; search-limited, lower bound"
+    },
+    {
+      "id": "monthly_listeners",
+      "label": "Monthly listeners on Spotify",
+      "value": 123395,
+      "display": "123K",
+      "exact": true,
+      "source": "Spotify for Artists, last 28 days",
+      "changesOften": true
+    },
+    {
+      "id": "spotify_followers",
+      "label": "Spotify followers",
+      "value": 18000,
+      "display": "18K",
+      "exact": true,
+      "source": "Spotify for Artists",
+      "changesOften": true
+    },
+    {
+      "id": "countries",
+      "label": "Countries and territories streamed in",
+      "value": 204,
+      "display": "200+",
+      "exact": false,
+      "source": "Armada royalty statements 2023-2026, Escape only (lower bound)"
+    },
+    {
+      "id": "asot_features",
+      "label": "A State of Trance episodes",
+      "value": 40,
+      "display": "40+",
+      "exact": false,
+      "source": "Tracks titled ASOT nnn on Spotify for Artists (lower bound)"
+    },
+    {
+      "id": "tracks_over_1m",
+      "label": "Tracks over 1M Spotify streams",
+      "value": 6,
+      "display": "6",
+      "exact": true,
+      "source": "Spotify for Artists"
+    },
+    {
+      "id": "releases",
+      "label": "Releases",
+      "value": 112,
+      "display": "112",
+      "exact": true,
+      "source": "content/releases/discography.json"
+    },
+    {
+      "id": "labels",
+      "label": "Labels",
+      "value": 60,
+      "display": "60",
+      "exact": true,
+      "source": "content/releases/discography.json"
+    },
+    {
+      "id": "compilations",
+      "label": "Compilation appearances",
+      "value": 274,
+      "display": "270+",
+      "exact": false,
+      "source": "Discogs, all aliases"
+    },
+    {
+      "id": "since",
+      "label": "Releasing since",
+      "value": 2002,
+      "display": "2002",
+      "exact": true
+    }
   ],
   "provenance": "Compiled in the airbase-gold project (github.com/jezper/airbase-gold, data/vanity-metrics.json). Refresh Spotify numbers before publishing; they move daily."
 }
