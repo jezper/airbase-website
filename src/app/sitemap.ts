@@ -1,3 +1,7 @@
+// Prerendered and cached for a day. Both read the database, and crawlers
+// request them often.
+export const revalidate = 86400;
+
 import { MetadataRoute } from "next";
 import { getAllReleases } from "@/lib/releases";
 import { releaseSlug } from "@/lib/release-utils";

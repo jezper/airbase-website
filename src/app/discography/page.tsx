@@ -1,8 +1,7 @@
-// Cached page, rebuilt at most once an hour. Admin publishing calls
-// revalidatePath, so edits still appear immediately. Rendering this
-// per request re-read the whole database on every visit, which burned
-// through Neon's monthly network transfer allowance.
-export const revalidate = 3600;
+// Never expires on its own. Nothing here depends on today's date, so the
+// page only needs rebuilding when content changes, and admin publishing
+// calls revalidatePath for that. Keeps database reads near zero.
+export const revalidate = false;
 
 import type { Metadata } from "next";
 import { getAllReleases, getOwnAliases, getRemixedArtists } from "@/lib/releases";

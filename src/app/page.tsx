@@ -1,8 +1,7 @@
-// Cached page, rebuilt at most once an hour. Admin publishing calls
-// revalidatePath, so edits still appear immediately. Rendering this
-// per request re-read the whole database on every visit, which burned
-// through Neon's monthly network transfer allowance.
-export const revalidate = 3600;
+// Rebuilt once a day, because upcoming shows drop into the archive as
+// dates pass. Admin publishing calls revalidatePath, so edits appear
+// immediately regardless.
+export const revalidate = 86400;
 
 import Image from "next/image";
 import { getFeedItems } from "@/lib/feed";

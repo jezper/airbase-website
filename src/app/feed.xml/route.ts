@@ -1,3 +1,7 @@
+// Prerendered and cached for a day. Both read the database, and crawlers
+// request them often.
+export const revalidate = 86400;
+
 import { readPosts } from "@/lib/content-writer";
 import { postPermalink } from "@/lib/post-utils";
 
